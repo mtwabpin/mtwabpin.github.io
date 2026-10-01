@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MTWABP In</title>
+<meta name="description" content="MTWABP In makes Grove, a habit tracker where your habits grow a living valley.">
+<meta name="theme-color" content="#EDF1E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12201B" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<style>
+  @font-face {
+    font-family: "Alegreya";
+    src: url("fonts/Alegreya-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Alegreya Sans";
+    src: url("fonts/AlegreyaSans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Alegreya Sans";
+    src: url("fonts/AlegreyaSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  /* Grove's own colours: its page, its stones, its ink and its moss. */
+  :root {
+    --ground: #EDF1E8;
+    --stone: #DFE6D8;
+    --edge: #CBD5C2;
+    --ink: #1E2C23;
+    --bark: #58675A;
+    --moss: #41703A;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #12201B;
+      --stone: #1C2D26;
+      --edge: #2A3E35;
+      --ink: #E3ECDF;
+      --bark: #9DB0A2;
+      --moss: #8EC27A;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 1.125rem/1.6 "Alegreya Sans", system-ui, sans-serif;
+  }
+  a { color: var(--moss); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 3px solid var(--moss); outline-offset: 3px; border-radius: 3px; }
+
+  .column { max-width: 40rem; margin: 0 auto; padding: 0 1rem; }
+
+  /* The name, spelled out: each letter of MTWABP over its word. */
+  header { padding: clamp(3rem, 10vw, 7rem) 1rem clamp(2.5rem, 6vw, 4.5rem); }
+  .name {
+    margin: 0 auto;
+    max-width: 56rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    column-gap: clamp(0.55rem, 2.6vw, 2.4rem);
+    row-gap: 1.25rem;
+    font-weight: 700;
+  }
+  .word { display: flex; flex-direction: column; align-items: center; }
+  .letter {
+    font-family: "Alegreya", Georgia, serif;
+    font-size: clamp(2.5rem, 11vw, 7.5rem);
+    line-height: 1;
+  }
+  .spelled {
+    margin-top: 0.4rem;
+    font-weight: 400;
+    font-size: clamp(0.85rem, 2vw, 1.2rem);
+    line-height: 1.2;
+    color: var(--bark);
+  }
+  .in {
+    align-self: flex-end;
+    font-family: "Alegreya", Georgia, serif;
+    font-size: clamp(1.75rem, 5vw, 3.25rem);
+    line-height: 1;
+    /* Sits on the letters' baseline, above where the words are. */
+    margin-bottom: calc(1.2em * 0.5 + 0.4rem);
+  }
+  .intro {
+    margin: clamp(2rem, 5vw, 3rem) auto 0;
+    max-width: 34rem;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 1.55;
+  }
+
+  /* The words arrive one after another, once, as the page opens. */
+  @media (prefers-reduced-motion: no-preference) {
+    .spelled { animation: arrive 0.6s ease-out both; }
+    .word:nth-child(2) .spelled { animation-delay: 0.08s; }
+    .word:nth-child(3) .spelled { animation-delay: 0.16s; }
+    .word:nth-child(4) .spelled { animation-delay: 0.24s; }
+    .word:nth-child(5) .spelled { animation-delay: 0.32s; }
+    .word:nth-child(6) .spelled { animation-delay: 0.40s; }
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(-0.4rem); }
+    }
+  }
+
+  /* Grove's valley, as the app draws it, from edge to edge. */
+  .valley {
+    display: block;
+    width: 100%;
+    height: clamp(14rem, 42vw, 34rem);
+    object-fit: cover;
+    object-position: 50% 62%;
+    background: #7FB24A;
+  }
+
+  /* Only top and bottom: the sides come from .column. */
+  .app { padding-top: clamp(2.5rem, 6vw, 4rem); padding-bottom: clamp(3rem, 8vw, 5rem); }
+  .app-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+  .app-head img { width: 4.5rem; height: 4.5rem; border-radius: 22%; flex: none; }
+  h2 {
+    margin: 0;
+    font-family: "Alegreya", Georgia, serif;
+    font-size: clamp(2.25rem, 6vw, 3rem);
+    line-height: 1.05;
+  }
+  .lead { margin: 0.15rem 0 0; color: var(--bark); font-size: 1.1rem; line-height: 1.4; }
+  .app p { margin: 0 0 1rem; }
+
+  .facts { margin: 1.75rem 0; padding: 0; list-style: none; border-top: 1px solid var(--edge); }
+  .facts li { padding: 0.9rem 0; border-bottom: 1px solid var(--edge); }
+  .facts strong { font-weight: 500; }
+
+  .get {
+    margin-top: 1.75rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--stone);
+    border-radius: 1rem;
+  }
+  .get p { margin: 0; }
+  .get p + p { margin-top: 0.35rem; }
+
+  footer { padding-bottom: 3rem; color: var(--bark); font-size: 1rem; }
+  .footer-body { padding-top: 2rem; border-top: 1px solid var(--edge); }
+  .footer-body p { margin: 0 0 0.35rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="name" aria-label="MTWABP In: Make the world a better place">
+    <span class="word" aria-hidden="true"><span class="letter">M</span><span class="spelled">Make</span></span>
+    <span class="word" aria-hidden="true"><span class="letter">T</span><span class="spelled">the</span></span>
+    <span class="word" aria-hidden="true"><span class="letter">W</span><span class="spelled">world</span></span>
+    <span class="word" aria-hidden="true"><span class="letter">A</span><span class="spelled">a</span></span>
+    <span class="word" aria-hidden="true"><span class="letter">B</span><span class="spelled">better</span></span>
+    <span class="word" aria-hidden="true"><span class="letter">P</span><span class="spelled">place</span></span>
+    <span class="in" aria-hidden="true">In</span>
+  </h1>
+  <p class="intro">MTWABP In makes apps for everyday life. The first one is Grove.</p>
+</header>
+
+<main>
+  <img class="valley"
+       src="images/valley.jpg"
+       srcset="images/valley-960.jpg 960w, images/valley.jpg 1920w"
+       sizes="100vw"
+       width="1920" height="1080"
+       alt="A valley drawn by Grove: three mountains with lit trails, flowering trees and sunflowers in a green meadow, and a river under a wooden bridge.">
+
+  <section class="app column" aria-labelledby="grove">
+    <div class="app-head">
+      <img src="images/grove-icon.png" width="192" height="192" alt="">
+      <div>
+        <h2 id="grove">Grove</h2>
+        <p class="lead">Grow a living valley from your habits. Build good ones and let go of the rest.</p>
+      </div>
+    </div>
+
+    <p>Every habit you build is a plant by the river. Water it each day and it grows from a seed
+    into a thriving tree. Every habit you let go of is a mountain trail. Each clean day takes you
+    higher, up to the summit at one year.</p>
+    <p>The sky follows the real time of day, the moon shows its real phase, and the seasons are
+    the ones where you live.</p>
+
+    <ul class="facts">
+      <li><strong>Kind.</strong> Plants never die. A missed day takes only a little growth, and
+      your best climb stays marked on the mountain.</li>
+      <li><strong>Private.</strong> No account, no ads and no tracking. Grove works without the
+      internet, and your habits stay on your device.</li>
+      <li><strong>For your screen.</strong> Phones, tablets and foldables, with home-screen
+      widgets and a calm full-screen zen mode.</li>
+    </ul>
+
+    <div class="get">
+      <p>Grove is for Android, and it is coming soon to Google Play.</p>
+      <p><a href="grove/privacy.html">Read Grove's privacy policy</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="column">
+    <div class="footer-body">
+      <p>Questions or ideas? Write to <a href="mailto:mtwabpin@gmail.com">mtwabpin@gmail.com</a>.</p>
+      <p>&copy; 2026 MTWABP In</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
