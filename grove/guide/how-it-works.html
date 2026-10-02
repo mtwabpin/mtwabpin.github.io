@@ -319,7 +319,10 @@
 <li><a href="#privacy-android" id="toc-privacy-android">Privacy (Android) <span class="since">Coming in 1.1</span></a></li>
 <li><a href="#sounds" id="toc-sounds">Sounds</a></li>
 <li><a href="#your-location" id="toc-your-location">Your location</a></li>
-<li><a href="#backup" id="toc-backup">Backup</a></li>
+<li><a href="#backup" id="toc-backup">Backup</a>
+<ul>
+<li><a href="#automatic-backups" id="toc-automatic-backups">Automatic backups <span class="since">Coming in 1.1</span></a></li>
+</ul></li>
 <li><a href="#the-activity-log" id="toc-the-activity-log">The activity log</a></li>
 <li><a href="#settings" id="toc-settings">Settings</a></li>
 <li><a href="#screen-sizes-phones-tablets-foldables-and-desktop" id="toc-screen-sizes-phones-tablets-foldables-and-desktop">Screen sizes: phones, tablets, foldables and desktop</a></li>
@@ -1072,6 +1075,37 @@
 <li>A backup is also the way to move your habits to a new phone, or between the phone and the desktop app.</li>
 <li>When your phone's own backup is on, Android also backs Grove up to your Google account.</li>
 </ul>
+<section id="automatic-backups" class="level3">
+<h3>Automatic backups <span class="since">Coming in 1.1</span></h3>
+<ul>
+<li>Settings → Backup → <strong>Automatic backups</strong>: Grove saves a backup file for you, in a folder you choose. It is off at first.</li>
+<li>When you turn it on, Grove asks for a folder:
+<ul>
+<li>on Android, the phone's own folder picker opens in Documents. Pick a folder, or make one such as "Grove backups", then tap <strong>Use this folder</strong> and <strong>Allow</strong>. Grove needs no storage permission for this;</li>
+<li>on a computer, Grove offers Documents/Grove backups, or you can choose another folder.</li>
+</ul></li>
+<li>Grove makes the first backup straight away. After that:
+<ul>
+<li><strong>How often</strong>: <strong>Every day</strong>, <strong>Every week</strong> (at first) or <strong>Every month</strong>;</li>
+<li>Grove only makes a backup when something has changed since the last one, so the folder never fills up with copies of the same thing;</li>
+<li><strong>How many to keep</strong>: 3, 5 (at first), 10 or 30. When there are more, Grove deletes the oldest automatic backups. It never deletes any other file in the folder, not even a backup you saved yourself.</li>
+</ul></li>
+<li>The files are ordinary backups, named by the date and time, such as <code class="verbatim">grove-auto-backup-2026-10-02-10.30.json</code>. Restore one like any other backup file.</li>
+<li>When it runs:
+<ul>
+<li>on Android, about once a day in the background, even when Grove is closed. It waits until the battery is not low. It may come a little late; Grove does not ask for the "exact alarms" permission;</li>
+<li>when you open Grove, or come back to it, and a backup is due. On a computer, this is the only time it runs.</li>
+</ul></li>
+<li>The section shows when the last backup was made and where, such as "Last backup: Fri 2 Oct, 10:30, in Grove backups". <strong>Change</strong> picks another folder, and <strong>Back up now</strong> makes one at once. If nothing has changed, it says "Nothing has changed since the last backup".</li>
+<li>If a backup can't be saved, Settings says so, for example "Automatic backups have stopped: the folder is gone". Tap <strong>Choose the folder again</strong> to fix it.
+<ul>
+<li>If backups keep failing for 3 days, Grove tells you once, with a quiet notification on Android (if you allow Grove's notifications) or a message when you open it on a computer. Tap it to open Settings at Backup.</li>
+</ul></li>
+<li>Backups stay on your device, in the folder you chose. Grove sends nothing anywhere. If you choose a folder that another app copies to the cloud, that app takes the backups with it: that is up to you.</li>
+<li>Turning it off keeps the backups already saved.</li>
+<li>These settings are for this device only. They are not in your backup files, so restoring on a new phone does not turn automatic backups on; turn them on there and choose a folder.</li>
+</ul>
+</section>
 </section>
 <section id="the-activity-log" class="level2">
 <h2>The activity log</h2>
@@ -1112,7 +1146,7 @@
 <li><strong>Zen mode</strong>: frames a second (30, 60 or Max).</li>
 <li><strong>Home-screen widgets</strong> (on Android)</li>
 <li><strong>Privacy</strong> (on Android): keep quit habits private.</li>
-<li><strong>Backup</strong></li>
+<li><strong>Backup</strong>: save, share or restore a backup file, and automatic backups to a folder you choose. <span class="since">Coming in 1.1</span></li>
 <li><strong>About</strong>: version, <strong>Share Grove</strong>, open-source licences.</li>
 </ul></li>
 <li>Grove's colours follow your device's light or dark mode at first. To keep them light or dark, pick <strong>Light</strong> or <strong>Dark</strong> in Settings → Theme. <strong>System</strong> follows the device again.</li>
