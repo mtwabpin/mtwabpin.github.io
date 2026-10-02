@@ -159,6 +159,21 @@
   td { min-width: 5.5rem; }
   tbody tr:last-child td { border-bottom: 0; }
 
+  /* When a feature came: "Added in 1.1", or "Coming in 1.1" before then. */
+  .since {
+    display: inline-block;
+    margin-left: 0.35em;
+    padding: 0 0.55em 0.08em;
+    border: 1px solid var(--moss);
+    border-radius: 999px;
+    color: var(--moss);
+    font: 500 0.8rem/1.45 "Alegreya Sans", system-ui, sans-serif;
+    vertical-align: 0.12em;
+    white-space: nowrap;
+  }
+  h2 .since, h3 .since { vertical-align: 0.35em; }
+  .toc .since { font-size: 0.72rem; }
+
   /* The list of sections at the top of a long page. */
   .toc {
     margin: 1.75rem 0 0;
@@ -300,6 +315,7 @@
 <li>a sound plays, if sounds are on (Settings → Sounds).</li>
 </ul></li>
 <li>Achievements that come at the same time share one message. Unlocks that come at the same time share another.</li>
+<li>Filling in or changing a past day (see <a href="how-it-works.html#filling-in-a-missed-day">Filling in a missed day</a>) adds what it earns quietly, with the day it was reached: no message and no sound.</li>
 <li>Your backups keep both lists.
 <ul>
 <li>Restoring a backup puts back the backup's lists. Grove then adds anything the history shows.</li>
@@ -319,6 +335,7 @@
 <li><strong>Achievements stay for good</strong>, even after you delete the habit.
 <ul>
 <li>A deleted habit's achievements keep the name it had, with the note "No longer tracked".</li>
+<li>An archived habit's achievements stay too. They show "No longer tracked" until you restore the habit.</li>
 </ul></li>
 <li>Most achievements are earned once. If you lose a streak and reach 30 days again, the first date stays. "Back on track", "Reached the summit" and "Higher than ever" can be earned again.</li>
 </ul>
@@ -329,6 +346,7 @@
 <li><strong>Days in a row</strong>: 3, 7, 14, 21, 30, 50, 100, 200 and 365 days.
 <ul>
 <li>For habits due on set days, only those days count.</li>
+<li>Days when the habit was paused don't break a streak (see <a href="how-it-works.html#pausing-a-habit">How Grove works</a>).</li>
 <li>For habits due "a number of times each week", Grove counts <strong>weeks in a row</strong> instead: 2, 4, 8, 12, 26, 52 and 104 weeks.</li>
 </ul></li>
 <li><strong>Growth stages</strong>: the first sprout, a sapling, fully grown, thriving.
@@ -704,6 +722,7 @@
 
   <nav class="pager" aria-label="More of the guide">
     <a class="prev" href="weather-and-seasons.html" rel="prev"><small>Previous</small><span>Weather and seasons</span></a>
+    <a class="next" href="whats-new.html" rel="next"><small>Next</small><span>What's new</span></a>
   </nav>
 </main>
 

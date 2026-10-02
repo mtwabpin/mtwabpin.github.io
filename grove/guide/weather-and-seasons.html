@@ -159,6 +159,21 @@
   td { min-width: 5.5rem; }
   tbody tr:last-child td { border-bottom: 0; }
 
+  /* When a feature came: "Added in 1.1", or "Coming in 1.1" before then. */
+  .since {
+    display: inline-block;
+    margin-left: 0.35em;
+    padding: 0 0.55em 0.08em;
+    border: 1px solid var(--moss);
+    border-radius: 999px;
+    color: var(--moss);
+    font: 500 0.8rem/1.45 "Alegreya Sans", system-ui, sans-serif;
+    vertical-align: 0.12em;
+    white-space: nowrap;
+  }
+  h2 .since, h3 .since { vertical-align: 0.35em; }
+  .toc .since { font-size: 0.72rem; }
+
   /* The list of sections at the top of a long page. */
   .toc {
     margin: 1.75rem 0 0;
@@ -604,9 +619,10 @@
 <li>The sun and the moon are where they really are in your sky.
 <ul>
 <li>You look toward the south (toward the north if you live south of the equator). The sun rises on the left and sets on the right.</li>
-<li>Left to right follows how far east or west they are, so right overhead is the middle. In the tropics the moon, and in summer the sun, can pass almost straight overhead; they still glide smoothly across.</li>
+<li>Left to right follows how far east or west they are, so right overhead is the middle. In the tropics the moon, and in summer the sun, can pass almost straight overhead; they still glide smoothly across. <span class="since">Coming in 1.1</span></li>
 <li>The higher they are in the real sky, the higher they are in the picture.</li>
 </ul></li>
+<li>They rise out of the hills and set into them, rather than appearing in the open sky. <span class="since">Coming in 1.1</span></li>
 <li>The sun rises at your real sunrise and sets at your real sunset. The colours of dawn and dusk follow the real sun, not fixed hours. In summer the evening light comes later; in winter it comes earlier.</li>
 <li>The moon is big, and it shows its real phase: new moon, crescent, half, and full moon. By day it is pale.</li>
 <li>At night there are stars, and, except in winter or rain, fireflies.</li>
