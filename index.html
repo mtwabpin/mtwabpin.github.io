@@ -141,6 +141,43 @@
   .lead { margin: 0.15rem 0 0; color: var(--bark); font-size: 1.1rem; line-height: 1.4; }
   .app p { margin: 0 0 1rem; }
 
+  /* Grove's film: a still from it until play is pressed, so nothing comes
+     from YouTube before then. */
+  .film { margin: 1.75rem 0; }
+  .film a, .film iframe {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: #4676B4;
+  }
+  .film img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .film .play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: -2.25rem 0 0 -2.25rem;
+    border-radius: 50%;
+    background: rgba(30, 44, 35, 0.78);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+  }
+  .film .play::after {
+    content: "";
+    position: absolute;
+    left: 1.75rem;
+    top: 1.35rem;
+    border-style: solid;
+    border-width: 0.9rem 0 0.9rem 1.45rem;
+    border-color: transparent transparent transparent #fff;
+  }
+  .film a:hover .play, .film a:focus-visible .play { background: rgba(65, 112, 58, 0.92); }
+  .film figcaption { margin-top: 0.5rem; color: var(--bark); font-size: 1rem; }
+
   .facts { margin: 1.75rem 0; padding: 0; list-style: none; border-top: 1px solid var(--edge); }
   .facts li { padding: 0.9rem 0; border-bottom: 1px solid var(--edge); }
   .facts strong { font-weight: 500; }
@@ -197,6 +234,18 @@
     <p>The sky follows the real time of day, the moon shows its real phase, and the seasons are
     the ones where you live.</p>
 
+    <figure class="film">
+      <a href="https://www.youtube.com/watch?v=k_VwG3wD_qk" data-video="k_VwG3wD_qk">
+        <img src="images/grove-film.jpg"
+             srcset="images/grove-film-640.jpg 640w, images/grove-film.jpg 1280w"
+             sizes="(min-width: 42rem) 40rem, 100vw"
+             width="1280" height="720"
+             alt="Play Grove's film: the name beside a phone showing a sunrise over the valley.">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+      <figcaption>Grove in two minutes. It plays from YouTube.</figcaption>
+    </figure>
+
     <ul class="facts">
       <li><strong>Kind.</strong> Plants never die. A missed day takes only a little growth, and
       your best climb stays marked on the mountain.</li>
@@ -222,6 +271,23 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // Swaps the still for the video only when play is pressed. Without
+  // scripts, the link opens the film on YouTube.
+  for (const link of document.querySelectorAll('[data-video]')) {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const frame = document.createElement('iframe');
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + link.dataset.video + '?autoplay=1&rel=0';
+      frame.title = "Grove's film";
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      link.replaceWith(frame);
+      frame.focus();
+    });
+  }
+</script>
 
 </body>
 </html>
