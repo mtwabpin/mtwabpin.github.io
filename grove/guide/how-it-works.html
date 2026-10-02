@@ -292,6 +292,8 @@
 <li><a href="#all-history" id="toc-all-history">All history <span class="since">Coming in 1.1</span></a></li>
 <li><a href="#how-a-plant-grows" id="toc-how-a-plant-grows">How a plant grows</a></li>
 <li><a href="#streaks" id="toc-streaks">Streaks</a></li>
+<li><a href="#your-week" id="toc-your-week">Your week <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#a-kinder-first-week" id="toc-a-kinder-first-week">A kinder first week <span class="since">Coming in 1.1</span></a></li>
 <li><a href="#rain-days-saved-days" id="toc-rain-days-saved-days">Rain days (saved days)</a></li>
 <li><a href="#wilting" id="toc-wilting">Wilting</a></li>
 <li><a href="#pausing-a-habit" id="toc-pausing-a-habit">Pausing a habit <span class="since">Coming in 1.1</span></a></li>
@@ -446,7 +448,7 @@
 <ul>
 <li><strong>Every day</strong>,</li>
 <li><strong>Set days</strong> of the week, or</li>
-<li><strong>Per week</strong>: a number of times each week, from once to 6 times (for example 3 times a week), on any days.</li>
+<li><strong>Per week</strong>: a number of times each week, from once to 6 times (for example 3 times a week), on any days. Weeks start on Monday, or on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span></li>
 </ul></li>
 <li><p>Turn on <strong>Track an amount</strong> to set a goal, such as "3 km" or "20 minutes". A day counts as done only when you reach the goal.</p></li>
 <li><p>Turn on <strong>Remind me</strong> for a reminder (see <a href="#reminders-android">Reminders</a>).</p></li>
@@ -484,6 +486,7 @@
 <ul>
 <li>for a habit without a goal: <strong>Done</strong> or <strong>Not done</strong>;</li>
 <li>for a habit with a goal: the amount, with − and +, then <strong>Save</strong>. <strong>Clear this day</strong> takes the amount away.</li>
+<li>For a "Per week" habit, the sheet also says how that day's week stands, such as "This week: 2 of 3 done".</li>
 </ul></li>
 <li>The message after has <strong>Undo</strong>.</li>
 <li>Other days say why they can't change: days more than 7 days ago, days before the habit started, and days still to come.</li>
@@ -498,6 +501,7 @@
 <ul>
 <li>Tap <strong>All history</strong>, under the calendar on the habit's page. It shows every month since the habit started, newest first.</li>
 <li>Each month is a calendar of leaves: done, part done (some of the goal), rain day, missed, and a dot for a rest day. Under the month's name is its total, such as "18 days done, 42 km in all".</li>
+<li>The first column is the first day of your week: Monday at first (see <a href="#your-week">Your week</a>).</li>
 <li>Today has a ring. Tap one of the last 7 days to fill it in or change it. Other days say why they can't change.</li>
 <li>In a wide window, the months sit side by side.</li>
 </ul>
@@ -554,8 +558,65 @@
 <li>The streak counts the due days you did in a row.</li>
 <li>A missed day starts the streak again from zero.</li>
 <li>A day with some progress but under the goal counts as missed.</li>
-<li>For "Per week" habits, the streak counts <strong>weeks</strong> in a row (Monday to Sunday) where you reached the number of sessions.</li>
+<li>For "Per week" habits, the streak counts <strong>weeks</strong> in a row where you reached the number of sessions. A week is Monday to Sunday at first, or starts on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span>
+<ul>
+<li>The first week asks for less when you start mid-week (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Coming in 1.1</span></li>
+</ul></li>
 <li>Your best streak is always kept.</li>
+</ul>
+</section>
+<section id="your-week" class="level3">
+<h3>Your week <span class="since">Coming in 1.1</span></h3>
+<ul>
+<li>Weeks start on Monday at first. To start them on Sunday or Saturday, open Settings → Calendar → <strong>Week starts on</strong>.</li>
+<li>The day you choose decides:
+<ul>
+<li>which days count together for a "Per week" habit: its sessions this week, its streak of weeks, and "2 of 3 this week" in the app and on the widgets;</li>
+<li>the order of the days on the calendars: the habit's page has your first day at the top, and <strong>All history</strong> has it in the first column;</li>
+<li>the order of the day buttons for <strong>Set days</strong>. The days themselves don't change: a habit due on Mon, Wed and Fri still is.</li>
+</ul></li>
+<li>Changing it groups all your past weeks again, from the new day. A "Per week" habit's streak may change.
+<ul>
+<li>Achievements you have earned stay.</li>
+<li>Anything the new weeks reach goes on the Achievements and Unlocked pages quietly, without a message or a sound.</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-kinder-first-week" class="level3">
+<h3>A kinder first week <span class="since">Coming in 1.1</span></h3>
+<ul>
+<li><p>Start a "Per week" habit in the middle of a week, and Grove gives you the benefit of the doubt: it counts the days of that week before you started as done, one session a day.</p></li>
+<li><p>So your first week asks only for what is left: the number of times a week, less those days. It never asks for more than the days you have left that week, and paused days don't count as days left.</p></li>
+<li><p>For example, with weeks from Monday, a habit started on a Friday has Monday to Thursday counted as done:</p>
+<div class="table-wrap" role="region" aria-label="Table: Habit, First week asks for" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Habit</th>
+<th>First week asks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 times a week</td>
+<td>Nothing more: it counts at once</td>
+</tr>
+<tr>
+<td>5 times a week</td>
+<td>1 session, Friday to Sunday</td>
+</tr>
+<tr>
+<td>6 times a week</td>
+<td>2 sessions, Friday to Sunday</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A habit started on the first day of your week asks for the full number, like every week after.</p></li>
+<li><p>A first week that asks for nothing more is kept straight away: the streak shows "1 week", and the habit says "First week kept". It isn't due, so no reminder or evening nudge comes for it that week.</p></li>
+<li><p>The days counted as done add no growth, don't count as times done, and aren't marked on the calendar. Only real waterings grow the plant.</p></li>
+<li><p>The first week is the one that holds the habit's first day: the day you added it, or an earlier day with a session logged, if there is one.</p></li>
+<li><p>Habits due every day or on set days count days, not weeks, so this doesn't change them.</p></li>
 </ul>
 </section>
 <section id="rain-days-saved-days" class="level3">
@@ -863,6 +924,7 @@
 <li><strong>Plant</strong> (2×2, and any size from 1×1 up): one habit you are building.
 <ul>
 <li>The plant sits in a ring that fills as today goes: with the amount for a goal such as 8 glasses, or with the week's sessions for a habit due a number of times a week. The ring turns green when done.</li>
+<li>For a habit due a number of times a week, a new week starts on the first day of your week (see <a href="#your-week">Your week</a>). In its first week, the ring fills toward what that week asks for, and the widget says "First week kept" once that is done. <span class="since">Coming in 1.1</span></li>
 <li>The button waters it, or adds a step to today's amount, such as "+1 glass". <strong>Done</strong> fills the whole goal at once.</li>
 <li>On the widest sizes, a <strong>−</strong> button takes a step back off.</li>
 <li>Where there is no room for a button, such as at 1×1 or a narrow 2×1, the plant itself is the button: a small + or drop on its ring shows it.</li>
@@ -917,7 +979,10 @@
 <ul>
 <li>Each habit you build can have its own reminder. Turn on <strong>Remind me</strong> when you add or edit the habit, or set the time in Settings → Reminders.</li>
 <li>Grove asks for permission to send notifications only when you turn a reminder on.</li>
-<li>A reminder comes only on days when the habit is due, and not if the habit is already done.</li>
+<li>A reminder comes only on days when the habit is due, and not if the habit is already done.
+<ul>
+<li>A "Per week" habit is due while its week still asks for a session. A first week that asks for nothing more gets no reminders (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Coming in 1.1</span></li>
+</ul></li>
 <li>A paused habit gets no reminders and no evening nudge. They start again when it resumes. An archived habit gets none at all.</li>
 <li>Grove plans the reminders for the next 7 days.</li>
 <li>Tap a reminder to open the habit. Its buttons work without opening Grove:
@@ -925,7 +990,10 @@
 <li><strong>Mark done</strong>, for a habit without an amount goal;</li>
 <li><strong>Remind me in an hour</strong>: the reminder goes away and comes back an hour later, unless you have done the habit by then. Use it again to put it off once more. <span class="since">Coming in 1.1</span></li>
 </ul></li>
-<li><strong>Evening nudge</strong> (8 pm at first; change it with <strong>Nudge time</strong>): it comes only when a streak of 2 or more days is at risk today.</li>
+<li><strong>Evening nudge</strong> (8 pm at first; change it with <strong>Nudge time</strong>): it comes only when a streak of 2 or more days is at risk today.
+<ul>
+<li>For a "Per week" habit, that is when every day left in your week is needed for its sessions.</li>
+</ul></li>
 <li><strong>Milestone celebrations</strong>: a notification when a habit you quit reaches a new flag on its trail.</li>
 <li>Reminders may come a few minutes late. Grove does not ask for the "exact alarms" permission.</li>
 <li>The <strong>Reminders</strong> switch in Settings pauses all reminders, and any you put off. <strong>Send a test reminder</strong> shows one straight away.</li>
@@ -1027,6 +1095,7 @@
 <li><strong>Theme</strong>: <strong>System</strong>, <strong>Light</strong> or <strong>Dark</strong>. <span class="since">Coming in 1.1</span></li>
 <li><strong>Accessibility</strong>: <strong>Water with a tap</strong>. <span class="since">Coming in 1.1</span></li>
 <li><strong>Your sky</strong>: where you are, for the sun, the moon and the climate.</li>
+<li><strong>Calendar</strong>: the day your week starts on: Monday, Sunday or Saturday (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span></li>
 <li><strong>Your valley</strong>: choose what grows.</li>
 <li><strong>Archive</strong>: your archived habits, to restore or delete for good.</li>
 <li><strong>Zen mode</strong>: frames a second (30, 60 or Max).</li>
