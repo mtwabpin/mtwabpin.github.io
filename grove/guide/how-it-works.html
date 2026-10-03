@@ -159,6 +159,44 @@
   td { min-width: 5.5rem; }
   tbody tr:last-child td { border-bottom: 0; }
 
+  /* Pictures of the app: under the text on a phone, beside it on a wide
+     screen. Each comes with its width and height, so nothing moves as it
+     loads. */
+  .shot { width: min(18rem, 100%); margin: 1.25rem auto 1.5rem; }
+  .shot picture, .shot img { display: block; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.9rem;
+    box-shadow: 0 0 0 1px var(--edge);
+    background: var(--stone);
+  }
+  .shot figcaption {
+    margin-top: 0.55rem;
+    color: var(--bark);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+  /* Several side by side: two in a row on a phone, all of them on a wide
+     screen, or three with the "three" class. */
+  .shots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0.75rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .shots .shot { flex: 0 1 calc(50% - 0.375rem); width: auto; margin: 0; }
+  .shots .shot img { border-radius: 0.6rem; }
+  @media (min-width: 48rem) {
+    .shot { float: right; clear: right; width: 16rem; margin: 0.4rem 0 1.25rem 1.75rem; }
+    .shots { clear: both; }
+    .shots .shot { float: none; flex-basis: calc((100% - (var(--n) - 1) * 0.75rem) / var(--n)); }
+    .shots.three .shot { flex-basis: calc((100% - 1.5rem) / 3); }
+    section.level2, section.level3, .pager { clear: both; }
+  }
+
   /* When a feature came: "Added in 1.1", or "Coming in 1.1" before then. */
   .since {
     display: inline-block;
@@ -288,15 +326,15 @@
 <ul>
 <li><a href="#setting-up" id="toc-setting-up">Setting up</a></li>
 <li><a href="#watering-logging" id="toc-watering-logging">Watering (logging)</a></li>
-<li><a href="#filling-in-a-missed-day" id="toc-filling-in-a-missed-day">Filling in a missed day <span class="since">Coming in 1.1</span></a></li>
-<li><a href="#all-history" id="toc-all-history">All history <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#filling-in-a-missed-day" id="toc-filling-in-a-missed-day">Filling in a missed day <span class="since">Added in 1.1</span></a></li>
+<li><a href="#all-history" id="toc-all-history">All history <span class="since">Added in 1.1</span></a></li>
 <li><a href="#how-a-plant-grows" id="toc-how-a-plant-grows">How a plant grows</a></li>
 <li><a href="#streaks" id="toc-streaks">Streaks</a></li>
-<li><a href="#your-week" id="toc-your-week">Your week <span class="since">Coming in 1.1</span></a></li>
-<li><a href="#a-kinder-first-week" id="toc-a-kinder-first-week">A kinder first week <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#your-week" id="toc-your-week">Your week <span class="since">Added in 1.1</span></a></li>
+<li><a href="#a-kinder-first-week" id="toc-a-kinder-first-week">A kinder first week <span class="since">Added in 1.1</span></a></li>
 <li><a href="#rain-days-saved-days" id="toc-rain-days-saved-days">Rain days (saved days)</a></li>
 <li><a href="#wilting" id="toc-wilting">Wilting</a></li>
-<li><a href="#pausing-a-habit" id="toc-pausing-a-habit">Pausing a habit <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#pausing-a-habit" id="toc-pausing-a-habit">Pausing a habit <span class="since">Added in 1.1</span></a></li>
 </ul></li>
 <li><a href="#habits-you-quit-mountain-trails" id="toc-habits-you-quit-mountain-trails">Habits you quit (mountain trails)</a>
 <ul>
@@ -306,27 +344,27 @@
 <li><a href="#money-and-milestones" id="toc-money-and-milestones">Money and milestones</a></li>
 </ul></li>
 <li><a href="#changing-archiving-or-deleting-a-habit" id="toc-changing-archiving-or-deleting-a-habit">Changing, archiving or deleting a habit</a></li>
-<li><a href="#putting-habits-in-order" id="toc-putting-habits-in-order">Putting habits in order <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#putting-habits-in-order" id="toc-putting-habits-in-order">Putting habits in order <span class="since">Added in 1.1</span></a></li>
 <li><a href="#what-the-valley-shows" id="toc-what-the-valley-shows">What the valley shows</a></li>
 <li><a href="#the-lists-behind-the-numbers" id="toc-the-lists-behind-the-numbers">The lists behind the numbers</a></li>
 <li><a href="#motivate-me" id="toc-motivate-me">Motivate me</a></li>
-<li><a href="#your-week-in-review" id="toc-your-week-in-review">Your week in review <span class="since">Coming in 1.1</span></a>
+<li><a href="#your-week-in-review" id="toc-your-week-in-review">Your week in review <span class="since">Added in 1.1</span></a>
 <ul>
-<li><a href="#the-card-on-the-valley-page" id="toc-the-card-on-the-valley-page">The card on the Valley page <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#the-card-on-the-valley-page" id="toc-the-card-on-the-valley-page">The card on the Valley page <span class="since">Added in 1.1</span></a></li>
 </ul></li>
 <li><a href="#achievements-and-unlocks" id="toc-achievements-and-unlocks">Achievements and unlocks</a></li>
 <li><a href="#sharing" id="toc-sharing">Sharing</a></li>
 <li><a href="#zen-mode" id="toc-zen-mode">Zen mode</a></li>
 <li><a href="#home-screen-widgets-android" id="toc-home-screen-widgets-android">Home-screen widgets (Android)</a></li>
-<li><a href="#shortcuts-on-the-app-icon-android" id="toc-shortcuts-on-the-app-icon-android">Shortcuts on the app icon (Android) <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#shortcuts-on-the-app-icon-android" id="toc-shortcuts-on-the-app-icon-android">Shortcuts on the app icon (Android) <span class="since">Added in 1.1</span></a></li>
 <li><a href="#reminders-android" id="toc-reminders-android">Reminders (Android)</a></li>
-<li><a href="#privacy-android" id="toc-privacy-android">Privacy (Android) <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#privacy-android" id="toc-privacy-android">Privacy (Android) <span class="since">Added in 1.1</span></a></li>
 <li><a href="#sounds" id="toc-sounds">Sounds</a></li>
-<li><a href="#vibration-android" id="toc-vibration-android">Vibration (Android) <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#vibration-android" id="toc-vibration-android">Vibration (Android) <span class="since">Added in 1.1</span></a></li>
 <li><a href="#your-location" id="toc-your-location">Your location</a></li>
 <li><a href="#backup" id="toc-backup">Backup</a>
 <ul>
-<li><a href="#automatic-backups" id="toc-automatic-backups">Automatic backups <span class="since">Coming in 1.1</span></a></li>
+<li><a href="#automatic-backups" id="toc-automatic-backups">Automatic backups <span class="since">Added in 1.1</span></a></li>
 </ul></li>
 <li><a href="#the-activity-log" id="toc-the-activity-log">The activity log</a></li>
 <li><a href="#settings" id="toc-settings">Settings</a></li>
@@ -342,6 +380,12 @@
 <li><strong>Grow a habit</strong>: something you want to do more, such as jogging. It becomes a plant by the river.</li>
 <li><strong>Let go of a habit</strong>: something you want to stop, such as late-night scrolling. It becomes a trail up a mountain.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/empty-valley-dark-360.webp 360w, shots/empty-valley-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/empty-valley-360.webp" srcset="shots/empty-valley-360.webp 360w, shots/empty-valley.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Valley page on a new install: an empty green valley with a river, a bridge and mountains, the words &quot;Your valley is waiting&quot;, and two buttons, Grow a habit and Let go of a habit." loading="lazy" decoding="async"></picture>
+<figcaption>A new valley, waiting for its first habit.</figcaption>
+</figure>
+<ul>
 <li>Grove also asks "Where do you live?", so the sky and the seasons are yours. Tap <strong>Choose my city</strong>, or <strong>Skip</strong> (see <a href="#your-location">Your location</a>).</li>
 <li>Moving from another device? Restore your backup in Settings first (see <a href="#backup">Backup</a>).</li>
 <li>There is no account and no sign-up. Grove works without the internet.</li>
@@ -353,7 +397,7 @@
 <li>The app has three pages. You choose them from the bar at the bottom, or from the rail on the left when the window is sideways:
 <ul>
 <li><strong>Valley</strong>: your valley and your habits. This is the main page.</li>
-<li><strong>Achievements</strong>: every milestone you have reached, with its date, and <strong>Your week</strong>, a look back at each week (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Coming in 1.1</span></li>
+<li><strong>Achievements</strong>: every milestone you have reached, with its date, and <strong>Your week</strong>, a look back at each week (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Added in 1.1</span></li>
 <li><strong>Unlocked</strong>: everything you have seen in your own valley so far, such as the deer, the fox or a rainbow, and hints for what you have not found yet.</li>
 </ul></li>
 </ul>
@@ -366,10 +410,16 @@
 <li>Tap a plant or a mountain to open its habit's page.</li>
 <li>Tap the arrows, or press and hold the valley, to open <a href="#zen-mode">zen mode</a>.</li>
 <li>Tap <strong>+</strong> to add a habit.</li>
-<li>With a screen reader, the valley names each plant and mountain trail and says how it is doing, such as "Read. Oak, sapling. Watered today." Double tap one to open its habit. <span class="since">Coming in 1.1</span></li>
+<li>With a screen reader, the valley names each plant and mountain trail and says how it is doing, such as "Read. Oak, sapling. Watered today." Double tap one to open its habit. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Under the valley, a line says how today is going, such as "2 of 3 done today", and how the river is running.</li>
-<li>For the first 3 days of each week, a small card under it offers a look back at the last week (see <a href="#the-card-on-the-valley-page">The card on the Valley page</a>). <span class="since">Coming in 1.1</span></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/valley-page-dark-360.webp 360w, shots/valley-page-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/valley-page-360.webp" srcset="shots/valley-page-360.webp 360w, shots/valley-page.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Valley page: a valley with trees, sunflowers, a river, a bridge and three mountains with trails. Below it, &quot;2 of 9 done today&quot; and how the river is running, then the Growing list with Morning jog and Yoga, each with a filled drop button." loading="lazy" decoding="async"></picture>
+<figcaption>The Valley page on a Thursday morning, with 2 of 9 habits done.</figcaption>
+</figure>
+<ul>
+<li>For the first 3 days of each week, a small card under it offers a look back at the last week (see <a href="#the-card-on-the-valley-page">The card on the Valley page</a>). <span class="since">Added in 1.1</span></li>
 <li>Your habits are listed under <strong>Growing</strong> and <strong>Letting go</strong>.
 <ul>
 <li>Tap a habit to open its page.</li>
@@ -401,7 +451,7 @@
 <h3>Setting up</h3>
 <ul>
 <li><p>Tap <strong>Grow a habit</strong>.</p></li>
-<li><p>Pick an everyday habit to start from, and Grove fills in the name, the plant, the days and any goal: <span class="since">Coming in 1.1</span></p>
+<li><p>Pick an everyday habit to start from, and Grove fills in the name, the plant, the days and any goal: <span class="since">Added in 1.1</span></p>
 <div class="table-wrap" role="region" aria-label="Table: Habit, Days, Goal" tabindex="0">
 <table>
 <thead>
@@ -449,31 +499,43 @@
 <li>You can change any of it before you plant.</li>
 <li>Or pick <strong>Something else</strong> and give the habit your own name.</li>
 </ul></li>
-<li><p>Choose a plant: oak, pine, fern or sunflower.</p>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/grow-presets-dark-360.webp 360w, shots/grow-presets-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/grow-presets-360.webp" srcset="shots/grow-presets-360.webp 360w, shots/grow-presets.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Grow a habit page: everyday habits to tap (Drink water, Read, Walk, Meditate, Stretch and Journal) and Something else, a Name field, four plants (oak, pine, fern and sunflower), and How often: Every day, Set days or Per week." loading="lazy" decoding="async"></picture>
+<figcaption>Grow a habit: start from an everyday habit, or pick Something else.</figcaption>
+</figure>
+<ul>
+<li>Choose a plant: oak, pine, fern or sunflower.
 <ul>
 <li>Young plants look alike, so the habit's page shows which plant it is, fully grown. Tap <strong>Change</strong> there to pick another plant. The growth and history stay.</li>
 </ul></li>
-<li><p>Choose when the habit is due:</p>
+<li>Choose when the habit is due:
 <ul>
 <li><strong>Every day</strong>,</li>
 <li><strong>Set days</strong> of the week, or</li>
-<li><strong>Per week</strong>: a number of times each week, from once to 6 times (for example 3 times a week), on any days. Weeks start on Monday, or on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span></li>
+<li><strong>Per week</strong>: a number of times each week, from once to 6 times (for example 3 times a week), on any days. Weeks start on Monday, or on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
-<li><p>Turn on <strong>Track an amount</strong> to set a goal, such as "3 km" or "20 minutes". A day counts as done only when you reach the goal.</p></li>
-<li><p>Turn on <strong>Remind me</strong> for a reminder (see <a href="#reminders-android">Reminders</a>).</p></li>
-<li><p>Tap <strong>Plant it</strong>.</p></li>
+<li>Turn on <strong>Track an amount</strong> to set a goal, such as "3 km" or "20 minutes". A day counts as done only when you reach the goal.</li>
+<li>Turn on <strong>Remind me</strong> for a reminder (see <a href="#reminders-android">Reminders</a>).</li>
+<li>Tap <strong>Plant it</strong>.</li>
 </ul>
 </section>
 <section id="watering-logging" class="level3">
 <h3>Watering (logging)</h3>
 <ul>
 <li>To water a plant and mark today as done, <strong>press and hold</strong> the round drop next to the habit, on the Valley page or on the habit's page. The drop fills, and the plant is watered.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/watering-dark-360.webp 360w, shots/watering-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/watering-360.webp" srcset="shots/watering-360.webp 360w, shots/watering.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="260" alt="Three habits on the Valley page: Yoga, already watered, with a filled drop; Read, held down, with a ring most of the way round its drop; and Meditate, not watered yet." loading="lazy" decoding="async"></picture>
+<figcaption>Holding the drop for Read: when its ring goes all the way round, the plant is watered.</figcaption>
+</figure>
+<ul>
 <li>A quick tap on the drop:
 <ul>
 <li>for a habit with a goal, opens a sheet to log an amount, such as "2 km". Use − and +, then <strong>Save</strong>. Holding the drop fills the whole goal at once;</li>
 <li>for other habits, it reminds you to press and hold.</li>
 </ul></li>
-<li><strong>Water with a tap</strong> (Settings → Accessibility): one tap on the drop waters the habit, so you don't need to press and hold. <span class="since">Coming in 1.1</span>
+<li><strong>Water with a tap</strong> (Settings → Accessibility): one tap on the drop waters the habit, so you don't need to press and hold. <span class="since">Added in 1.1</span>
 <ul>
 <li>A habit with a goal still opens the sheet to log an amount. It starts at your goal, so <strong>Save</strong> fills it.</li>
 <li>Pressing and holding still works too.</li>
@@ -488,7 +550,7 @@
 </ul>
 </section>
 <section id="filling-in-a-missed-day" class="level3">
-<h3>Filling in a missed day <span class="since">Coming in 1.1</span></h3>
+<h3>Filling in a missed day <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>On the habit's page, tap a day on the calendar under <strong>History</strong>. You can change today and the 7 days before it. These days sit on a soft green patch.</li>
 <li>A small sheet opens for that day:
@@ -496,30 +558,42 @@
 <li>for a habit without a goal: <strong>Done</strong> or <strong>Not done</strong>;</li>
 <li>for a habit with a goal: the amount, with − and +, then <strong>Save</strong>. <strong>Clear this day</strong> takes the amount away.</li>
 <li>For a "Per week" habit, the sheet also says how that day's week stands, such as "This week: 2 of 3 done".</li>
-<li>A paused day says so: "Paused, so it counts as neither done nor missed", with its reason if it has one: "Paused (Holiday), so it counts as neither done nor missed". You can still fill it in, and it counts (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Coming in 1.1</span></li>
+<li>A paused day says so: "Paused, so it counts as neither done nor missed", with its reason if it has one: "Paused (Holiday), so it counts as neither done nor missed". You can still fill it in, and it counts (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/day-sheet-dark-360.webp 360w, shots/day-sheet-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/day-sheet-360.webp" srcset="shots/day-sheet-360.webp 360w, shots/day-sheet.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="A sheet over the page for Stretch: &quot;Stretch yesterday&quot;, &quot;Done&quot;, and two buttons, Not done and Done." loading="lazy" decoding="async"></picture>
+<figcaption>The sheet for yesterday, on a habit with no goal.</figcaption>
+</figure>
+<ul>
 <li>The message after has <strong>Undo</strong>.</li>
 <li>Other days say why they can't change: days more than 7 days ago, days before the habit started, and days still to come.
 <ul>
-<li>A paused day too far back says that it was paused: "Mon 14 Sep was paused, so it counted as neither done nor missed. Days this far back can't be changed." <span class="since">Coming in 1.1</span></li>
+<li>A paused day too far back says that it was paused: "Mon 14 Sep was paused, so it counted as neither done nor missed. Days this far back can't be changed." <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>The streak, the growth, rain days, wilting, the river and the widgets all follow the change straight away.</li>
 <li>A rain day you fill in is no longer needed, so the rain day stays saved. If you clear a day that was done, a saved rain day covers it, if you have one.</li>
 <li>A past day changes quietly: there is no watering sound, and no message for an achievement or a find it brings. These still go on the Achievements and Unlocked pages, with the day they were reached.
 <ul>
-<li>But if the change makes something new show in the valley now, such as trout leaping once the river runs full, Grove tells you, as for any new find. It has really just appeared. <span class="since">Coming in 1.1</span></li>
+<li>But if the change makes something new show in the valley now, such as trout leaping once the river runs full, Grove tells you, as for any new find. It has really just appeared. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Today opens the same sheet. Saving it is the same as watering with the drop, sound and all.</li>
 </ul>
 </section>
 <section id="all-history" class="level3">
-<h3>All history <span class="since">Coming in 1.1</span></h3>
+<h3>All history <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>Tap <strong>All history</strong>, under the calendar on the habit's page. It shows every month since the habit started, newest first.</li>
 <li>Each month is a calendar of leaves: done, part done (some of the goal), rain day, missed, and a dot for a rest day. Under the month's name is its total, such as "18 days done, 42 km in all".
 <ul>
-<li>A paused day left alone has a small moon, and the legend says "Paused" for a habit that was ever paused. A month with paused days counts them too: "18 days done, 3 days paused" (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Coming in 1.1</span></li>
+<li>A paused day left alone has a small moon, and the legend says "Paused" for a habit that was ever paused. A month with paused days counts them too: "18 days done, 3 days paused" (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/all-history-dark-360.webp 360w, shots/all-history-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/all-history-360.webp" srcset="shots/all-history-360.webp 360w, shots/all-history.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="All history for Yoga: the legend (Done, Rain day, Missed, Rest day and Paused), then this month, June, as a calendar of leaves, with &quot;11 days done, 6 days paused&quot;. Its first week has small moons for the paused days, and today has a ring. May starts below." loading="lazy" decoding="async"></picture>
+<figcaption>All history for Yoga, which rested on a holiday at the start of June.</figcaption>
+</figure>
+<ul>
 <li>The first column is the first day of your week: Monday at first (see <a href="#your-week">Your week</a>).</li>
 <li>Today has a ring. Tap one of the last 7 days to fill it in or change it. Other days say why they can't change.</li>
 <li>In a wide window, the months sit side by side.</li>
@@ -561,31 +635,61 @@
 </tbody>
 </table>
 </div></li>
-<li><p>A daily habit gets 1 growth day for each session.</p></li>
-<li><p>A habit that is due less often gets more for each session. For example, a habit 3 times a week gets 7 ÷ 3 ≈ 2.3 growth days for each session. So every habit grows at the same speed per week if you keep it.</p></li>
-<li><p>A missed due day takes away 10% of the plant's growth.</p>
+</ul>
+<div class="shots" style="--n: 5">
+<figure class="shot">
+<picture><img src="shots/plant-stages-seed-360.webp" srcset="shots/plant-stages-seed-360.webp 360w, shots/plant-stages-seed.webp 720w" sizes="(min-width: 48rem) 12rem, 45vw" width="360" height="375" alt="An oak seed: a small mound of soil by a little sign." loading="lazy" decoding="async"></picture>
+<figcaption>Seed</figcaption>
+</figure>
+<figure class="shot">
+<picture><img src="shots/plant-stages-sprout-360.webp" srcset="shots/plant-stages-sprout-360.webp 360w, shots/plant-stages-sprout.webp 720w" sizes="(min-width: 48rem) 12rem, 45vw" width="360" height="375" alt="An oak sprout: a short stem with two small leaves." loading="lazy" decoding="async"></picture>
+<figcaption>Sprout</figcaption>
+</figure>
+<figure class="shot">
+<picture><img src="shots/plant-stages-sapling-360.webp" srcset="shots/plant-stages-sapling-360.webp 360w, shots/plant-stages-sapling.webp 720w" sizes="(min-width: 48rem) 12rem, 45vw" width="360" height="375" alt="An oak sapling: a young tree with a thin trunk." loading="lazy" decoding="async"></picture>
+<figcaption>Sapling</figcaption>
+</figure>
+<figure class="shot">
+<picture><img src="shots/plant-stages-grown-360.webp" srcset="shots/plant-stages-grown-360.webp 360w, shots/plant-stages-grown.webp 720w" sizes="(min-width: 48rem) 12rem, 45vw" width="360" height="375" alt="A grown oak: a full, round tree." loading="lazy" decoding="async"></picture>
+<figcaption>Grown</figcaption>
+</figure>
+<figure class="shot">
+<picture><img src="shots/plant-stages-thriving-360.webp" srcset="shots/plant-stages-thriving-360.webp 360w, shots/plant-stages-thriving.webp 720w" sizes="(min-width: 48rem) 12rem, 45vw" width="360" height="375" alt="A thriving oak: a big, wide tree with white flowers." loading="lazy" decoding="async"></picture>
+<figcaption>Thriving</figcaption>
+</figure>
+</div>
+<ul>
+<li>A daily habit gets 1 growth day for each session.</li>
+<li>A habit that is due less often gets more for each session. For example, a habit 3 times a week gets 7 ÷ 3 ≈ 2.3 growth days for each session. So every habit grows at the same speed per week if you keep it.</li>
+<li>A missed due day takes away 10% of the plant's growth.
 <ul>
 <li>For "Per week" habits, this happens at the end of a week that fell short: 10% for each missing session.</li>
 <li>A big tree loses some size, but it does not go back to a seed after one bad week.</li>
 </ul></li>
-<li><p>Plants never die.</p></li>
+<li>Plants never die.</li>
 </ul>
 </section>
 <section id="streaks" class="level3">
 <h3>Streaks</h3>
 <ul>
 <li>The streak counts the due days you did in a row.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/habit-page-dark-360.webp 360w, shots/habit-page-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/habit-page-360.webp" srcset="shots/habit-page-360.webp 360w, shots/habit-page.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The page for Morning jog: a thriving oak, &quot;Every day, goal 3 km&quot;, the plant, Oak, with Change, then the numbers: current streak 72 days, best streak 82 days, 349 times done, 94% of the last 30 days, and &quot;2 rain days saved&quot;." loading="lazy" decoding="async"></picture>
+<figcaption>A habit's page: a streak of 72 days, and 2 rain days saved.</figcaption>
+</figure>
+<ul>
 <li>A missed day starts the streak again from zero.</li>
 <li>A day with some progress but under the goal counts as missed.</li>
-<li>For "Per week" habits, the streak counts <strong>weeks</strong> in a row where you reached the number of sessions. A week is Monday to Sunday at first, or starts on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span>
+<li>For "Per week" habits, the streak counts <strong>weeks</strong> in a row where you reached the number of sessions. A week is Monday to Sunday at first, or starts on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Added in 1.1</span>
 <ul>
-<li>The first week asks for less when you start mid-week (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Coming in 1.1</span></li>
+<li>The first week asks for less when you start mid-week (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Your best streak is always kept.</li>
 </ul>
 </section>
 <section id="your-week" class="level3">
-<h3>Your week <span class="since">Coming in 1.1</span></h3>
+<h3>Your week <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>Weeks start on Monday at first. To start them on Sunday or Saturday, open Settings → Calendar → <strong>Week starts on</strong>.</li>
 <li>The day you choose decides:
@@ -602,7 +706,7 @@
 </ul>
 </section>
 <section id="a-kinder-first-week" class="level3">
-<h3>A kinder first week <span class="since">Coming in 1.1</span></h3>
+<h3>A kinder first week <span class="since">Added in 1.1</span></h3>
 <ul>
 <li><p>Start a "Per week" habit in the middle of a week, and Grove gives you the benefit of the doubt: it counts the days of that week before you started as done, one session a day.</p></li>
 <li><p>So your first week asks only for what is left: the number of times a week, less those days. It never asks for more than the days you have left that week, and paused days don't count as days left.</p></li>
@@ -661,15 +765,21 @@
 </ul>
 </section>
 <section id="pausing-a-habit" class="level3">
-<h3>Pausing a habit <span class="since">Coming in 1.1</span></h3>
+<h3>Pausing a habit <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>Going on holiday, or having a busy time? Pause the habit, so the days you can't do it don't count against you.</li>
 <li>On the habit's page, open the <strong>⋮</strong> menu and choose <strong>Pause</strong>. Then choose:
 <ul>
 <li><strong>Until I resume</strong>: it stays paused until you tap <strong>Resume</strong>.</li>
 <li><strong>Until a date</strong>: the date is your last day off. <strong>Choose the date</strong> picks it; a week is offered first. The habit counts again the day after.</li>
-<li><strong>A reason, if you like</strong>: tap <strong>Holiday</strong>, <strong>A busy time</strong> or <strong>A break</strong>, or write a few words of your own. Tap a choice again to take it away. A reason is optional, and only you see it. <span class="since">Coming in 1.1</span></li>
+<li><strong>A reason, if you like</strong>: tap <strong>Holiday</strong>, <strong>A busy time</strong> or <strong>A break</strong>, or write a few words of your own. Tap a choice again to take it away. A reason is optional, and only you see it. <span class="since">Added in 1.1</span></li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/pause-dialog-dark-360.webp 360w, shots/pause-dialog-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/pause-dialog-360.webp" srcset="shots/pause-dialog-360.webp 360w, shots/pause-dialog.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The dialog &quot;Pause Walk the dog?&quot;: Until I resume, or Until a date, which is chosen, with &quot;Last day off: Wed 1 Jul&quot; and Choose the date. Under &quot;A reason, if you like&quot;, Holiday is chosen, next to A busy time and A break. Then Cancel and Pause." loading="lazy" decoding="async"></picture>
+<figcaption>Pausing Walk the dog for a week's holiday.</figcaption>
+</figure>
+<ul>
 <li>The pause starts today. While it lasts:
 <ul>
 <li>Days you leave it count as neither done nor missed. Your streak waits for you: it is kept, but it doesn't grow.</li>
@@ -680,14 +790,14 @@
 <li>In the valley, the plant rests: straw is tucked round its foot, with a little sign with a moon on it. Its pictures on its row and its page rest the same way, and a screen reader says it is resting.</li>
 <li>Its page and its row say "Paused until …", such as "Paused until Fri 9 Oct" or "Paused until you resume", with a <strong>Resume</strong> button.
 <ul>
-<li>With a reason, it follows the date: "Paused until Tue 6 Oct · Holiday". Where the row has no room, the reason is cut short. <span class="since">Coming in 1.1</span></li>
+<li>With a reason, it follows the date: "Paused until Tue 6 Oct · Holiday". Where the row has no room, the reason is cut short. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>The home-screen widgets say so too, and don't offer to water it (see <a href="#home-screen-widgets-android">Home-screen widgets</a>). They leave out the reason.</li>
 </ul></li>
-<li>To give a reason later, change it or clear it, tap <strong>Add a reason</strong> or <strong>Change reason</strong> beside <strong>Resume</strong> on the habit's page. Leave it empty to clear it. <span class="since">Coming in 1.1</span></li>
+<li>To give a reason later, change it or clear it, tap <strong>Add a reason</strong> or <strong>Change reason</strong> beside <strong>Resume</strong> on the habit's page. Leave it empty to clear it. <span class="since">Added in 1.1</span></li>
 <li><strong>Resume</strong> makes it count again from today. You can also resume from the <strong>⋮</strong> menu.</li>
 <li>Paused days stay neutral after you resume.</li>
-<li>The habit's calendar and <strong>All history</strong> show when it was paused: <span class="since">Coming in 1.1</span>
+<li>The habit's calendar and <strong>All history</strong> show when it was paused: <span class="since">Added in 1.1</span>
 <ul>
 <li>A day it was due but paused, and left alone, has a small moon, like the sign of the resting plant. A screen reader says "Paused", with the reason: "Paused (Holiday)".</li>
 <li>A day you watered anyway shows as done, or part done if you logged only some of the goal.</li>
@@ -695,6 +805,12 @@
 <li>Tap one to see it, as with any day (see <a href="#filling-in-a-missed-day">Filling in a missed day</a>).</li>
 <li><strong>Your week</strong> names the reason too, such as "2 days paused · Holiday" (see <a href="#your-week-in-review">Your week in review</a>).</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/paused-dark-360.webp 360w, shots/paused-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/paused-360.webp" srcset="shots/paused-360.webp 360w, shots/paused.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="Lower down the page of Morning jog: the History calendar, where the last few days have small moons, and the legend with Paused. Under it, a card: &quot;Paused until Mon 29 Jun · Holiday&quot;, &quot;Your streak of 25 days waits for you&quot;, with Resume and Change reason." loading="lazy" decoding="async"></picture>
+<figcaption>Morning jog on holiday: moons for the days it rests, and Resume.</figcaption>
+</figure>
+<ul>
 <li>Only habits you build can be paused. The clean time of a habit you let go of keeps running.</li>
 </ul>
 </section>
@@ -708,6 +824,12 @@
 <ul>
 <li>Grove has no health content built in. You can let go of any habit under a name of your own.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/letgo-presets-dark-360.webp 360w, shots/letgo-presets-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/letgo-presets-360.webp" srcset="shots/letgo-presets-360.webp 360w, shots/letgo-presets.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Let go of a habit page: the choices Late-night scrolling, Sugary drinks, Impulse shopping, Nail biting and Something else, a Name field, then &quot;Already clean?&quot; with how long ago, Clean since, and what it used to cost each day." loading="lazy" decoding="async"></picture>
+<figcaption>Let go of a habit: pick what you are letting go of.</figcaption>
+</figure>
+<ul>
 <li>Optional: what it used to cost each day:
 <ul>
 <li><strong>Money per day</strong>, to see the money you saved;</li>
@@ -733,6 +855,12 @@
 <li>1 year (365 days): the summit</li>
 </ul></li>
 <li>The flags are spaced evenly along the trail, so early flags come quickly.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/trail-dark-360.webp 360w, shots/trail-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/trail-360.webp" srcset="shots/trail-360.webp 360w, shots/trail.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The page for Sugary drinks: a mountain with a winding trail and flags from 1 day at the bottom to 1 year at the top, and a climber just past the 3 months flag. Below: 124 days, 23 hours and 17 minutes clean, &quot;Next flag at 6 months, in 7 weeks&quot; with a bar, then the best climb, clean days in total, urges resisted, slips, money saved and cans avoided." loading="lazy" decoding="async"></picture>
+<figcaption>Sugary drinks, 124 days clean: past the 3 months flag, on the way to 6 months.</figcaption>
+</figure>
+<ul>
 <li><strong>Already clean?</strong> When you add a habit you stopped before installing Grove, say how long ago: a number of days, weeks, months (30 days) or years. The climb starts that far up the trail, with the flags you have already passed, and money saved counts from then. It sets <strong>Clean since</strong>, which you can also pick as an exact date and time.</li>
 </ul>
 </section>
@@ -746,13 +874,19 @@
 </ul></li>
 <li><strong>Log a slip</strong>, on the habit's page: after you confirm, this sends you back to the start of the trail.
 <ul>
-<li><strong>When?</strong> is <strong>Now</strong> at first. Choose <strong>Earlier</strong> to log a slip from up to 7 days back: pick the day, and tap the time to change it. Your climb then starts again from that time. <span class="since">Coming in 1.1</span></li>
-<li><strong>What set it off?</strong> is an optional short note, such as "a long day". Only you see it. <span class="since">Coming in 1.1</span></li>
-<li>The message at the bottom has <strong>Undo</strong>, in case you logged it by mistake. <span class="since">Coming in 1.1</span></li>
+<li><strong>When?</strong> is <strong>Now</strong> at first. Choose <strong>Earlier</strong> to log a slip from up to 7 days back: pick the day, and tap the time to change it. Your climb then starts again from that time. <span class="since">Added in 1.1</span></li>
+<li><strong>What set it off?</strong> is an optional short note, such as "a long day". Only you see it. <span class="since">Added in 1.1</span></li>
+<li>The message at the bottom has <strong>Undo</strong>, in case you logged it by mistake. <span class="since">Added in 1.1</span></li>
 <li>Your <strong>best climb</strong> stays on the mountain as a teal flag, so you can see how far you got.</li>
 <li>Total clean days are kept. They are all the days since you started, minus the days when you slipped.</li>
 </ul></li>
-<li>Forgot to log an urge? Open <strong>Urges resisted</strong> on the habit's page and tap <strong>Log an urge</strong> at the top. It has the same <strong>When?</strong> and <strong>What set it off?</strong> as a slip. <span class="since">Coming in 1.1</span></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/slip-dialog-dark-360.webp 360w, shots/slip-dialog-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/slip-dialog-360.webp" srcset="shots/slip-dialog-360.webp 360w, shots/slip-dialog.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The dialog &quot;Log a slip?&quot;: &quot;Your climb restarts from the base of the trail. The highest flag you reached stays on the mountain.&quot; Under When?, Earlier is chosen, with Yesterday and 10:30 AM. &quot;What set it off?&quot; says &quot;A long day&quot;. Then Cancel and Log slip." loading="lazy" decoding="async"></picture>
+<figcaption>Logging a slip from yesterday, with a note on what set it off.</figcaption>
+</figure>
+<ul>
+<li>Forgot to log an urge? Open <strong>Urges resisted</strong> on the habit's page and tap <strong>Log an urge</strong> at the top. It has the same <strong>When?</strong> and <strong>What set it off?</strong> as a slip. <span class="since">Added in 1.1</span></li>
 <li>To add a note later, tap the urge or the slip in its list (see <a href="#the-lists-behind-the-numbers">The lists behind the numbers</a>).</li>
 </ul>
 </section>
@@ -768,13 +902,17 @@
 <li>They are optional, up to 12 per habit, and they are kept in backups.</li>
 </ul></li>
 </ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/milestones-dark-360.webp 360w, shots/milestones-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/milestones-360.webp" srcset="shots/milestones-360.webp 360w, shots/milestones.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="Lower down the page of Impulse shopping, 32 days clean: $481.56 money saved, the buttons I resisted an urge and Log a slip, and Your milestones. &quot;After 2 weeks: a new book with the money saved&quot; and &quot;After 1 month: a day out somewhere new&quot; are ticked; &quot;After 3 months&quot; and &quot;After 1 year&quot; are not yet." loading="lazy" decoding="async"></picture>
+<figcaption>A month into the climb: two milestones reached, two to look forward to.</figcaption>
+</figure>
 </section>
 </section>
 <section id="changing-archiving-or-deleting-a-habit" class="level2">
 <h2>Changing, archiving or deleting a habit</h2>
 <ul>
 <li>On a habit's page, the pencil (<strong>Edit habit</strong>) changes its name, plant, days, goal, reminder, costs or milestones. <strong>Save changes</strong> keeps them.</li>
-<li>The <strong>⋮</strong> menu on the page has <strong>Archive habit</strong>, for a habit you want to put away but not lose. <span class="since">Coming in 1.1</span>
+<li>The <strong>⋮</strong> menu on the page has <strong>Archive habit</strong>, for a habit you want to put away but not lose. <span class="since">Added in 1.1</span>
 <ul>
 <li>It leaves your valley, your lists, the widgets and the reminders, and it no longer counts for the day, the weather or the river.</li>
 <li>All of its history is kept, and its achievements stay, marked "Archived".</li>
@@ -786,11 +924,17 @@
 <li><strong>Restore</strong>: it comes back at the end of your list, with all its history. It gets its place in the valley back if there is room. Its achievements are as before, and a Plant widget that showed it shows it again.</li>
 <li><strong>Delete for good</strong>: this removes it and all of its history.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/archived-dark-360.webp 360w, shots/archived-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/archived-360.webp" srcset="shots/archived-360.webp 360w, shots/archived.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Archived habits page: &quot;2 archived habits. They rest here with all their history.&quot; Nail biting, a habit being let go of, and Floss, a growing fern, each with the day it was archived and the buttons Restore and Delete for good." loading="lazy" decoding="async"></picture>
+<figcaption>Settings → Archive, with two habits put away.</figcaption>
+</figure>
+<ul>
 <li>The <strong>⋮</strong> menu also has <strong>Delete habit</strong>. This removes the habit and all of its history from your valley. Its achievements stay.</li>
 </ul>
 </section>
 <section id="putting-habits-in-order" class="level2">
-<h2>Putting habits in order <span class="since">Coming in 1.1</span></h2>
+<h2>Putting habits in order <span class="since">Added in 1.1</span></h2>
 <ul>
 <li>A new habit goes at the end of its list.</li>
 <li>To change the order, tap <strong>Reorder habits</strong> at the end of the Valley page. Then:
@@ -798,6 +942,12 @@
 <li>drag a habit by its handle, the lines at the right of its row, or press and hold it and drag it; or</li>
 <li>use its arrows to move it up or down. The arrows also work with a keyboard and a screen reader.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/reorder-dark-360.webp 360w, shots/reorder-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/reorder-360.webp" srcset="shots/reorder-360.webp 360w, shots/reorder.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="&quot;Put your habits in order&quot;, with Done. The Growing list: Morning jog, Yoga, Read, Meditate, Drink water and Stretch, each with an up arrow, a down arrow and a handle of three lines." loading="lazy" decoding="async"></picture>
+<figcaption>Reorder habits: drag a habit by its handle, or use its arrows.</figcaption>
+</figure>
+<ul>
 <li><strong>Growing</strong> and <strong>Letting go</strong> each have their own order. While you reorder, they are one above the other, even in a wide window.</li>
 <li>Each move is saved at once. Tap <strong>Done</strong>, or go back, when you have finished.</li>
 <li>The valley follows the order. The first plants stand at the front, nearest you. The first trail climbs the mountain on the left.</li>
@@ -856,6 +1006,12 @@
 <li><strong>Best climb</strong> or <strong>Clean days in total</strong>: every climb, with its dates, its length and the flag it reached. The best and the current one are marked.</li>
 </ul></li>
 <li><strong>When they come</strong> (urges) and <strong>When slips happen</strong>: with 3 or more, a chart shows the hours of the day they happen. With 5 or more, it names your busiest two hours, such as "Most urges come between 21:00 and 23:00". Knowing your risky hours helps you plan for them.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/urges-dark-360.webp 360w, shots/urges-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/urges-360.webp" srcset="shots/urges-360.webp 360w, shots/urges.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Urges resisted page, with Log an urge at the top: 25 urges resisted, a chart of when they come, with tall bars just before midnight, and &quot;Most urges come between 10 PM and 12 AM&quot;. Then this month's urges, each with its day, time and how far into the climb it came. One further down has a note: &quot;Phone by the bed&quot;." loading="lazy" decoding="async"></picture>
+<figcaption>Urges resisted for Late-night scrolling: most come late in the evening.</figcaption>
+</figure>
+<ul>
 <li><strong>Fix a mistake</strong>: press and hold an urge or a slip, then tap <strong>Delete</strong>. The message after has <strong>Undo</strong>. Deleting a slip joins its two climbs again.</li>
 <li>Times follow your phone: 12-hour ("9:14 PM") or 24-hour ("21:14"), as set in the phone's date and time settings. Grove has no setting of its own for this.</li>
 </ul>
@@ -873,6 +1029,12 @@
 <li>a short note from research: missing one day does not undo a habit (Lally and others, 2010);</li>
 <li>how to start again, with the water button.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/motivate-dark-360.webp 360w, shots/motivate-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/motivate-360.webp" srcset="shots/motivate-360.webp 360w, shots/motivate.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Motivate me page for Morning jog: the oak, still standing, &quot;A missed day, not a lost garden&quot;, &quot;Your 42-day streak ended yesterday. Your oak kept 90% of its growth. It is still fully grown.&quot;, a bar for the growth kept, and &quot;Every watering still counts&quot;, with a leaf for each day since 11 May and an empty one for the day missed." loading="lazy" decoding="async"></picture>
+<figcaption>Motivate me, the day after a 42-day streak ended.</figcaption>
+</figure>
+<ul>
 <li>For a mountain:
 <ul>
 <li>all your clean days put together as one climb, on the mountain;</li>
@@ -882,7 +1044,7 @@
 </ul></li>
 <li>When Grove offers it (never as a popup):
 <ul>
-<li>After a slip, the habit's page shows a small card with <strong>Motivate me</strong>. It goes away after 3 days, or when you close it. <span class="since">Coming in 1.1</span></li>
+<li>After a slip, the habit's page shows a small card with <strong>Motivate me</strong>. It goes away after 3 days, or when you close it. <span class="since">Added in 1.1</span></li>
 <li>After a plant's streak of 3 days or more (2 weeks or more for "Per week" habits) ends, the habit's page shows a small card. It goes away when you water again, after 3 days, or when you close it.</li>
 <li>Any time: the habit's <strong>⋮</strong> menu → <strong>Motivate me</strong>.</li>
 </ul></li>
@@ -890,7 +1052,7 @@
 </ul>
 </section>
 <section id="your-week-in-review" class="level2">
-<h2>Your week in review <span class="since">Coming in 1.1</span></h2>
+<h2>Your week in review <span class="since">Added in 1.1</span></h2>
 <ul>
 <li><strong>Your week</strong> is a calm look back at one week. Open it from the top of the Achievements page, or from the card on the Valley page at the start of a week (below).</li>
 <li>It opens on last week: the last week that has ended. Weeks start on the day you choose (see <a href="#your-week">Your week</a>).
@@ -903,13 +1065,19 @@
 <li>your best day, when one day had more habits done than any other;</li>
 <li>good news from the week before, such as "You watered 4 more times than the week before". Grove never points out a week that went less well.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/week-review-dark-360.webp 360w, shots/week-review-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/week-review-360.webp" srcset="shots/week-review-360.webp 360w, shots/week-review.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Your week page for last week, 15 to 21 Jun, with arrows for other weeks: 49 times watered, 3 perfect days, 1 urge resisted and $126.00 money saved. &quot;Your best day was Wednesday, with 9 habits done. You watered 4 more times than the week before.&quot; Then Growing: Morning jog, 7 of 7 days, streak grew to 68 days; Yoga, 3 of 3 sessions; Read, 7 of 7 days." loading="lazy" decoding="async"></picture>
+<figcaption>Your week, looking back on 15 to 21 June.</figcaption>
+</figure>
+<ul>
 <li><strong>Growing</strong>: each habit you build, with what the week asked of it:
 <ul>
 <li>"6 of 7 days" for a habit due every day or on set days. A day it was not due but you watered anyway is an extra day;</li>
 <li>"2 of 3 sessions" for a "Per week" habit. Its first week asks for less (see <a href="#a-kinder-first-week">A kinder first week</a>), and says "First week kept" when it asked for nothing more;</li>
 <li>how its streak went: "Streak grew to 12 days", "Streak kept at 12 days" while it was paused, or "A new streak of 3 days". A streak that ended is not mentioned;</li>
 <li>rain days that kept the streak going, and paused days. Paused days count as neither done nor missed. A habit paused all week says "Paused all week";</li>
-<li>the reason for a pause, if it had one: after the days paused, such as "2 days paused · Holiday", or first under "Paused all week", such as "Holiday · Streak kept at 7 weeks · 1 session". <span class="since">Coming in 1.1</span></li>
+<li>the reason for a pause, if it had one: after the days paused, such as "2 days paused · Holiday", or first under "Paused all week", such as "Holiday · Streak kept at 7 weeks · 1 session". <span class="since">Added in 1.1</span></li>
 <li>a new stage its plant reached that week, such as "Grew into a sapling";</li>
 <li>habits with nothing done that week share one quiet line, such as "A quiet week for Read and Stretch".</li>
 </ul></li>
@@ -923,7 +1091,7 @@
 <li>Archived habits are left out.</li>
 </ul>
 <section id="the-card-on-the-valley-page" class="level3">
-<h3>The card on the Valley page <span class="since">Coming in 1.1</span></h3>
+<h3>The card on the Valley page <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>For the first 3 days of each week, the Valley page shows a small card under how today is going: "A new week has begun. Take a calm look back at the last one.", with <strong>See your week</strong>.</li>
 <li>It comes only when last week had something in it: a watering, an urge resisted or a clean day.</li>
@@ -938,7 +1106,7 @@
 <li>The <strong>Achievements</strong> page records every milestone you reach, with the date.
 <ul>
 <li>It keeps achievements forever, even after you delete the habit.</li>
-<li>At its top, <strong>Your week</strong> looks back at one week at a time (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Coming in 1.1</span></li>
+<li>At its top, <strong>Your week</strong> looks back at one week at a time (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>The <strong>Unlocked</strong> page shows what you have seen in your own valley, such as animals, plant stages, weather and rainbows.</li>
 <li>The full list, and how to earn each one, is in <a href="achievements.html">Achievements and unlocks</a>.</li>
@@ -961,11 +1129,17 @@
 <li>Tap the zen button (the arrows at the top of the valley), or press and hold the valley, to see it full screen. On Android you can also press and hold Grove's icon and choose <strong>Zen mode</strong>.</li>
 <li>The land fills about the lower half of the screen, with a tall sky above. On a clear night it shows the Milky Way and now and then a shooting star; by day a hawk circles.</li>
 <li>Tap the screen to show the time, the date, how today is going and the buttons. They fade again after a few seconds.</li>
+</ul>
+<figure class="shot">
+<picture><img src="shots/zen-360.webp" srcset="shots/zen-360.webp 360w, shots/zen.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="Zen mode filling a phone: a starry night with a full moon over three mountains with lit trails, and the time, 11:30 PM, Wednesday 29 July, &quot;All 10 done today&quot;. At the bottom, four round buttons: Screenshot, Keep screen on, Sounds and Leave zen mode." loading="lazy" decoding="async"></picture>
+<figcaption>Zen mode on a night of full moon, after a tap.</figcaption>
+</figure>
+<ul>
 <li>The buttons:
 <ul>
 <li><strong>Screenshot</strong>: save the valley to your photos, or share it. The picture is the valley alone, without the buttons.</li>
 <li><strong>Keep screen on</strong>: the screen does not turn off. It is on at first.</li>
-<li><strong>Sounds</strong> (the speaker, lit while valley sounds play): opens the sound settings: <span class="since">Coming in 1.1</span>
+<li><strong>Sounds</strong> (the speaker, lit while valley sounds play): opens the sound settings: <span class="since">Added in 1.1</span>
 <ul>
 <li><strong>Valley sounds</strong>, on or off: a stream, birds by day, crickets at night, rain when it rains, and soft chords, slow and warm music that loops every 20 seconds;</li>
 <li>a level for each of these sounds. Turn <strong>Soft chords</strong> down to nothing for nature alone;</li>
@@ -973,15 +1147,21 @@
 </ul></li>
 <li><strong>Leave zen mode</strong>. A firm swipe down also leaves.</li>
 </ul></li>
+</ul>
+<figure class="shot">
+<picture><img src="shots/zen-sounds-360.webp" srcset="shots/zen-sounds-360.webp 360w, shots/zen-sounds.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Sounds sheet over zen mode at night: Valley sounds, switched off, then a level for each of Stream, Birds, Crickets, Rain and Soft chords, and one for Taps and chimes." loading="lazy" decoding="async"></picture>
+<figcaption>Zen mode's sound settings.</figcaption>
+</figure>
+<ul>
 <li>Valley sounds follow the valley: birds fade at dusk, crickets come in at night, and rain covers the rest while it rains. They pause when you leave the app.</li>
 <li><strong>Tilt</strong>: on a phone or tablet, tilting it moves the valley a little, for a gentle sense of depth.
 <ul>
-<li>Near things move more than far ones: the meadow at the bottom of the screen most, the hills less, the mountains a little and the sky hardly at all. Rain and snow fall in front of it all. <span class="since">Coming in 1.1</span></li>
-<li>Plants, animals and the bridge move with the ground they stand on, so nearer plants slide past farther ones. The river stays in one piece. <span class="since">Coming in 1.1</span></li>
-<li>It follows the smallest turn of your hand straight away. Hold the device still and the valley settles back to the middle in a few seconds. <span class="since">Coming in 1.1</span></li>
-<li>The bigger the screen, the further the valley moves, so it shows on a tablet too. <span class="since">Coming in 1.1</span></li>
-<li>On a computer, the mouse does it: move it toward an edge of the window to look into the valley from that side. The middle of the window is still, and the valley glides back when the mouse leaves the window. <span class="since">Coming in 1.1</span></li>
-<li>To keep the valley still, turn off <strong>Tilt the valley</strong> in Settings → Zen mode. Grove then doesn't use the motion sensors at all. <span class="since">Coming in 1.1</span></li>
+<li>Near things move more than far ones: the meadow at the bottom of the screen most, the hills less, the mountains a little and the sky hardly at all. Rain and snow fall in front of it all. <span class="since">Added in 1.1</span></li>
+<li>Plants, animals and the bridge move with the ground they stand on, so nearer plants slide past farther ones. The river stays in one piece. <span class="since">Added in 1.1</span></li>
+<li>It follows the smallest turn of your hand straight away. Hold the device still and the valley settles back to the middle in a few seconds. <span class="since">Added in 1.1</span></li>
+<li>The bigger the screen, the further the valley moves, so it shows on a tablet too. <span class="since">Added in 1.1</span></li>
+<li>On a computer, the mouse does it: move it toward an edge of the window to look into the valley from that side. The middle of the window is still, and the valley glides back when the mouse leaves the window. <span class="since">Added in 1.1</span></li>
+<li>To keep the valley still, turn off <strong>Tilt the valley</strong> in Settings → Zen mode. Grove then doesn't use the motion sensors at all. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Zen mode also cares for the screen by itself:
 <ul>
@@ -998,6 +1178,12 @@
 <ul>
 <li>Add them from Settings → Home-screen widgets, or from the launcher's widget list.</li>
 <li>Widgets always show your own habits.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/widgets-dark-360.webp 360w, shots/widgets-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/widgets-360.webp" srcset="shots/widgets-360.webp 360w, shots/widgets.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="505" alt="A phone's home screen with four Grove widgets. Today ring: &quot;3/5&quot;, &quot;3 of 5 done today&quot;, &quot;Next: Meditate&quot;. Plant for Read: 20 of 20 pages, with +5 pages. A wide Plant for Drink water: 5 of 8 glasses, with +1 and Undo. A thin Plant for Practise guitar: 2 of 3 this week, with Water." loading="lazy" decoding="async"></picture>
+<figcaption>Four of Grove's widgets on a home screen: the Today ring and three Plant widgets of different sizes.</figcaption>
+</figure>
+<ul>
 <li>There are five widgets:
 <ul>
 <li><strong>Clean streak</strong> (2×2): days clean and a live timer for one quit habit, with the next flag.
@@ -1010,7 +1196,7 @@
 <li><strong>Plant</strong> (2×2, and any size from 1×1 up): one habit you are building.
 <ul>
 <li>The plant sits in a ring that fills as today goes: with the amount for a goal such as 8 glasses, or with the week's sessions for a habit due a number of times a week. The ring turns green when done.</li>
-<li>For a habit due a number of times a week, a new week starts on the first day of your week (see <a href="#your-week">Your week</a>). In its first week, the ring fills toward what that week asks for, and the widget says "First week kept" once that is done. <span class="since">Coming in 1.1</span></li>
+<li>For a habit due a number of times a week, a new week starts on the first day of your week (see <a href="#your-week">Your week</a>). In its first week, the ring fills toward what that week asks for, and the widget says "First week kept" once that is done. <span class="since">Added in 1.1</span></li>
 <li>The button waters it, or adds a step to today's amount, such as "+1 glass". <strong>Done</strong> fills the whole goal at once.</li>
 <li>On the widest sizes, a <strong>−</strong> button takes a step back off.</li>
 <li>Where there is no room for a button, such as at 1×1 or a narrow 2×1, the plant itself is the button: a small + or drop on its ring shows it.</li>
@@ -1035,7 +1221,7 @@
 <li>Its rows work like the Today widget's: the drop waters, the rest opens the habit. On a habit you let go of, the sprout logs an urge.</li>
 </ul></li>
 </ul></li>
-<li>A paused habit (see <a href="#pausing-a-habit">Pausing a habit</a>) says "Paused until …" on the widgets, and its plant rests, with straw and a little moon sign. <span class="since">Coming in 1.1</span>
+<li>A paused habit (see <a href="#pausing-a-habit">Pausing a habit</a>) says "Paused until …" on the widgets, and its plant rests, with straw and a little moon sign. <span class="since">Added in 1.1</span>
 <ul>
 <li>It doesn't count in "3 of 5 done today", and the Today ring never names it as next. If you water it anyway, it counts as done.</li>
 <li>It has no button to water it. The Plant widget shows <strong>Paused</strong> instead, and the Today rows a moon in place of the drop. Tap either to open the habit's page, where <strong>Resume</strong> is.</li>
@@ -1047,7 +1233,7 @@
 </ul>
 </section>
 <section id="shortcuts-on-the-app-icon-android" class="level2">
-<h2>Shortcuts on the app icon (Android) <span class="since">Coming in 1.1</span></h2>
+<h2>Shortcuts on the app icon (Android) <span class="since">Added in 1.1</span></h2>
 <ul>
 <li>Press and hold Grove's icon on your home screen or in your app list. It offers three shortcuts:
 <ul>
@@ -1069,17 +1255,23 @@
 <h2>Reminders (Android)</h2>
 <ul>
 <li>Each habit you build can have its own reminder. Turn on <strong>Remind me</strong> when you add or edit the habit, or set the time in Settings → Reminders.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/reminders-dark-360.webp 360w, shots/reminders-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/reminders-360.webp" srcset="shots/reminders-360.webp 360w, shots/reminders.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The top of Settings: Reminders, with switches for Reminders, Evening nudge and Milestone celebrations, and the nudge time, 8:00 PM. Under Habit reminders, a row for each habit: Morning jog, &quot;Every day at 7:00 AM&quot;; Yoga, &quot;No reminder&quot;; Read, &quot;Every day at 9:30 PM&quot;; Meditate, &quot;No reminder&quot;." loading="lazy" decoding="async"></picture>
+<figcaption>Settings → Reminders, with a reminder for Morning jog and one for Read.</figcaption>
+</figure>
+<ul>
 <li>Grove asks for permission to send notifications only when you turn a reminder on.</li>
 <li>A reminder comes only on days when the habit is due, and not if the habit is already done.
 <ul>
-<li>A "Per week" habit is due while its week still asks for a session. A first week that asks for nothing more gets no reminders (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Coming in 1.1</span></li>
+<li>A "Per week" habit is due while its week still asks for a session. A first week that asks for nothing more gets no reminders (see <a href="#a-kinder-first-week">A kinder first week</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>A paused habit gets no reminders and no evening nudge. They start again when it resumes. An archived habit gets none at all.</li>
 <li>Grove plans the reminders for the next 7 days.</li>
 <li>Tap a reminder to open the habit. Its buttons work without opening Grove:
 <ul>
 <li><strong>Mark done</strong>, for a habit without an amount goal;</li>
-<li><strong>Remind me in an hour</strong>: the reminder goes away and comes back an hour later, unless you have done the habit by then. Use it again to put it off once more. <span class="since">Coming in 1.1</span></li>
+<li><strong>Remind me in an hour</strong>: the reminder goes away and comes back an hour later, unless you have done the habit by then. Use it again to put it off once more. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li><strong>Evening nudge</strong> (8 pm at first; change it with <strong>Nudge time</strong>): it comes only when a streak of 2 or more days is at risk today.
 <ul>
@@ -1091,7 +1283,7 @@
 </ul>
 </section>
 <section id="privacy-android" class="level2">
-<h2>Privacy (Android) <span class="since">Coming in 1.1</span></h2>
+<h2>Privacy (Android) <span class="since">Added in 1.1</span></h2>
 <ul>
 <li>Settings → Privacy → <strong>Keep quit habits private</strong>.</li>
 <li>When it is on, the names of habits you are letting go of stay inside Grove:
@@ -1113,7 +1305,7 @@
 <li>Soft sounds play for watering, a plant growing a stage, finishing the day, resisting an urge, planting, slips, and new achievements and unlocks.</li>
 <li>They are off at first, so opening Grove for the first time is quiet. Turn on <strong>App sounds</strong> in Settings → Sounds.
 <ul>
-<li>On Android this section is called <strong>Sounds and vibration</strong>, as it also has the switch for <a href="#vibration-android">vibration</a>. <span class="since">Coming in 1.1</span></li>
+<li>On Android this section is called <strong>Sounds and vibration</strong>, as it also has the switch for <a href="#vibration-android">vibration</a>. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Settings → Sounds also has:
 <ul>
@@ -1125,7 +1317,7 @@
 </ul>
 </section>
 <section id="vibration-android" class="level2">
-<h2>Vibration (Android) <span class="since">Coming in 1.1</span></h2>
+<h2>Vibration (Android) <span class="since">Added in 1.1</span></h2>
 <ul>
 <li>Grove gives a soft tap when you do something, so you can feel that it worked:
 <ul>
@@ -1167,7 +1359,7 @@
 </ul></li>
 <li><strong>Restore from a backup file</strong> first shows what the file holds: "Restore this backup?". <strong>Replace with this backup</strong> replaces everything on this device.
 <ul>
-<li>Archived habits are counted apart from the others, such as "8 habits, and 2 archived". <span class="since">Coming in 1.1</span></li>
+<li>Archived habits are counted apart from the others, such as "8 habits, and 2 archived". <span class="since">Added in 1.1</span></li>
 <li>Before a restore, Grove keeps a copy of what was there. Tap <strong>Undo</strong> on the message after the restore, or later <strong>Put it back</strong> under "Before your last restore".</li>
 </ul></li>
 <li>A backup from an older version of Grove still restores.</li>
@@ -1175,7 +1367,7 @@
 <li>When your phone's own backup is on, Android also backs Grove up to your Google account.</li>
 </ul>
 <section id="automatic-backups" class="level3">
-<h3>Automatic backups <span class="since">Coming in 1.1</span></h3>
+<h3>Automatic backups <span class="since">Added in 1.1</span></h3>
 <ul>
 <li>Settings → Backup → <strong>Automatic backups</strong>: Grove saves a backup file for you, in a folder you choose. It is off at first.</li>
 <li>When you turn it on, Grove asks for a folder:
@@ -1215,7 +1407,7 @@
 <li>every watering, every change to an amount (also on a past day), and every undo;</li>
 <li>which habits show in the valley;</li>
 <li>every pause, and when a habit resumed;</li>
-<li>the reason for a pause, and every change to it; <span class="since">Coming in 1.1</span></li>
+<li>the reason for a pause, and every change to it; <span class="since">Added in 1.1</span></li>
 <li>every urge resisted and every slip, any taken back, and their notes.</li>
 </ul></li>
 <li>It is kept for a future timelapse, to replay how your valley grew.</li>
@@ -1237,22 +1429,22 @@
 <li><strong>Reminders</strong> (on Android)</li>
 <li><strong>Encouragement</strong>: offer the Motivate me page after a setback.
 <ul>
-<li><strong>Weekly review card</strong>: on at first. For the first 3 days of each week, a card on the Valley page offers a look back at the last one (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Coming in 1.1</span></li>
+<li><strong>Weekly review card</strong>: on at first. For the first 3 days of each week, a card on the Valley page offers a look back at the last one (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li><strong>Sounds</strong>: app sounds, how loud they are, and valley sounds.
 <ul>
-<li>On Android it is <strong>Sounds and vibration</strong>, with <strong>Vibration</strong> too (see <a href="#vibration-android">Vibration</a>). <span class="since">Coming in 1.1</span></li>
+<li>On Android it is <strong>Sounds and vibration</strong>, with <strong>Vibration</strong> too (see <a href="#vibration-android">Vibration</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
-<li><strong>Theme</strong>: <strong>System</strong>, <strong>Light</strong> or <strong>Dark</strong>. <span class="since">Coming in 1.1</span></li>
-<li><strong>Accessibility</strong>: <strong>Water with a tap</strong>. <span class="since">Coming in 1.1</span></li>
+<li><strong>Theme</strong>: <strong>System</strong>, <strong>Light</strong> or <strong>Dark</strong>. <span class="since">Added in 1.1</span></li>
+<li><strong>Accessibility</strong>: <strong>Water with a tap</strong>. <span class="since">Added in 1.1</span></li>
 <li><strong>Your sky</strong>: where you are, for the sun, the moon and the climate.</li>
-<li><strong>Calendar</strong>: the day your week starts on: Monday, Sunday or Saturday (see <a href="#your-week">Your week</a>). <span class="since">Coming in 1.1</span></li>
+<li><strong>Calendar</strong>: the day your week starts on: Monday, Sunday or Saturday (see <a href="#your-week">Your week</a>). <span class="since">Added in 1.1</span></li>
 <li><strong>Your valley</strong>: choose what grows.</li>
 <li><strong>Archive</strong>: your archived habits, to restore or delete for good.</li>
-<li><strong>Zen mode</strong>: frames a second (30, 60 or Max), and <strong>Tilt the valley</strong>. <span class="since">Coming in 1.1</span></li>
+<li><strong>Zen mode</strong>: frames a second (30, 60 or Max), and <strong>Tilt the valley</strong>. <span class="since">Added in 1.1</span></li>
 <li><strong>Home-screen widgets</strong> (on Android)</li>
 <li><strong>Privacy</strong> (on Android): keep quit habits private.</li>
-<li><strong>Backup</strong>: save, share or restore a backup file, and automatic backups to a folder you choose. <span class="since">Coming in 1.1</span></li>
+<li><strong>Backup</strong>: save, share or restore a backup file, and automatic backups to a folder you choose. <span class="since">Added in 1.1</span></li>
 <li><strong>About</strong>: version, <strong>Share Grove</strong>, open-source licences.</li>
 </ul></li>
 <li>Grove's colours follow your device's light or dark mode at first. To keep them light or dark, pick <strong>Light</strong> or <strong>Dark</strong> in Settings → Theme. <strong>System</strong> follows the device again.</li>
@@ -1289,7 +1481,7 @@
 <li>Everything works with a mouse. Press and hold works with the mouse button.</li>
 <li>The Escape key and the mouse's back button go back one page. While you type, Escape only leaves the text field.</li>
 <li>In zen mode, moving the mouse shows the buttons, and Escape leaves zen mode.</li>
-<li>Moving the mouse in zen mode also tilts the valley a little, for depth (see <a href="#zen-mode">Zen mode</a>). <span class="since">Coming in 1.1</span></li>
+<li>Moving the mouse in zen mode also tilts the valley a little, for depth (see <a href="#zen-mode">Zen mode</a>). <span class="since">Added in 1.1</span></li>
 <li>There are no widgets and no reminders. <strong>Save image</strong> saves pictures to the Pictures/Grove folder, and backups go where you choose.</li>
 </ul></li>
 </ul>

@@ -159,6 +159,44 @@
   td { min-width: 5.5rem; }
   tbody tr:last-child td { border-bottom: 0; }
 
+  /* Pictures of the app: under the text on a phone, beside it on a wide
+     screen. Each comes with its width and height, so nothing moves as it
+     loads. */
+  .shot { width: min(18rem, 100%); margin: 1.25rem auto 1.5rem; }
+  .shot picture, .shot img { display: block; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.9rem;
+    box-shadow: 0 0 0 1px var(--edge);
+    background: var(--stone);
+  }
+  .shot figcaption {
+    margin-top: 0.55rem;
+    color: var(--bark);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+  /* Several side by side: two in a row on a phone, all of them on a wide
+     screen, or three with the "three" class. */
+  .shots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0.75rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .shots .shot { flex: 0 1 calc(50% - 0.375rem); width: auto; margin: 0; }
+  .shots .shot img { border-radius: 0.6rem; }
+  @media (min-width: 48rem) {
+    .shot { float: right; clear: right; width: 16rem; margin: 0.4rem 0 1.25rem 1.75rem; }
+    .shots { clear: both; }
+    .shots .shot { float: none; flex-basis: calc((100% - (var(--n) - 1) * 0.75rem) / var(--n)); }
+    .shots.three .shot { flex-basis: calc((100% - 1.5rem) / 3); }
+    section.level2, section.level3, .pager { clear: both; }
+  }
+
   /* When a feature came: "Added in 1.1", or "Coming in 1.1" before then. */
   .since {
     display: inline-block;

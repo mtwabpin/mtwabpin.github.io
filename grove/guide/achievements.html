@@ -159,6 +159,44 @@
   td { min-width: 5.5rem; }
   tbody tr:last-child td { border-bottom: 0; }
 
+  /* Pictures of the app: under the text on a phone, beside it on a wide
+     screen. Each comes with its width and height, so nothing moves as it
+     loads. */
+  .shot { width: min(18rem, 100%); margin: 1.25rem auto 1.5rem; }
+  .shot picture, .shot img { display: block; }
+  .shot img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.9rem;
+    box-shadow: 0 0 0 1px var(--edge);
+    background: var(--stone);
+  }
+  .shot figcaption {
+    margin-top: 0.55rem;
+    color: var(--bark);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+  /* Several side by side: two in a row on a phone, all of them on a wide
+     screen, or three with the "three" class. */
+  .shots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 0.75rem;
+    margin: 1.25rem 0 1.5rem;
+  }
+  .shots .shot { flex: 0 1 calc(50% - 0.375rem); width: auto; margin: 0; }
+  .shots .shot img { border-radius: 0.6rem; }
+  @media (min-width: 48rem) {
+    .shot { float: right; clear: right; width: 16rem; margin: 0.4rem 0 1.25rem 1.75rem; }
+    .shots { clear: both; }
+    .shots .shot { float: none; flex-basis: calc((100% - (var(--n) - 1) * 0.75rem) / var(--n)); }
+    .shots.three .shot { flex-basis: calc((100% - 1.5rem) / 3); }
+    section.level2, section.level3, .pager { clear: both; }
+  }
+
   /* When a feature came: "Added in 1.1", or "Coming in 1.1" before then. */
   .since {
     display: inline-block;
@@ -269,7 +307,7 @@
 <main id="text" class="column">
   <h1>Achievements and unlocks</h1>
   <p class="lead">Every achievement and every thing to find in your valley, and how to get each one.</p>
-  <p class="updated">Updated <time datetime="2026-10-02">2 October 2026</time></p>
+  <p class="updated">Updated <time datetime="2026-10-03">3 October 2026</time></p>
   <div class="intro">
 <p>Grove has two pages that remember what you did:</p>
 <ul>
@@ -317,7 +355,7 @@
 <li>Achievements that come at the same time share one message. Unlocks that come at the same time share another.</li>
 <li>Filling in or changing a past day (see <a href="how-it-works.html#filling-in-a-missed-day">Filling in a missed day</a>) adds what it earns quietly, with the day it was reached: no message and no sound.
 <ul>
-<li>But if the change makes something new show in the valley now, such as trout leaping once the river runs full, that find gets its message as usual. It has really just appeared. <span class="since">Coming in 1.1</span></li>
+<li>But if the change makes something new show in the valley now, such as trout leaping once the river runs full, that find gets its message as usual. It has really just appeared. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Your backups keep both lists.
 <ul>
@@ -334,12 +372,18 @@
 <ul>
 <li>Achievements are grouped by month, newest first.</li>
 <li>Filters at the top: <strong>All</strong>, <strong>Growing</strong>, <strong>Letting go</strong> and <strong>Valley</strong>, each with a count. They show when you have achievements in at least two of these groups.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/achievements-dark-360.webp 360w, shots/achievements-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/achievements-360.webp" srcset="shots/achievements-360.webp 360w, shots/achievements.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Achievements page: &quot;220 milestones reached, 7 this month&quot;, Your week, the filters All, Growing, Letting go and Valley with their counts, then this month's achievements, such as A full valley, Reached the summit and Back on track, each with its habit and date." loading="lazy" decoding="async"></picture>
+<figcaption>The Achievements page, with Your week near the top.</figcaption>
+</figure>
+<ul>
 <li>Tap an achievement to open its habit, if the habit still exists.</li>
-<li><strong>Your week</strong>, near the top, looks back at one week at a time: what each habit did, and the achievements reached and things found that week (see <a href="how-it-works.html#your-week-in-review">How Grove works</a>). <span class="since">Coming in 1.1</span></li>
+<li><strong>Your week</strong>, near the top, looks back at one week at a time: what each habit did, and the achievements reached and things found that week (see <a href="how-it-works.html#your-week-in-review">How Grove works</a>). <span class="since">Added in 1.1</span></li>
 <li><strong>Achievements stay for good</strong>, even after you delete the habit.
 <ul>
 <li>A deleted habit's achievements keep the name it had, with the note "No longer tracked".</li>
-<li>An archived habit's achievements stay too, with the note "Archived". Tap one to open your archived habits, where you can restore it. Once it is restored, they are as before. <span class="since">Coming in 1.1</span></li>
+<li>An archived habit's achievements stay too, with the note "Archived". Tap one to open your archived habits, where you can restore it. Once it is restored, they are as before. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Most achievements are earned once. If you lose a streak and reach 30 days again, the first date stays. "Back on track", "Reached the summit" and "Higher than ever" can be earned again.</li>
 </ul>
@@ -353,7 +397,7 @@
 <li>Days when the habit was paused don't break a streak (see <a href="how-it-works.html#pausing-a-habit">How Grove works</a>).</li>
 <li>For habits due "a number of times each week", Grove counts <strong>weeks in a row</strong> instead: 2, 4, 8, 12, 26, 52 and 104 weeks.
 <ul>
-<li>Weeks start on the day you choose in Settings → Calendar, and a habit's first week asks for less when you start mid-week (see <a href="how-it-works.html#your-week">How Grove works</a>). Changing the week start groups past weeks again, but never takes an achievement away. <span class="since">Coming in 1.1</span></li>
+<li>Weeks start on the day you choose in Settings → Calendar, and a habit's first week asks for less when you start mid-week (see <a href="how-it-works.html#your-week">How Grove works</a>). Changing the week start groups past weeks again, but never takes an achievement away. <span class="since">Added in 1.1</span></li>
 </ul></li>
 </ul></li>
 <li><strong>Growth stages</strong>: the first sprout, a sapling, fully grown, thriving.
@@ -408,7 +452,19 @@
 <ul>
 <li>Unlocks are grouped by kind. Each card shows a small picture.</li>
 <li>A card you have not found yet is grey, with a hint that says how to find it.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/unlocked-dark-360.webp 360w, shots/unlocked-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/unlocked-360.webp" srcset="shots/unlocked-360.webp 360w, shots/unlocked.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="The Unlocked page: &quot;58 of 63 found&quot; with a bar, then Visitors as cards with pictures and the day each was found: butterflies, songbirds, the deer, the fox, leaping trout and fireflies, and one grey card still to find, with the hint &quot;Look up in zen on a bright day&quot;." loading="lazy" decoding="async"></picture>
+<figcaption>The Unlocked page: 58 of the 63 things found so far.</figcaption>
+</figure>
+<ul>
 <li>Tap a card to see it bigger, with the date you found it.</li>
+</ul>
+<figure class="shot">
+<picture><source media="(prefers-color-scheme: dark)" srcset="shots/unlock-card-dark-360.webp 360w, shots/unlock-card-dark.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))"><img src="shots/unlock-card-360.webp" srcset="shots/unlock-card-360.webp 360w, shots/unlock-card.webp 720w" sizes="(min-width: 48rem) 16rem, min(18rem, calc(100vw - 2rem))" width="360" height="780" alt="A sheet over the Unlocked page with a big picture of a fox sitting in a meadow, &quot;Visitors&quot;, &quot;The fox&quot;, &quot;Found on 1 September 2025&quot;, and &quot;How it turns up: A hundred days of steady care&quot;." loading="lazy" decoding="async"></picture>
+<figcaption>One find, open: the fox.</figcaption>
+</figure>
+<ul>
 <li>Some things can only happen in some climates. Those are hidden if they can't happen where you live, unless you already found them.
 <ul>
 <li>A four-seasons climate (northern or southern) shows 63 things.</li>
