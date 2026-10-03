@@ -496,9 +496,13 @@
 <li>for a habit without a goal: <strong>Done</strong> or <strong>Not done</strong>;</li>
 <li>for a habit with a goal: the amount, with − and +, then <strong>Save</strong>. <strong>Clear this day</strong> takes the amount away.</li>
 <li>For a "Per week" habit, the sheet also says how that day's week stands, such as "This week: 2 of 3 done".</li>
+<li>A paused day says so: "Paused, so it counts as neither done nor missed", with its reason if it has one: "Paused (Holiday), so it counts as neither done nor missed". You can still fill it in, and it counts (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Coming in 1.1</span></li>
 </ul></li>
 <li>The message after has <strong>Undo</strong>.</li>
-<li>Other days say why they can't change: days more than 7 days ago, days before the habit started, and days still to come.</li>
+<li>Other days say why they can't change: days more than 7 days ago, days before the habit started, and days still to come.
+<ul>
+<li>A paused day too far back says that it was paused: "Mon 14 Sep was paused, so it counted as neither done nor missed. Days this far back can't be changed." <span class="since">Coming in 1.1</span></li>
+</ul></li>
 <li>The streak, the growth, rain days, wilting, the river and the widgets all follow the change straight away.</li>
 <li>A rain day you fill in is no longer needed, so the rain day stays saved. If you clear a day that was done, a saved rain day covers it, if you have one.</li>
 <li>A past day changes quietly: there is no watering sound, and no message for an achievement or a find it brings. These still go on the Achievements and Unlocked pages, with the day they were reached.
@@ -512,7 +516,10 @@
 <h3>All history <span class="since">Coming in 1.1</span></h3>
 <ul>
 <li>Tap <strong>All history</strong>, under the calendar on the habit's page. It shows every month since the habit started, newest first.</li>
-<li>Each month is a calendar of leaves: done, part done (some of the goal), rain day, missed, and a dot for a rest day. Under the month's name is its total, such as "18 days done, 42 km in all".</li>
+<li>Each month is a calendar of leaves: done, part done (some of the goal), rain day, missed, and a dot for a rest day. Under the month's name is its total, such as "18 days done, 42 km in all".
+<ul>
+<li>A paused day left alone has a small moon, and the legend says "Paused" for a habit that was ever paused. A month with paused days counts them too: "18 days done, 3 days paused" (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Coming in 1.1</span></li>
+</ul></li>
 <li>The first column is the first day of your week: Monday at first (see <a href="#your-week">Your week</a>).</li>
 <li>Today has a ring. Tap one of the last 7 days to fill it in or change it. Other days say why they can't change.</li>
 <li>In a wide window, the months sit side by side.</li>
@@ -656,11 +663,12 @@
 <section id="pausing-a-habit" class="level3">
 <h3>Pausing a habit <span class="since">Coming in 1.1</span></h3>
 <ul>
-<li>Going on holiday, or ill? Pause the habit, so the days you can't do it don't count against you.</li>
+<li>Going on holiday, or having a busy time? Pause the habit, so the days you can't do it don't count against you.</li>
 <li>On the habit's page, open the <strong>⋮</strong> menu and choose <strong>Pause</strong>. Then choose:
 <ul>
 <li><strong>Until I resume</strong>: it stays paused until you tap <strong>Resume</strong>.</li>
 <li><strong>Until a date</strong>: the date is your last day off. <strong>Choose the date</strong> picks it; a week is offered first. The habit counts again the day after.</li>
+<li><strong>A reason, if you like</strong>: tap <strong>Holiday</strong>, <strong>A busy time</strong> or <strong>A break</strong>, or write a few words of your own. Tap a choice again to take it away. A reason is optional, and only you see it. <span class="since">Coming in 1.1</span></li>
 </ul></li>
 <li>The pause starts today. While it lasts:
 <ul>
@@ -670,11 +678,23 @@
 <li>For "Per week" habits, a week asks only for the sessions its days left room for. A week paused all through asks for none.</li>
 <li>No reminders and no evening nudge come for it.</li>
 <li>In the valley, the plant rests: straw is tucked round its foot, with a little sign with a moon on it. Its pictures on its row and its page rest the same way, and a screen reader says it is resting.</li>
-<li>Its page and its row say "Paused until …", such as "Paused until Fri 9 Oct" or "Paused until you resume", with a <strong>Resume</strong> button.</li>
-<li>The home-screen widgets say so too, and don't offer to water it (see <a href="#home-screen-widgets-android">Home-screen widgets</a>).</li>
+<li>Its page and its row say "Paused until …", such as "Paused until Fri 9 Oct" or "Paused until you resume", with a <strong>Resume</strong> button.
+<ul>
+<li>With a reason, it follows the date: "Paused until Tue 6 Oct · Holiday". Where the row has no room, the reason is cut short. <span class="since">Coming in 1.1</span></li>
 </ul></li>
+<li>The home-screen widgets say so too, and don't offer to water it (see <a href="#home-screen-widgets-android">Home-screen widgets</a>). They leave out the reason.</li>
+</ul></li>
+<li>To give a reason later, change it or clear it, tap <strong>Add a reason</strong> or <strong>Change reason</strong> beside <strong>Resume</strong> on the habit's page. Leave it empty to clear it. <span class="since">Coming in 1.1</span></li>
 <li><strong>Resume</strong> makes it count again from today. You can also resume from the <strong>⋮</strong> menu.</li>
-<li>Paused days stay neutral after you resume. On the calendar they show as rest days.</li>
+<li>Paused days stay neutral after you resume.</li>
+<li>The habit's calendar and <strong>All history</strong> show when it was paused: <span class="since">Coming in 1.1</span>
+<ul>
+<li>A day it was due but paused, and left alone, has a small moon, like the sign of the resting plant. A screen reader says "Paused", with the reason: "Paused (Holiday)".</li>
+<li>A day you watered anyway shows as done, or part done if you logged only some of the goal.</li>
+<li>A day it was not due stays a rest day, with its dot.</li>
+<li>Tap one to see it, as with any day (see <a href="#filling-in-a-missed-day">Filling in a missed day</a>).</li>
+<li><strong>Your week</strong> names the reason too, such as "2 days paused · Holiday" (see <a href="#your-week-in-review">Your week in review</a>).</li>
+</ul></li>
 <li>Only habits you build can be paused. The clean time of a habit you let go of keeps running.</li>
 </ul>
 </section>
@@ -889,6 +909,7 @@
 <li>"2 of 3 sessions" for a "Per week" habit. Its first week asks for less (see <a href="#a-kinder-first-week">A kinder first week</a>), and says "First week kept" when it asked for nothing more;</li>
 <li>how its streak went: "Streak grew to 12 days", "Streak kept at 12 days" while it was paused, or "A new streak of 3 days". A streak that ended is not mentioned;</li>
 <li>rain days that kept the streak going, and paused days. Paused days count as neither done nor missed. A habit paused all week says "Paused all week";</li>
+<li>the reason for a pause, if it had one: after the days paused, such as "2 days paused · Holiday", or first under "Paused all week", such as "Holiday · Streak kept at 7 weeks · 1 session". <span class="since">Coming in 1.1</span></li>
 <li>a new stage its plant reached that week, such as "Grew into a sapling";</li>
 <li>habits with nothing done that week share one quiet line, such as "A quiet week for Read and Stretch".</li>
 </ul></li>
@@ -1130,7 +1151,7 @@
 <section id="backup" class="level2">
 <h2>Backup</h2>
 <ul>
-<li>Settings → Backup → <strong>Save a backup file</strong> saves everything into one file: all habits with their full history and milestones, archived habits, pauses, the notes on urges and slips, the activity log, your achievements and unlocks, and your settings.
+<li>Settings → Backup → <strong>Save a backup file</strong> saves everything into one file: all habits with their full history and milestones, archived habits, pauses and their reasons, the notes on urges and slips, the activity log, your achievements and unlocks, and your settings.
 <ul>
 <li>The file name has the date and the local time it was made, such as <code class="verbatim">grove-backup-2026-09-29-23.14.json</code>.</li>
 <li><strong>Share a backup</strong> sends the file to another app instead, such as your email or cloud storage.</li>
@@ -1186,6 +1207,7 @@
 <li>every watering, every change to an amount (also on a past day), and every undo;</li>
 <li>which habits show in the valley;</li>
 <li>every pause, and when a habit resumed;</li>
+<li>the reason for a pause, and every change to it; <span class="since">Coming in 1.1</span></li>
 <li>every urge resisted and every slip, any taken back, and their notes.</li>
 </ul></li>
 <li>It is kept for a future timelapse, to replay how your valley grew.</li>
