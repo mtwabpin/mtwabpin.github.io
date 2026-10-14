@@ -307,7 +307,7 @@
 <main id="text" class="column">
   <h1>How Grove works</h1>
   <p class="lead">Habits you build and habits you let go of, tasks, what the valley shows, zen mode, widgets, reminders, backups and settings.</p>
-  <p class="updated">Updated <time datetime="2026-10-10">10 October 2026</time></p>
+  <p class="updated">Updated <time datetime="2026-10-14">14 October 2026</time></p>
   <div class="intro">
 <p>Grove turns your habits into a small valley. Good days make the valley green, sunny and full of life. This page explains the rules in simple steps.</p>
 <ul>
@@ -326,6 +326,7 @@
 <ul>
 <li><a href="#setting-up" id="toc-setting-up">Setting up</a></li>
 <li><a href="#marking-a-habit-done" id="toc-marking-a-habit-done">Marking a habit done</a></li>
+<li><a href="#doing-a-habit-again-the-same-day" id="toc-doing-a-habit-again-the-same-day">Doing a habit again the same day <span class="since">Coming in 1.7</span></a></li>
 <li><a href="#filling-in-a-missed-day" id="toc-filling-in-a-missed-day">Filling in a missed day <span class="since">Added in 1.1</span></a></li>
 <li><a href="#all-history" id="toc-all-history">All history <span class="since">Added in 1.1</span></a></li>
 <li><a href="#how-a-plant-grows" id="toc-how-a-plant-grows">How a plant grows</a></li>
@@ -340,6 +341,7 @@
 <ul>
 <li><a href="#setting-up-1" id="toc-setting-up-1">Setting up</a></li>
 <li><a href="#the-trail" id="toc-the-trail">The trail</a></li>
+<li><a href="#ridge-mountains" id="toc-ridge-mountains">Ridge mountains <span class="since">Coming in 1.7</span></a></li>
 <li><a href="#urges-and-slips" id="toc-urges-and-slips">Urges and slips</a></li>
 <li><a href="#money-and-milestones" id="toc-money-and-milestones">Money and milestones</a></li>
 </ul></li>
@@ -475,7 +477,7 @@
 <ul>
 <li>A habit still to do has a ring of water around its drop; a done one shows a soft green check, so the ones left stand out. <span class="since">Added in 1.6</span></li>
 <li>As you complete it, its little plant beside the name swells and sparkles, so you see it even with the valley scrolled away. <span class="since">Added in 1.6</span></li>
-<li>A paused habit says "Paused until …", with <strong>Resume</strong> in place of the drop (see <a href="#pausing-a-habit">Pausing a habit</a>).</li>
+<li>A paused habit says "Paused until …", with a moon in the drop's ring, as on the widgets. Tap it to resume the habit (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Coming in 1.7</span></li>
 </ul></li>
 <li>On a habit you let go of, the row shows how long you have been clean. <strong>Resisted</strong> logs an urge you resisted.</li>
 </ul></li>
@@ -489,7 +491,7 @@
 <ul>
 <li><strong>Habits you build</strong> (for example jogging or yoga) are <strong>plants</strong> by the river.</li>
 <li><strong>Habits you quit</strong> (for example late-night scrolling) are <strong>mountain trails</strong>.</li>
-<li>The valley has room for 10 plants and 3 mountains.
+<li>The valley has room for 10 plants and 3 mountains, or 4 mountains with <a href="#ridge-mountains">Ridge mountains</a> on. <span class="since">Coming in 1.7</span>
 <ul>
 <li>If you have more habits, choose which ones grow with <strong>Choose what grows</strong>, next to the list's title on the Valley page, or in Settings → Your valley. A habit's own <strong>Show in the valley</strong> switch does the same. On the Valley page it shows only when there is a choice to make: more habits than places, or some kept out. <span class="since">Added in 1.6</span></li>
 <li>At first, the habits at the top of each list get the places.</li>
@@ -568,6 +570,7 @@
 <li><strong>Per week</strong>: a number of times each week, from once to 6 times (for example 3 times a week), on any days. Weeks start on Monday, or on the day you choose (see <a href="#your-week">Your week</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li>Turn on <strong>Track an amount</strong> to set a goal, such as "3 km" or "20 minutes". A day counts as done only when you reach the goal.</li>
+<li>Turn on <strong>More than once a day</strong> for a habit you may do again the same day, such as brushing your teeth. Once is enough for the day; do it again as often as you like, and Grove counts each time (see <a href="#doing-a-habit-again-the-same-day">Doing a habit again the same day</a>). It shows while <strong>Track an amount</strong> is off. <span class="since">Coming in 1.7</span></li>
 <li>Turn on <strong>Remind me</strong> for a reminder (see <a href="#reminders-android">Reminders</a>).</li>
 <li>Tap <strong>Plant it</strong>.</li>
 </ul>
@@ -604,6 +607,25 @@
 <ul>
 <li>For "Per week" habits, sessions after the week's number is reached add no more growth.</li>
 </ul></li>
+<li>A "Per week" habit that has all its sessions for the week, today's included, shows a small green <strong>Week done</strong> tag on the Valley page, beside its streak. On a day you haven't done it, its drop shows a soft check. You can see at a glance that it asks nothing more this week. Until then, it says how far it has come, such as "1 of 3 this week". A screen reader says "Done for this week, 2 of 2". <span class="since">Coming in 1.7</span>
+<ul>
+<li>You can still do it again. Tap the drop to complete it today too, as an extra session.</li>
+</ul></li>
+</ul>
+</section>
+<section id="doing-a-habit-again-the-same-day" class="level3">
+<h3>Doing a habit again the same day <span class="since">Coming in 1.7</span></h3>
+<ul>
+<li>A habit with <strong>More than once a day</strong> on can be done as many times a day as you like, such as brushing your teeth twice. Turn it on when you add or edit the habit.</li>
+<li>The first time completes it for the day, as for any habit. After that, <strong>press and hold</strong> its drop to do it again: each hold adds one time. The message says how many, such as "Brush teeth: done 3 times today.", with <strong>Undo</strong>.
+<ul>
+<li>A tap on its drop, once it is done, says how many times and that a press and hold does it again. Its <strong>Undo</strong> takes one time off. A tap never adds a time, so a stray one doesn't count.</li>
+<li>With a screen reader, a long press on the drop adds a time; with a keyboard, Enter does.</li>
+</ul></li>
+<li>From the second time, the drop shows the number, and the row says "Done 3 times today". On the habit's page, the button says so too, and a press and hold on it adds a time.</li>
+<li>The first time is the one that counts for the streak, the plant's growth, spare days, the river and a "Per week" habit's week. More times are extra: never asked for, and they never take anything away.</li>
+<li><strong>Times done</strong>, on the habit's page, on <strong>Motivate me</strong> and on a share card, counts every time.</li>
+<li>Turn it off and the habit is done once a day again. The times already logged stay.</li>
 </ul>
 </section>
 <section id="filling-in-a-missed-day" class="level3">
@@ -614,6 +636,7 @@
 <ul>
 <li>for a habit without a goal: <strong>Done</strong> or <strong>Not done</strong>;</li>
 <li>for a habit with a goal: the amount, with − and +, then <strong>Save</strong>. <strong>Clear this day</strong> takes the amount away.</li>
+<li>for a habit done more than once a day: the times that day, with − and +, then <strong>Save</strong>. <span class="since">Coming in 1.7</span></li>
 <li>For a "Per week" habit, the sheet also says how that day's week stands, such as "This week: 2 of 3 done".</li>
 <li>A paused day says so: "Paused, so it counts as neither done nor missed", with its reason if it has one: "Paused (Holiday), so it counts as neither done nor missed". You can still fill it in, and it counts (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Added in 1.1</span></li>
 </ul></li>
@@ -644,6 +667,7 @@
 <li>Each month is a calendar of leaves: done, part done (some of the goal), spare day (a blue leaf), missed, and a dot for a rest day. Under the month's name is its total, such as "18 days done, 42 km in all".
 <ul>
 <li>A paused day left alone has a small moon, and the legend says "Paused" for a habit that was ever paused. A month with paused days counts them too: "18 days done, 3 days paused" (see <a href="#pausing-a-habit">Pausing a habit</a>). <span class="since">Added in 1.1</span></li>
+<li>For a habit done more than once a day, the total counts the times too, such as "10 days done, 15 times in all", and a day done more than once says how many. <span class="since">Coming in 1.7</span></li>
 </ul></li>
 </ul>
 <figure class="shot">
@@ -816,10 +840,17 @@
 <ul>
 <li>A plant droops for each due day missed in the last 7 days. Three missed days make it fully wilted.
 <ul>
-<li>For "Per week" habits, it droops for the sessions missing last week.</li>
+<li>For "Per week" habits, it droops for the sessions missing last week, and stays so all this week, whatever you do. Three missing make it fully wilted.</li>
 </ul></li>
 <li>After 6 pm (18:00), a plant whose habit is due today and not done yet droops a little more, as a gentle reminder. Completing the habit takes this away.</li>
-<li>The droop from missed days goes as those days pass out of the last 7 days. A few days done in a row perk the plant up.</li>
+<li>The droop from missed days goes as those days pass out of the last 7 days. A few days done in a row perk the plant up.
+<ul>
+<li>A "Per week" habit perks up when a new week begins, once the week before it had all its sessions.</li>
+</ul></li>
+<li>While a plant wilts and its habit isn't done today, its page says so under the plant: "It is wilting after some missed days. A few days done in a row will perk it up."
+<ul>
+<li>A "Per week" habit's page says "It is wilting because last week fell short. Do all of this week's sessions, and it will perk up when the next week begins." <span class="since">Coming in 1.7</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="pausing-a-habit" class="level3">
@@ -846,7 +877,7 @@
 <li>For "Per week" habits, a week asks only for the sessions its days left room for. A week paused all through asks for none.</li>
 <li>No reminders and no evening nudge come for it.</li>
 <li>In the valley, the plant rests: straw is tucked round its foot, with a little sign with a moon on it. Its pictures on its row and its page rest the same way, and a screen reader says it is resting.</li>
-<li>Its page and its row say "Paused until …", such as "Paused until Fri 9 Oct" or "Paused until you resume", with a <strong>Resume</strong> button.
+<li>Its page and its row say "Paused until …", such as "Paused until Fri 9 Oct" or "Paused until you resume". Its page has a <strong>Resume</strong> button, and its row a moon in the drop's ring, as the widgets show; tap it to resume. <span class="since">Coming in 1.7</span>
 <ul>
 <li>With a reason, it follows the date: "Paused until Tue 6 Oct · Holiday". Where the row has no room, the reason is cut short. <span class="since">Added in 1.1</span></li>
 </ul></li>
@@ -921,6 +952,15 @@
 </figure>
 <ul>
 <li><strong>Already clean?</strong> When you add a habit you stopped before installing Grove, say how long ago: a number of days, weeks, months (30 days) or years. The climb starts that far up the trail, with the flags you have already passed, and money saved counts from then. It sets <strong>Clean since</strong>, which you can also pick as an exact date and time.</li>
+</ul>
+</section>
+<section id="ridge-mountains" class="level3">
+<h3>Ridge mountains <span class="since">Coming in 1.7</span></h3>
+<ul>
+<li>Turn on Settings → Valley and calendar → <strong>Ridge mountains</strong> to see the mountains another way: ridge after misty ridge, with pines along them, as if you looked across a range. They are off at first.</li>
+<li>Each trail comes in from the left or right edge of the valley, as if the climber had walked in from beyond it, and climbs along a ridge's skyline to its peak. Each ridge has one trail at most.</li>
+<li>The ridges are far off, so in the valley a trail is a fine line with its climber, and no flags. A habit's page shows its mountain up close, with every flag, in a slice of the valley: misty ridges behind it, and a forested mountain and a hill in front.</li>
+<li>With ridges on, the valley has room for 4 mountains, not 3. If you turn them off again, a fourth waits in your list, still set to show, until they come back.</li>
 </ul>
 </section>
 <section id="urges-and-slips" class="level3">
@@ -1067,16 +1107,24 @@
 <li>it says how far before the task it comes, such as "30 minutes before the task", then its day and time. When the task's day or time changes, the reminder moves with it and stays as far before; <span class="since">Added in 1.3</span></li>
 <li>for a task with a time, <strong>On time</strong>, <strong>10 minutes before</strong> and <strong>30 minutes before</strong> set the reminder in one tap; <span class="since">Added in 1.4</span></li>
 </ul></li>
-<li>its <strong>List</strong>: no list, one of your lists, or <strong>New list</strong>;</li>
+<li>its <strong>List</strong>: tap it to choose no list, one of your lists, or <strong>New list</strong>; <span class="since">Coming in 1.7</span></li>
 <li><strong>Star</strong>.</li>
 <li><strong>Save</strong> keeps the changes. Going back, tapping outside the sheet or dragging it down with changes not saved asks first: <strong>Save</strong> or <strong>Discard</strong>. Closing the question any other way brings the sheet back as you left it. Steps are kept as you change them. <span class="since">Added in 1.6</span></li>
 </ul></li>
 <li><p><strong>Lists</strong>, such as Home and Work, keep tasks apart. A task is in one list or in none.</p>
 <ul>
-<li><strong>New list</strong>, under the title of the Tasks page, makes one.</li>
+<li><strong>New list</strong>, under the title of the Tasks page, makes your first one. After that, it is in the <strong>Lists</strong> sheet. Two lists can't have the same name, whatever its capitals: Grove says "You already have a list called Home." <span class="since">Coming in 1.7</span></li>
 <li>Tap a list to show only its tasks, and <strong>All</strong> to show every task again. A task you add while a list is showing goes into it.</li>
+<li>The lists stay on one row, in your order. With many, swipe it sideways to see the rest; a long name is cut short. <span class="since">Coming in 1.7</span></li>
+<li>The <strong>Lists</strong> button, with three lines, stays at the end of the row. It opens every list in a sheet, each with how many tasks it has to do, and a check mark on the one showing. Tap a list there to show it. <span class="since">Coming in 1.7</span>
+<ul>
+<li><strong>New list</strong>, beside the heading, makes one.</li>
+<li>The ⋯ beside a list renames or deletes it.</li>
+<li>Drag a list by the dots at the end of its row, or press and hold it and drag, to put it in a new place. The row on the Tasks page and a task's choice of list follow that order. With a keyboard, Alt and the up or down arrow move it. A screen reader offers <strong>Move up</strong> and <strong>Move down</strong>.</li>
+<li>With 8 lists or more, <strong>Find a list</strong> at the top finds one by its name.</li>
+</ul></li>
 <li>With every task showing, a task's row names its list.</li>
-<li>To rename or delete a list, press and hold it, or tap the ⋯ beside the list on show. Deleting a list keeps its tasks, in no list.</li>
+<li>To rename or delete a list, press and hold it, or use its ⋯ in the <strong>Lists</strong> sheet. Deleting a list keeps its tasks, in no list.</li>
 </ul></li>
 <li><p><strong>Delete a task</strong>: press and hold it, or tap <strong>Delete</strong> in its sheet. The message after has <strong>Undo</strong>.</p></li>
 <li><p><strong>The month</strong>: the calendar button at the top of the Tasks page shows a month instead of the list, and the list button goes back. <span class="since">Added in 1.3</span></p>
@@ -1157,6 +1205,7 @@
 <li>The valley shows how your habits are going, today and this week.</li>
 <li><strong>Clouds</strong> show today:
 <ul>
+<li>A new day starts under a clear sky. Today's clouds gather in the two hours after sunrise. <span class="since">Coming in 1.7</span></li>
 <li>With nothing done, the sky is at its cloudiest.</li>
 <li>Finishing habits clears some of the clouds, and so does finishing today's tasks. <span class="since">Added in 1.3</span></li>
 <li>When everything is done, the valley glows golden and the sun shines brighter. After dark, the moon glows wider, twice as many fireflies come out, and on a clear night a shooting star crosses the sky as you finish. <span class="since">Added in 1.6</span></li>
@@ -1199,7 +1248,12 @@
 <li>Habits you build:
 <ul>
 <li><strong>Current streak</strong> or <strong>Best streak</strong>: every streak, with its dates, what ended it, and the spare days that kept it going. The best and the current one are marked.</li>
-<li><strong>Times done</strong>: how many times you did it, such as "Done 12 times", then every day done, with the amount you logged, such as "3 km", or <strong>Done</strong> for a habit with no goal, and the time you logged it (times start when Grove began keeping them; older days show only their date). Days done when the habit was not due are marked <strong>Extra</strong>.</li>
+<li><strong>Times done</strong>: how many times you did it, such as "Done 12 times", then every day done, with the amount you logged, such as "3 km", or <strong>Done</strong> for a habit with no goal, and the time you logged it (times start when Grove began keeping them; older days show only their date). Days done when the habit was not due are marked <strong>Extra</strong>.
+<ul>
+<li>A day filled in or changed on a later day keeps the time it had, or shows only its date: Grove knows when it was filled in, not when you did it. <span class="since">Coming in 1.7</span></li>
+<li>Tap a row from the last week to change when you did it: pick the time, and it stays on its day, with <strong>Undo</strong>. A time later than now is taken as now. Only the time changes; the day is done as before. <span class="since">Coming in 1.7</span></li>
+<li>For a habit done more than once a day, each time has a row of its own, the latest first, with the time you did it: the first of a day says <strong>Done</strong>, each after it <strong>Done again</strong>. A time filled in on a later day shows only its date. The top counts both: "Done on 20 days", "25 times in all". <span class="since">Coming in 1.7</span></li>
+</ul></li>
 </ul></li>
 <li>Habits you quit:
 <ul>
@@ -1321,7 +1375,10 @@
 <h2>Notes <span class="since">Added in 1.3</span></h2>
 <ul>
 <li>Notes share their place in the bar with Achievements. On the Achievements page, ⋯ → <strong>Switch to Notes</strong> puts Notes there instead; on the Notes page, ⋯ → <strong>Switch to Achievements</strong> brings them back. Grove remembers which you chose. Your achievements are still earned while Notes has the place.</li>
-<li><strong>New note</strong> starts one. A note can have a title, some text and a list, any of them. It is saved as you type.</li>
+<li><strong>New note</strong> starts one. A note can have a title, some text and a list, any of them. It is saved as you type.
+<ul>
+<li>On Android, <strong>Add a note</strong> on Grove's icon starts one too (see <a href="#shortcuts-on-the-app-icon-android">Shortcuts on the app icon</a>). <span class="since">Coming in 1.7</span></li>
+</ul></li>
 <li>In the list, add items, change them, delete them, or move them by their handle. The list of notes shows the start of a note's list, such as "Milk, Bread, Eggs".</li>
 <li>Links in a note, such as <a href="https://example.com">https://example.com</a> or www.example.com, are underlined. Tap one to put the cursor in it, and <strong>Open</strong> under it opens it in your browser. Grove itself never goes online. <span class="since">Added in 1.4</span></li>
 <li>Delete a note from its page, or by pressing and holding it in the list. <strong>Undo</strong> brings it back.</li>
@@ -1335,6 +1392,7 @@
 <li>On a habit's page, tap the share button (<strong>Share your progress</strong>) at the top.</li>
 <li>When a habit reaches a milestone, such as a streak or a new flag, the message that says so has <strong>Share</strong>, which opens the same card. On a phone. <span class="since">Added in 1.6</span></li>
 <li>A week can be shared too: on <strong>Your week</strong>, tap the share button (<strong>Share this week</strong>) at the top. Its card shows the week's dates, "A perfect week" or how many of your habits you kept up, such as "4 of 5 habits kept up", and each habit with how its week went: "Morning jog: 7 of 7 days", "Late-night scrolling: 7 days without it". Those kept up come first; when there are too many to fit, the last line says how many more. <span class="since">Added in 1.6</span></li>
+<li>When a habit was done more than its week asked, the week's card says so in green after how its week went: "Swim: 3 of 3 times + 2 extra", or "Yoga: 3 of 3 days + 1 extra" for a day it wasn't due, as <strong>Your week</strong> counts them. <span class="since">Coming in 1.7</span></li>
 <li>Grove makes a picture card (1080 × 1350, the shape social apps show without cropping) of your plant or mountain, with your progress. The plant always stands tall, at its best.</li>
 <li>In its corner, a QR code opens Grove on Google Play, so anyone who sees the card can find it with their phone's camera. <span class="since">Added in 1.4</span></li>
 <li>Every card is written for people who have never heard of Grove: it says Grove is a habit tracker, and puts your progress in plain words, such as "404 days without it" for a habit you are letting go of. <span class="since">Added in 1.6</span></li>
@@ -1493,14 +1551,16 @@
 <ul>
 <li>The plant sits in a ring that fills as today goes: with the amount for a goal such as 8 glasses, or with the week's sessions for a habit due a number of times a week. The ring turns green when done.</li>
 <li>For a habit due a number of times a week, a new week starts on the first day of your week (see <a href="#your-week">Your week</a>). In its first week, the ring fills toward what that week asks for, and the widget says "First week kept" once that is done. <span class="since">Added in 1.1</span></li>
+<li>Once the week's sessions are done, its ring turns green and its button is quieter. A tap still completes it today. <span class="since">Coming in 1.7</span></li>
 <li>The button completes the habit, or adds a step to today's amount, such as "+1 glass".
 <ul>
 <li>For a habit with no amount, it says <strong>Complete</strong>. Once the habit is done, it says <strong>Done</strong>, and a tap opens the habit.</li>
+<li>For a habit done more than once a day, every tap adds one time. Once it is done, the button says <strong>Again</strong>, and from the second time the widget says how many, such as "Done 3 times today", or "×3" at 1×1. <span class="since">Coming in 1.7</span></li>
 <li>For a habit with a goal, a second button, <strong>Done</strong>, fills the whole goal at once.</li>
 </ul></li>
 <li>On the widest sizes, a <strong>−</strong> button takes a step back off.</li>
 <li>Where there is no room for a button, such as at 1×1 or a narrow 2×1, the plant itself is the button: a small + or drop on its ring shows it. At 1×1, a word under it says how today stands, such as "To do" or "Done".</li>
-<li>From 2×2 it also shows the streak, and from 4×2 or 2×3 the last 7 days too.</li>
+<li>From 2×2 it also shows the streak, and from 4×2 or 2×3 a dot for each day of this week, from the first day of your week. Days still to come are faint rings, and a new week starts with fresh dots. <span class="since">Coming in 1.7</span></li>
 <li>Its settings choose the habit, how much one tap adds (such as +1 glass, half the goal or the whole goal), and whether a tap at 1×1 opens the habit instead. You choose them when you add the widget. On Android 12 or newer, press and hold the widget to change them.</li>
 </ul></li>
 <li><strong>Today ring</strong> (2×1, and any size from 1×1 up): how today is going at a glance.
@@ -1512,6 +1572,8 @@
 <li><strong>Today</strong> (4×2): today's habits with their plants.
 <ul>
 <li>Tap the drop to complete a habit; a full drop means it is completed today. For a habit with a goal, the drop fills the whole goal.</li>
+<li>For a habit done more than once a day, the drop of a done habit has a small +: tap it to do it again. From the second time, the row says "Done 3 times today". <span class="since">Coming in 1.7</span></li>
+<li>A <strong>Week done</strong> tag means a habit due a number of times a week has all its sessions for this week, today's included. On a day you haven't done it, its drop shows a soft check, and a tap still completes it today. <span class="since">Coming in 1.7</span></li>
 <li>Tap the rest of the row to open the habit's page in the app.</li>
 </ul></li>
 <li><strong>Tasks</strong> (4×2, and any size from 2×2 up): today's tasks. <span class="since">Added in 1.3</span>
@@ -1520,6 +1582,13 @@
 <li>It lists the tasks due today and those moved on from a day that has passed, starred first, as the Valley page does. Each row shows its list, its time or where it came from, such as "from Fri", and its steps.</li>
 <li>Tap the circle to finish a task. Tap the rest of the row to open the task in Grove, or <strong>+</strong> to add one.</li>
 <li>When every task for today is done, it says so, with how many are due tomorrow.</li>
+<li>Each Tasks widget has its own settings: what it shows. On Android 12 or newer, press and hold the widget to change them. On older Android, you choose them when you add the widget. <span class="since">Coming in 1.7</span>
+<ul>
+<li><strong>Today's tasks</strong>: the tasks above. This is how it starts.</li>
+<li><strong>Today's, then what's next</strong>: once today's tasks are done, or when there are none, it lists the tasks still to come by day under <strong>Later</strong>, then those with no date under <strong>No date</strong>.</li>
+<li><strong>Everything to do</strong>: today's tasks first, then later ones and those with no date, always.</li>
+<li>A later task says its day, such as "Tomorrow" or "Fri 16 Oct". Tasks with no date or later ones don't count in "2 of 7 done".</li>
+</ul></li>
 </ul></li>
 <li><strong>Your valley</strong> (4×2, and smaller): a picture of your valley.
 <ul>
@@ -1536,17 +1605,17 @@
 <li><strong>Undo</strong>: on the Plant, Today and tall Your valley widgets, for 10 seconds after a tap that changes today, the widget shows <strong>Undo</strong>, which puts the amount back. On the Tasks widget, <strong>Undo</strong> opens the task again.</li>
 <li>Quick taps are safe: a second tap on the same button within half a second counts once, and the last amount you tapped is the one saved. This goes for the sprouts too: a quick double tap logs one urge.</li>
 <li>After an urge, that habit's sprout steps away for a minute on every widget, as the button in the app does. <span class="since">Added in 1.6</span></li>
+<li>The rows on the Today, Tasks and Your valley widgets are roomy, with big buttons, so they are easy to read and tap. <span class="since">Coming in 1.7</span></li>
+<li>On the Today and Tasks widgets, swipe the rows up and down when they don't all fit: the list scrolls, under the title. Its edge fades where more rows wait. <span class="since">Coming in 1.7</span></li>
 <li>Widgets update at once when you tap them, even when Grove is closed, and start a new day at midnight by themselves.</li>
-<li>A widget's own settings (its habit and its step) are not in backups.</li>
+<li>A widget's own settings (its habit and its step, or what a Tasks widget shows) are not in backups.</li>
 </ul>
 </section>
 <section id="shortcuts-on-the-app-icon-android" class="level2">
 <h2>Shortcuts on the app icon (Android) <span class="since">Added in 1.1</span></h2>
 <ul>
-<li>Press and hold Grove's icon on your home screen or in your app list. It offers four shortcuts:
+<li>Press and hold Grove's icon on your home screen or in your app list. It offers these shortcuts:
 <ul>
-<li><strong>Zen mode</strong>: opens the valley full screen.</li>
-<li><strong>Add a habit</strong>: asks whether to grow a habit or let one go.</li>
 <li><strong>I resisted an urge</strong>:
 <ul>
 <li>with one habit you are letting go of, it logs the urge at once. The message at the bottom has <strong>Undo</strong>;</li>
@@ -1555,7 +1624,11 @@
 <li>just after an urge, it says so and logs nothing, as the button rests for a minute. With more than one habit, one that just took an urge is greyed out. <span class="since">Added in 1.6</span></li>
 </ul></li>
 <li><strong>Add a task</strong>: opens a new task on the Tasks page. Only while tasks are on (see <a href="#tasks">Tasks</a>). <span class="since">Added in 1.3</span></li>
+<li><strong>Add a note</strong>: opens a new note. <span class="since">Coming in 1.7</span></li>
+<li><strong>Add a habit</strong>: asks whether to grow a habit or let one go.</li>
+<li><strong>Zen mode</strong>: opens the valley full screen.</li>
 </ul></li>
+<li>Most launchers show only four shortcuts. With tasks on, <strong>Zen mode</strong> is the one left out; the zen button at the top of the valley is always there. <span class="since">Coming in 1.7</span></li>
 <li>You can drag a shortcut onto your home screen to keep it there.</li>
 <li>The shortcuts show once you have opened Grove once.</li>
 <li>Linux has no shortcuts.</li>
@@ -1568,6 +1641,7 @@
 <li>A habit can have as many reminder times a day as you like: tap <strong>Add a time</strong> for another, tap a time to change it, or its × to take it away. <span class="since">Added in 1.6</span>
 <ul>
 <li>Once the habit is done that day, its other times stay away.</li>
+<li>For a habit done more than once a day, each reminder stands for one time: the second comes unless it is done twice by then, and so on. With reminders at 7:30 and 22:00, brushing once in the morning still leaves the one at 22:00. That one says "Time for Brush teeth again. Done once today." <span class="since">Coming in 1.7</span></li>
 <li>Each one goes away as the next comes, so a habit has one in your notifications at a time.</li>
 <li>Android lets an app keep only so many reminders waiting. Grove plans two days ahead, so your habits can have 200 reminder times a day between them; past that, Grove says so where you would add another.</li>
 </ul></li>
@@ -1587,7 +1661,10 @@
 <li>After you travel to another time zone, set the clock by hand or change your device's language, reminders and widgets follow. <span class="since">Added in 1.6</span></li>
 <li>Tap a reminder to open the habit. Its buttons work without opening Grove:
 <ul>
-<li><strong>Mark done</strong>, for a habit without an amount goal. It marks the day the reminder was for, even if you tap it after midnight, while that day can still be changed; the reminder stays until it is saved. <span class="since">Added in 1.6</span></li>
+<li><strong>Mark done</strong>, for a habit without an amount goal. It marks the day the reminder was for, even if you tap it after midnight, while that day can still be changed; the reminder stays until it is saved. <span class="since">Added in 1.6</span>
+<ul>
+<li>For a habit done more than once a day, it adds one time, and once the habit is done it says <strong>Done again</strong>. A quick double tap counts once. <span class="since">Coming in 1.7</span></li>
+</ul></li>
 <li><strong>Remind me in an hour</strong>: the reminder goes away and comes back an hour later, unless you have done the habit by then. Use it again to put it off once more. <span class="since">Added in 1.1</span></li>
 </ul></li>
 <li><strong>Evening nudge</strong> (8 pm at first; change it with <strong>Nudge time</strong>): it comes only when a streak of 2 or more days is at risk today.
@@ -1760,6 +1837,7 @@
 <li><strong>Encouragement</strong>: offer the Motivate me page after a setback.
 <ul>
 <li><strong>Weekly review card</strong>: on at first. For the first 3 days of each week, a card on the Valley page offers a look back at the last one (see <a href="#your-week-in-review">Your week in review</a>). <span class="since">Added in 1.1</span></li>
+<li><strong>Rewards for steady care</strong>: on at first. Gifts for your valley, earned by the days you keep your habits (see <a href="achievements.html#rewards-for-steady-care">Rewards for steady care</a>). <span class="since">Coming in 1.7</span></li>
 </ul></li>
 </ul></li>
 <li><strong>Sounds and vibration</strong>: app sounds, how loud they are, valley sounds, and <strong>Vibration</strong> (see <a href="#vibration-android">Vibration</a>). On a computer it is just <strong>Sounds</strong>. <span class="since">Added in 1.1</span></li>
@@ -1775,7 +1853,10 @@
 <ul>
 <li><strong>Your sky</strong>: where you are, for the sun, the moon and the climate.</li>
 <li><strong>Seasons</strong>: the climate your place gives, or one you choose, such as the four seasons for snow (see <a href="weather-and-seasons.html#choose-your-seasons">Choose your seasons</a>). <span class="since">Added in 1.3</span></li>
-<li><strong>Your valley</strong>: choose what grows.</li>
+<li><strong>Your valley</strong>: choose what grows.
+<ul>
+<li><strong>Ridge mountains</strong>: the mountains as misty ridges, with room for 4 (see <a href="#ridge-mountains">Ridge mountains</a>). Off at first. <span class="since">Coming in 1.7</span></li>
+</ul></li>
 <li><strong>Calendar</strong>: the day your week starts on: Monday, Sunday or Saturday (see <a href="#your-week">Your week</a>). <span class="since">Added in 1.1</span></li>
 <li><strong>Money</strong>: the currency for money saved: your sky's country's, or one you choose. <span class="since">Added in 1.4</span></li>
 <li><strong>Archive</strong>: your archived habits, to restore or delete for good.</li>
