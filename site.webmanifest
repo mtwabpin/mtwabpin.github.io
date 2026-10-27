@@ -1,0 +1,12 @@
+{
+  "name": "MTWABP In",
+  "short_name": "MTWABP In",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F2EAD8",
+  "theme_color": "#F2EAD8",
+  "icons": [
+    { "src": "/images/mtwabp-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/mtwabp-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

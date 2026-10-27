@@ -5,49 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MTWABP In</title>
 <meta name="description" content="MTWABP In makes apps for everyday life: Grove, a habit tracker where your habits grow a living valley, and Kolahal, a keyboard-first terminal launcher for Android.">
-<meta name="theme-color" content="#F5F2EB" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#171614" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" sizes="32x32" href="images/mtwabp-32.png">
+<meta name="theme-color" content="#F2EAD8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1612" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="images/mtwabp-180.png">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MTWABP In">
+<meta property="og:title" content="MTWABP In">
+<meta property="og:description" content="Apps for everyday life: Grove and Kolahal.">
+<meta property="og:url" content="https://mtwabpin.github.io/">
+<meta property="og:image" content="https://mtwabpin.github.io/images/mtwabp-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MTWABP In, Make the world a better place, with an engraved sprig, and the icons of Grove and Kolahal.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/IMFellEnglishSC.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* MTWABP In's own type, from old printed plates: IM Fell for titles and
+     captions, EB Garamond to read. Both are trimmed to Latin letters; the
+     _brand folder says how. */
   @font-face {
-    font-family: "Alegreya";
-    src: url("fonts/Alegreya-Bold.ttf") format("truetype");
-    font-weight: 700;
+    font-family: "IM Fell SC";
+    src: url("fonts/IMFellEnglishSC.woff2") format("woff2");
     font-display: swap;
   }
   @font-face {
-    font-family: "Alegreya Sans";
-    src: url("fonts/AlegreyaSans-Regular.ttf") format("truetype");
-    font-weight: 400;
+    font-family: "IM Fell";
+    src: url("fonts/IMFellEnglish-Italic.woff2") format("woff2");
+    font-style: italic;
     font-display: swap;
   }
   @font-face {
-    font-family: "Alegreya Sans";
-    src: url("fonts/AlegreyaSans-Medium.ttf") format("truetype");
-    font-weight: 500;
+    font-family: "EB Garamond";
+    src: url("fonts/EBGaramond-Regular.woff2") format("woff2");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "EB Garamond";
+    src: url("fonts/EBGaramond-Italic.woff2") format("woff2");
+    font-style: italic;
     font-display: swap;
   }
 
-  /* MTWABP In's own colours, warm paper and ink, so no one app's colours
-     stand for all of them. Each app's page keeps its own. */
+  /* Cream paper and sepia ink; at night, dark paper and pale ink. */
   :root {
-    --ground: #F5F2EB;
-    --card: #FFFFFF;
-    --edge: #E2DCCF;
-    --ink: #22201C;
-    --muted: #6E675C;
-    --accent: #3E6B4F;
+    --paper: #F2EAD8;
+    --sheet: #FAF5E9;
+    --rule: #8C7458;
+    --ink: #2E2219;
+    --muted: #6E5B48;
+    --accent: #8E3B2A;
+    --line: #3B2A1E;
+    --fine: #5A4636;
     color-scheme: light dark;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --ground: #171614;
-      --card: #211F1C;
-      --edge: #34302A;
-      --ink: #ECE7DD;
-      --muted: #A79F92;
-      --accent: #9CC9A6;
+      --paper: #1C1612;
+      --sheet: #262019;
+      --rule: #7A6550;
+      --ink: #EDE3CE;
+      --muted: #B7A68C;
+      --accent: #E3A184;
+      --line: #E6D9BF;
+      --fine: #BFAE92;
     }
   }
 
@@ -55,197 +78,141 @@
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--ground);
     color: var(--ink);
-    font: 1.125rem/1.6 "Alegreya Sans", system-ui, sans-serif;
+    /* The paper's grain, and its edges a shade darker, as on an old page. */
+    background-color: var(--paper);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .17 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"),
+      radial-gradient(ellipse at 50% 40%, transparent 55%, color-mix(in srgb, var(--rule) 22%, transparent));
+    font: 1.2rem/1.6 "EB Garamond", Georgia, serif;
   }
-  a { color: var(--accent); text-underline-offset: 0.18em; }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
   a:hover { text-decoration-thickness: 2px; }
-  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .ln { stroke: var(--line); }
+  .fn { stroke: var(--fine); }
+  .ic { flex: none; vertical-align: middle; }
 
-  .column { max-width: 60rem; margin: 0 auto; padding: 0 1rem; }
-
-  /* The name, spelled out: each letter of MTWABP over its word. */
-  header { padding: clamp(3rem, 9vw, 6rem) 1rem clamp(2.5rem, 6vw, 4rem); }
-  .name {
-    margin: 0 auto;
-    max-width: 56rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: center;
-    column-gap: clamp(0.55rem, 2.6vw, 2.4rem);
-    row-gap: 1.25rem;
-    font-weight: 700;
-  }
-  .word { display: flex; flex-direction: column; align-items: center; }
-  .letter {
-    font-family: "Alegreya", Georgia, serif;
-    font-size: clamp(2.5rem, 11vw, 7.5rem);
-    line-height: 1;
-  }
-  .spelled {
-    margin-top: 0.4rem;
-    font-weight: 400;
-    font-size: clamp(0.85rem, 2vw, 1.2rem);
-    line-height: 1.2;
-    color: var(--muted);
-  }
-  .in {
-    align-self: flex-end;
-    font-family: "Alegreya", Georgia, serif;
-    font-size: clamp(1.75rem, 5vw, 3.25rem);
-    line-height: 1;
-    /* Sits on the letters' baseline, above where the words are. */
-    margin-bottom: calc(1.2em * 0.5 + 0.4rem);
-  }
-  .intro {
-    margin: clamp(2rem, 5vw, 3rem) auto 0;
-    max-width: 34rem;
-    text-align: center;
-    font-size: 1.25rem;
-    line-height: 1.55;
+  /* The whole page is one plate, in a double rule. */
+  .frame {
+    margin: clamp(0.5rem, 2vw, 1.5rem);
+    padding: clamp(1.25rem, 4vw, 2.5rem) clamp(0.75rem, 3vw, 2rem) 0;
+    border: 3px double var(--rule);
   }
 
-  /* The words arrive one after another, once, as the page opens. */
-  @media (prefers-reduced-motion: no-preference) {
-    .spelled { animation: arrive 0.6s ease-out both; }
-    .word:nth-child(2) .spelled { animation-delay: 0.08s; }
-    .word:nth-child(3) .spelled { animation-delay: 0.16s; }
-    .word:nth-child(4) .spelled { animation-delay: 0.24s; }
-    .word:nth-child(5) .spelled { animation-delay: 0.32s; }
-    .word:nth-child(6) .spelled { animation-delay: 0.40s; }
-    @keyframes arrive {
-      from { opacity: 0; transform: translateY(-0.4rem); }
-    }
+  .title { text-align: center; }
+  .emblem { display: block; width: clamp(5.5rem, 14vw, 8rem); height: auto; margin: 0 auto; }
+  h1 {
+    margin: 0.4rem 0 0;
+    font: 400 clamp(2.6rem, 9vw, 5.5rem)/1 "IM Fell SC", "EB Garamond", serif;
+    letter-spacing: 0.06em;
   }
+  .motto {
+    margin: 0.4rem 0 0;
+    font: italic clamp(1.15rem, 3vw, 1.6rem)/1.3 "IM Fell", "EB Garamond", serif;
+    color: var(--accent);
+  }
+  .fleuron { display: flex; align-items: center; justify-content: center; gap: 0.8rem; max-width: 22rem; margin: 1.4rem auto; }
+  .fleuron span { flex: 1; border-top: 1px solid var(--rule); }
+  .intro { max-width: 32rem; margin: 0 auto; text-align: center; font-size: 1.3rem; }
 
-  /* A card for each app: its own picture, its name, a line, and where it
-     stands. The whole card leads to the app's page. */
-  .apps {
-    margin: 0;
+  /* A numbered plate for each app: its figure, its caption, and a word
+     on what it is. */
+  .plates {
+    max-width: 64rem;
+    margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
   }
-  .card {
+  .plate {
     position: relative;
     display: flex;
     flex-direction: column;
-    background: var(--card);
-    border: 1px solid var(--edge);
-    border-radius: 18px;
-    overflow: hidden;
+    gap: 0.55rem;
+    padding: 1.4rem 1.5rem 1.5rem;
+    border: 1px solid var(--rule);
+    outline: 1px solid var(--rule);
+    outline-offset: -6px;
+    background: color-mix(in srgb, var(--sheet) 55%, transparent);
   }
-  .card:hover { border-color: var(--muted); }
-  .card:focus-within { outline: 3px solid var(--accent); outline-offset: 3px; }
-  .picture {
-    display: block;
-    width: 100%;
-    height: 13rem;
-    object-fit: cover;
-  }
-  .picture.grove { object-position: 50% 62%; background: #7FB24A; }
-  .picture.kolahal { object-position: 50% 0; background: #0E100F; }
-  .body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.1rem 1.25rem 1.3rem;
-  }
-  .head { display: flex; align-items: center; gap: 0.75rem; }
-  .head img { width: 3rem; height: 3rem; border-radius: 22%; flex: none; }
-  h2 {
-    margin: 0;
-    font-family: "Alegreya", Georgia, serif;
-    font-size: 1.6rem;
-    line-height: 1.1;
-  }
-  .status {
-    display: inline-block;
-    margin-top: 0.15rem;
-    padding: 0.05rem 0.6rem;
-    border-radius: 999px;
-    background: var(--edge);
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-  .body p { margin: 0; }
-  .go { margin-top: auto; padding-top: 0.5rem; font-weight: 500; }
+  .plate:hover { background: color-mix(in srgb, var(--sheet) 85%, transparent); }
+  .plate:focus-within { outline: 2px solid var(--accent); }
+  .plate-head { display: flex; justify-content: space-between; font: italic 1.05rem/1.3 "IM Fell", serif; color: var(--muted); }
+  figure { margin: 0.2rem 0 0; }
+  figure img { display: block; width: 100%; height: 13rem; object-fit: contain; }
+  figcaption { margin-top: 0.2rem; text-align: center; font-size: 1rem; color: var(--muted); }
+  .name { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.4rem; }
+  .name img { width: 2.6rem; height: 2.6rem; border-radius: 22%; }
+  h2 { margin: 0; font: 400 2.1rem/1 "IM Fell SC", "EB Garamond", serif; letter-spacing: 0.05em; }
+  .status { display: inline-flex; align-items: center; gap: 0.4rem; font-style: italic; color: var(--muted); }
+  .plate p { margin: 0; }
+  .go { margin-top: auto; padding-top: 0.3rem; }
+  .go a { display: inline-flex; align-items: center; gap: 0.55rem; font: italic 1.2rem/1.3 "IM Fell", serif; }
   .go a:focus-visible { outline: none; }
-  /* The link stretches over the whole card, so the picture leads there too. */
+  /* The link reaches over the whole plate. */
   .go a::after { content: ""; position: absolute; inset: 0; }
 
-  footer { margin-top: clamp(3rem, 8vw, 5rem); padding-bottom: 3rem; color: var(--muted); font-size: 1rem; }
-  .footer-body { padding-top: 2rem; border-top: 1px solid var(--edge); }
-  .footer-body p { margin: 0 0 0.35rem; }
+  footer { max-width: 64rem; margin: clamp(2rem, 6vw, 3.5rem) auto 0; padding: 0 0 3rem; border-top: 1px solid var(--rule); text-align: center; color: var(--muted); font-size: 1.05rem; }
+  footer p { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; margin: 0.3rem 0; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1 class="name" aria-label="MTWABP In: Make the world a better place">
-    <span class="word" aria-hidden="true"><span class="letter">M</span><span class="spelled">Make</span></span>
-    <span class="word" aria-hidden="true"><span class="letter">T</span><span class="spelled">the</span></span>
-    <span class="word" aria-hidden="true"><span class="letter">W</span><span class="spelled">world</span></span>
-    <span class="word" aria-hidden="true"><span class="letter">A</span><span class="spelled">a</span></span>
-    <span class="word" aria-hidden="true"><span class="letter">B</span><span class="spelled">better</span></span>
-    <span class="word" aria-hidden="true"><span class="letter">P</span><span class="spelled">place</span></span>
-    <span class="in" aria-hidden="true">In</span>
-  </h1>
-  <p class="intro">MTWABP In makes apps for everyday life.</p>
-</header>
+<div class="frame">
+  <header class="title">
+    <img class="emblem" src="images/mtwabp-emblem.svg" width="140" height="182" alt="">
+    <h1>MTWABP In</h1>
+    <p class="motto">Make the world a better place</p>
+    <div class="fleuron" aria-hidden="true"><span></span><svg class="ic" width="20" height="20" viewBox="0 0 100 100"><path d="M50 88 C28 70 26 34 50 12 C74 34 72 70 50 88Z" fill="#7FA05A" class="ln" stroke-width="5" stroke-linejoin="round"/><path d="M50 92 L50 22" class="ln" stroke-width="4.5" stroke-linecap="round"/><path d="M50 62 L36 50 M50 62 L64 50 M50 44 L40 35 M50 44 L60 35" class="ln" stroke-width="3" stroke-linecap="round"/></svg><span></span></div>
+    <p class="intro">MTWABP In makes apps for everyday life.</p>
+  </header>
 
-<main class="column">
-  <ul class="apps" aria-label="Our apps">
-    <li class="card">
-      <img class="picture grove"
-           src="grove/images/valley-960.jpg"
-           width="960" height="540"
-           alt="">
-      <div class="body">
-        <div class="head">
+  <main>
+    <ul class="plates" aria-label="Our apps">
+      <li class="plate">
+        <div class="plate-head"><span>Plate I.</span><span>A habit tracker</span></div>
+        <figure>
+          <img src="images/plate-grove.svg" width="300" height="180" alt="An engraving of a seed in the soil, a sprout, a young plant and a sapling, each with its roots.">
+          <figcaption><i>Figs. 1–4.</i> From seed to sapling, as a habit grows day by day.</figcaption>
+        </figure>
+        <div class="name">
           <img src="grove/images/grove-icon.png" width="192" height="192" alt="">
           <div>
             <h2>Grove</h2>
-            <span class="status">On Google Play</span>
+            <span class="status"><svg class="ic" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><g class="ln" stroke-width=".7" fill="#D58A8A"><ellipse cx="10" cy="5.2" rx="3" ry="4.4"/><ellipse cx="10" cy="5.2" rx="3" ry="4.4" transform="rotate(72 10 10)"/><ellipse cx="10" cy="5.2" rx="3" ry="4.4" transform="rotate(144 10 10)"/><ellipse cx="10" cy="5.2" rx="3" ry="4.4" transform="rotate(216 10 10)"/><ellipse cx="10" cy="5.2" rx="3" ry="4.4" transform="rotate(288 10 10)"/></g><circle cx="10" cy="10" r="2.4" fill="#E2B04A" class="ln" stroke-width=".7"/></svg> On Google Play</span>
           </div>
         </div>
         <p>Grow a living valley from your habits. Build good ones and let go of the rest.</p>
-        <p class="go"><a href="grove/">Visit Grove &rarr;</a></p>
-      </div>
-    </li>
-    <li class="card">
-      <img class="picture kolahal"
-           src="images/kolahal-terminal.jpg"
-           width="960" height="978"
-           alt="">
-      <div class="body">
-        <div class="head">
+        <p class="go"><a href="grove/"><svg class="ic" width="34" height="17" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 6.5h7v11H2z" fill="var(--sheet)" class="ln" stroke-width="1"/><path d="M4.3 7v10M6.6 7v10" class="fn" stroke-width=".5"/><path d="M9 8c4-2.4 9.5-2.2 13.5-.6H43.5c3 0 3 5 0 5H27c1.4 1.4 1.2 3.4-.4 4.1 1.1 1.3.4 3.6-1.6 3.6H14c-3 0-5-1.6-5-4z" fill="var(--sheet)" class="ln" stroke-width="1" stroke-linejoin="round"/><path d="M22.5 12.4h4.3M24.6 16.6h2M14 13.5c2 .3 3.4 1 4 2.2" class="fn" stroke-width=".6" fill="none"/></svg> Visit Grove</a></p>
+      </li>
+      <li class="plate">
+        <div class="plate-head"><span>Plate II.</span><span>A launcher</span></div>
+        <figure>
+          <img src="images/plate-kolahal.svg" width="220" height="175" alt="An engraving of a fern frond, and a young frond still curled.">
+          <figcaption><i>Fig. 1.</i> A frond. <i>Fig. 2.</i> A young one, still unfurling.</figcaption>
+        </figure>
+        <div class="name">
           <img src="images/kolahal-icon.svg" width="48" height="48" alt="">
           <div>
             <h2>Kolahal</h2>
-            <span class="status">In testing</span>
+            <span class="status"><svg class="ic" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 19V11" class="ln" stroke-width="1"/><path d="M10 11c-4-1.5-4.5-6 0-9.5 4.5 3.5 4 8 0 9.5z" fill="#D58A8A" class="ln" stroke-width=".8"/><path d="M10 12c-3 0-5-1.4-5.5-3.4M10 12c3 0 5-1.4 5.5-3.4" fill="none" class="ln" stroke-width=".8"/></svg> In testing</span>
           </div>
         </div>
         <p>A keyboard-first terminal launcher for Android. Type a few letters to open an app or run a command.</p>
-        <p class="go"><a href="kolahal/">Visit Kolahal &rarr;</a></p>
-      </div>
-    </li>
-  </ul>
-</main>
+        <p class="go"><a href="kolahal/"><svg class="ic" width="34" height="17" viewBox="0 0 48 24" aria-hidden="true"><path d="M2 6.5h7v11H2z" fill="var(--sheet)" class="ln" stroke-width="1"/><path d="M4.3 7v10M6.6 7v10" class="fn" stroke-width=".5"/><path d="M9 8c4-2.4 9.5-2.2 13.5-.6H43.5c3 0 3 5 0 5H27c1.4 1.4 1.2 3.4-.4 4.1 1.1 1.3.4 3.6-1.6 3.6H14c-3 0-5-1.6-5-4z" fill="var(--sheet)" class="ln" stroke-width="1" stroke-linejoin="round"/><path d="M22.5 12.4h4.3M24.6 16.6h2M14 13.5c2 .3 3.4 1 4 2.2" class="fn" stroke-width=".6" fill="none"/></svg> Visit Kolahal</a></p>
+      </li>
+    </ul>
+  </main>
 
-<footer>
-  <div class="column">
-    <div class="footer-body">
-      <p>Questions or ideas? Write to <a href="mailto:mtwabpin@gmail.com">mtwabpin@gmail.com</a>.</p>
-      <p>&copy; 2026 MTWABP In</p>
-    </div>
-  </div>
-</footer>
+  <footer>
+    <div class="fleuron" aria-hidden="true"><span></span><svg class="ic" width="20" height="20" viewBox="0 0 100 100"><path d="M50 88 C28 70 26 34 50 12 C74 34 72 70 50 88Z" fill="#7FA05A" class="ln" stroke-width="5" stroke-linejoin="round"/><path d="M50 92 L50 22" class="ln" stroke-width="4.5" stroke-linecap="round"/><path d="M50 62 L36 50 M50 62 L64 50 M50 44 L40 35 M50 44 L60 35" class="ln" stroke-width="3" stroke-linecap="round"/></svg><span></span></div>
+    <p><svg class="ic" width="22" height="17" viewBox="0 0 32 24" aria-hidden="true"><rect x="1.5" y="2.5" width="29" height="19" rx="1" fill="var(--sheet)" class="ln" stroke-width="1"/><path d="M1.5 3l14.5 11L30.5 3M1.5 21.5l11-9M30.5 21.5l-11-9" fill="none" class="ln" stroke-width="1"/><circle cx="16" cy="14" r="3.6" fill="#A8402F"/></svg> <span>Questions or ideas? Write to <a href="mailto:mtwabpin@gmail.com">mtwabpin@gmail.com</a>.</span></p>
+    <p>&copy; 2026 MTWABP In</p>
+  </footer>
+</div>
 
 </body>
 </html>
