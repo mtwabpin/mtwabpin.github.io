@@ -1,0 +1,84 @@
+---
+// A note, set like a page of an old field book: the title in small capitals, and the date and
+// tags in italic beneath it.
+import { formatDate, isoDate, tagSlug } from '../lib/content';
+import Base from './Base.astro';
+
+interface Link {
+  href: string;
+  title: string;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: Date;
+  updated?: Date;
+  readingTime?: string;
+  tags?: string[];
+  draft?: boolean;
+  newer?: Link;
+  older?: Link;
+}
+
+const { title, description, date, updated, readingTime, tags = [], draft, newer, older } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <article class="note-page">
+    <header class="note-page__head">
+      <h1 class="page-title">
+        {title}
+        {draft && <span class="draft-badge">draft</span>}
+      </h1>
+      {description && <p class="lede">{description}</p>}
+      {
+        (date || readingTime) && (
+          <p class="byline">
+            {date && <time datetime={isoDate(date)}>{formatDate(date)}</time>}
+            {updated && (
+              <span>
+                updated <time datetime={isoDate(updated)}>{formatDate(updated)}</time>
+              </span>
+            )}
+            {readingTime && <span>{readingTime}</span>}
+          </p>
+        )
+      }
+      {
+        tags.length > 0 && (
+          <ul class="tags" aria-label="Tags">
+            {tags.map((tag) => (
+              <li>
+                <a href={`/tags/${tagSlug(tag)}/`}>{tag}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+    {
+      (newer || older) && (
+        <nav class="turn" aria-label="More notes">
+          {older ? (
+            <a href={older.href} rel="prev">
+              <span>Older</span>
+              {older.title}
+            </a>
+          ) : (
+            <span />
+          )}
+          {newer && (
+            <a href={newer.href} rel="next">
+              <span>Newer</span>
+              {newer.title}
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </article>
+</Base>

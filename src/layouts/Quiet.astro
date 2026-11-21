@@ -1,0 +1,126 @@
+---
+// The quiet pages LeechBlock sends you to: /pause/ for blocked sites (or /pause/lb-custom/, where
+// LeechBlock also says when the block ends), /delayed/lb-custom/ for delayed ones (LeechBlock runs
+// its countdown inside it), and /delayed/, an earlier address that forwards there. They stand alone on purpose: no menu, no links onward, nothing to scroll.
+import { getCollection } from 'astro:content';
+import '../styles/pause.css';
+
+interface Props {
+  mode: 'pause' | 'delayed' | 'forward';
+  title: string;
+  /** The address contains lb-custom, so LeechBlock runs its own script in the page. */
+  leechblock?: boolean;
+}
+
+const { mode, title, leechblock = false } = Astro.props;
+const moments = (await getCollection('pause')).map(({ id, data }) => ({ id, ...data }));
+const fallback = moments.find((m) => m.kind === 'reminder');
+// Embedded as JSON; escaping "<" keeps any text from closing the script tag early.
+const json = JSON.stringify(moments).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content="A moment to pause." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#eef0e6" />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+      // Choose light or dark before anything is painted, as main.ts will, so a dark visit never
+      // flashes pale first: ?look=, then the remembered choice, then dark at night or on a dark system.
+      // Only the query before a blocked address counts, as in main.ts.
+      (() => {
+        const search = location.search.slice(1);
+        const cut = search.search(/https?(:|%3A)/i);
+        const query = new URLSearchParams(cut >= 0 ? search.slice(0, cut) : search);
+        let look = query.get('look');
+        if (look !== 'light' && look !== 'dark') {
+          try {
+            look = localStorage.getItem('pause:look');
+          } catch {
+            look = null;
+          }
+        }
+        if (look !== 'light' && look !== 'dark') {
+          const at = query.get('at');
+          const hour = new Date().getHours();
+          const night = ['morning', 'day', 'evening', 'night'].includes(at) ? at === 'night' : hour >= 22 || hour < 5;
+          look = night || matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (look === 'dark') {
+          document.documentElement.dataset.dark = 'true';
+          document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0f1626');
+        }
+      })();
+    </script>
+  </head>
+  <body class="pause" data-mode={mode}>
+    <canvas class="pause__scene" aria-hidden="true"></canvas>
+    <canvas class="pause__birds" aria-hidden="true" hidden></canvas>
+    <img class="pause__photo" alt="" hidden />
+    <div class="pause__veil" aria-hidden="true"></div>
+
+    <button class="pause__look" type="button" aria-label="Switch between light and dark">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+        <path d="M12 3.5a8.5 8.5 0 0 1 0 17Z" fill="currentColor"></path>
+      </svg>
+    </button>
+
+    <div class="pause__breath" aria-live="polite">
+      <div class="pause__ring" aria-hidden="true"></div>
+      <p class="pause__breath-label"></p>
+    </div>
+
+    <main class="pause__main">
+      <p class="pause__from" hidden></p>
+      {
+        mode === 'pause' && leechblock && (
+          <Fragment>
+            {/* LeechBlock writes the blocked address and, if the block ends, when, into these. */}
+            <span id="lbBlockedURL" hidden />
+            <span id="lbUnblockTime" hidden />
+          </Fragment>
+        )
+      }
+      {
+        mode === 'delayed' && (
+          <div class="pause__countdown" hidden>
+            {/* LeechBlock writes its countdown into these two; the page reflects them. */}
+            <span id="lbDelaySeconds" hidden />
+            <span id="lbCountdownText" hidden />
+            <p class="pause__countdown-text" role="timer" />
+            <div class="pause__progress" aria-hidden="true">
+              <span />
+            </div>
+          </div>
+        )
+      }
+      <figure class="pause__moment">
+        <blockquote><p>{fallback?.kind === 'reminder' && fallback.text}</p></blockquote>
+        <figcaption hidden></figcaption>
+      </figure>
+      <div class="pause__actions">
+        {mode === 'delayed' && <a class="pause__continue" hidden />}
+        {mode === 'delayed' && <button type="button" data-action="stay" hidden>Don't open it</button>}
+        <button type="button" data-action="breathe">Breathe for a minute</button>
+        <button type="button" data-action="rain" aria-pressed="false">Listen to rain</button>
+      </div>
+      <div class="pause__later" aria-live="polite"><p></p></div>
+      <p class="pause__close">Close this tab whenever you're ready.</p>
+    </main>
+
+    <script id="moments" type="application/json" set:html={json}></script>
+    <script>
+      import '../scripts/pause/main';
+      import { setUpOffline } from '../scripts/offline';
+
+      setUpOffline();
+    </script>
+  </body>
+</html>

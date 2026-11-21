@@ -1,10 +1,10 @@
-// Draws MTWABP In's art into images/: the emblem, each app's plate figure,
+// Draws MTWABP In's art into public/images/: the emblem, each app's plate figure,
 // the icon tile and the favicon, as SVG, and _brand/share.html, which
 // make.sh turns into the share picture. Run make.sh rather than this.
 import fs from 'fs';
 import { sprig, seedlings, fern, iconLeaf } from './plants.mjs';
 
-const images = new URL('../images/', import.meta.url);
+const images = new URL('../public/images/', import.meta.url);
 const write = (name, body) => fs.writeFileSync(new URL(name, images), body);
 
 // Lines in sepia on cream, and pale on the dark page; the washes stay.
@@ -30,8 +30,8 @@ write('favicon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 5
 
 // The share picture, a plate of 1200 × 630, for make.sh to photograph.
 fs.writeFileSync(new URL('share.html', import.meta.url), `<!doctype html><html><head><meta charset="utf-8"><style>
-@font-face { font-family: "IM Fell SC"; src: url("../fonts/IMFellEnglishSC.woff2") format("woff2"); }
-@font-face { font-family: "IM Fell"; src: url("../fonts/IMFellEnglish-Italic.woff2") format("woff2"); font-style: italic; }
+@font-face { font-family: "IM Fell SC"; src: url("../public/fonts/IMFellEnglishSC.woff2") format("woff2"); }
+@font-face { font-family: "IM Fell"; src: url("../public/fonts/IMFellEnglish-Italic.woff2") format("woff2"); font-style: italic; }
 body { margin: 0; width: 1200px; height: 630px; overflow: hidden; color: #2E2219; background: #F2EAD8 radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(140, 116, 88, .22)); }
 .og { position: absolute; inset: 22px; border: 4px double #8C7458; }
 .em { position: absolute; left: 76px; top: 64px; width: 170px; }
@@ -41,6 +41,6 @@ body { margin: 0; width: 1200px; height: 630px; overflow: hidden; color: #2E2219
 .apps { position: absolute; left: 296px; top: 392px; display: flex; gap: 48px; align-items: center; font: 40px "IM Fell SC", serif; letter-spacing: .05em; }
 .apps span { display: flex; gap: 16px; align-items: center; } .apps img { width: 64px; border-radius: 14px; }
 .no { position: absolute; right: 40px; top: 26px; font: italic 30px "IM Fell", serif; color: #6E5B48; }
-</style></head><body><div class="og"><span class="no">Plate the first.</span><img class="em" src="../images/mtwabp-emblem.svg" alt=""><div class="t">MTWABP In</div><div class="m">Make the world a better place</div><div class="r"></div><div class="apps"><span><img src="../grove/images/grove-icon.png" alt="">Grove</span><span><img src="../images/kolahal-icon.svg" alt="">Kolahal</span></div></div></body></html>
+</style></head><body><div class="og"><span class="no">Plate the first.</span><img class="em" src="../public/images/mtwabp-emblem.svg" alt=""><div class="t">MTWABP In</div><div class="m">Make the world a better place</div><div class="r"></div><div class="apps"><span><img src="../public/grove/images/grove-icon.png" alt="">Grove</span><span><img src="../public/images/kolahal-icon.svg" alt="">Kolahal</span></div></div></body></html>
 `);
 console.log('drew the emblem, both plates, the icon, the favicon and share.html');

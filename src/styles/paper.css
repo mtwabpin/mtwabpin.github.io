@@ -1,0 +1,79 @@
+/* MTWABP In's own type, from old printed plates: IM Fell for titles and
+   captions, EB Garamond to read. Both are trimmed to Latin letters; the
+   _brand folder says how. Shared by the home page and the notes. */
+@font-face {
+  font-family: "IM Fell SC";
+  src: url("/fonts/IMFellEnglishSC.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "IM Fell";
+  src: url("/fonts/IMFellEnglish-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/fonts/EBGaramond-Italic.woff2") format("woff2");
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Cream paper and sepia ink; at night, dark paper and pale ink. */
+:root {
+  --paper: #F2EAD8;
+  --sheet: #FAF5E9;
+  --rule: #8C7458;
+  --ink: #2E2219;
+  --muted: #6E5B48;
+  --accent: #8E3B2A;
+  --line: #3B2A1E;
+  --fine: #5A4636;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1C1612;
+    --sheet: #262019;
+    --rule: #7A6550;
+    --ink: #EDE3CE;
+    --muted: #B7A68C;
+    --accent: #E3A184;
+    --line: #E6D9BF;
+    --fine: #BFAE92;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  /* The paper's grain, and its edges a shade darker, as on an old page. */
+  background-color: var(--paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .27 0 0 0 0 .17 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 50% 40%, transparent 55%, color-mix(in srgb, var(--rule) 22%, transparent));
+  font: 1.2rem/1.6 "EB Garamond", Georgia, serif;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ln { stroke: var(--line); }
+.fn { stroke: var(--fine); }
+.ic { flex: none; vertical-align: middle; }
+
+/* The whole page is one plate, in a double rule. */
+.frame {
+  margin: clamp(0.5rem, 2vw, 1.5rem);
+  padding: clamp(1.25rem, 4vw, 2.5rem) clamp(0.75rem, 3vw, 2rem) 0;
+  border: 3px double var(--rule);
+}
+
+.fleuron { display: flex; align-items: center; justify-content: center; gap: 0.8rem; max-width: 22rem; margin: 1.4rem auto; }
+.fleuron span { flex: 1; border-top: 1px solid var(--rule); }

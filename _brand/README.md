@@ -1,17 +1,17 @@
 # MTWABP In's look
 
-The site's own page (`index.html`) is drawn as a botanical plate: cream
+The site's own pages (`src/pages/index.astro` and the notes) are drawn as a botanical plate: cream
 paper, engraved plants with a hand-coloured wash, IM Fell and EB Garamond.
-Each app's page keeps its own look: Grove's under `grove/`, and Kolahal's
+Each app's page keeps its own look: Grove's under `public/grove/`, and Kolahal's
 site at `/kolahal/`, published from its own repo.
 
-GitHub Pages leaves this folder out, as its name starts with `_`.
+This folder isn't published: the build only serves `public/` and what `src/` makes.
 
 ## The art
 
 `plants.mjs` draws the plants in code: fine sepia lines, hatching on the
 shaded side, and a wash of colour set a little off the lines. `make.mjs`
-uses it to write, into `images/`:
+uses it to write, into `public/images/`:
 
 - `mtwabp-emblem.svg`: the sprig in a double oval, at the top of the page;
 - `plate-grove.svg`: Plate I, a seed growing to a sapling in four figures;
@@ -29,14 +29,14 @@ Each plant has a fixed seed, so it comes out the same each time; change
 the seed in `make.mjs` for another drawing of it.
 
 A new app gets a plate of its own: a plant for its figure in
-`plants.mjs`, its SVG in `make.mjs`, and a plate on `index.html`
+`plants.mjs`, its SVG in `make.mjs`, and a plate on `src/pages/index.astro`
 numbered after the last.
 
 ## The fonts
 
 IM Fell English (italic and small capitals) and EB Garamond (regular and
-italic), under the SIL Open Font License (`fonts/OFL-IMFell.txt`,
-`fonts/OFL-EBGaramond.txt`), from github.com/google/fonts. EB Garamond is
+italic), under the SIL Open Font License (`public/fonts/OFL-IMFell.txt`,
+`public/fonts/OFL-EBGaramond.txt`), from github.com/google/fonts. EB Garamond is
 fixed at its regular weight, and all four are trimmed to Latin letters and
 turned into WOFF2 with fontTools:
 

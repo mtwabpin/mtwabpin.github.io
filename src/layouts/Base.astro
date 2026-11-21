@@ -1,0 +1,98 @@
+---
+// The frame for the notes and their indexes: the home page's paper and double rule, with a small
+// masthead in place of its title. The quiet pages (/pause/, /delayed/) use Quiet.astro instead.
+import '../styles/paper.css';
+import '../styles/notes.css';
+import { site } from '../site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const pageTitle = title ? `${title} | ${site.title}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const nav = [
+  { label: 'Notes', href: '/posts/' },
+  { label: 'Tags', href: '/tags/' },
+  { label: 'RSS', href: '/rss.xml' },
+];
+const current = (href: string) => Astro.url.pathname.startsWith(href);
+const leaf =
+  '<path d="M50 88 C28 70 26 34 50 12 C74 34 72 70 50 88Z" fill="#7FA05A" class="ln" stroke-width="5" stroke-linejoin="round"/><path d="M50 92 L50 22" class="ln" stroke-width="4.5" stroke-linecap="round"/><path d="M50 62 L36 50 M50 62 L64 50 M50 44 L40 35 M50 44 L60 35" class="ln" stroke-width="3" stroke-linecap="round"/>';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#F2EAD8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1C1612" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/images/mtwabp-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="application/rss+xml" title={site.title} href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href="/fonts/IMFellEnglishSC.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content={title ? 'article' : 'website'} />
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:title" content={title ?? site.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/images/mtwabp-share.jpg', Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the page</a>
+    <div class="frame">
+      <header class="masthead">
+        <a class="masthead__name" href="/">
+          <img src="/images/mtwabp-emblem.svg" width="140" height="182" alt="" />
+          <span>MTWABP In</span>
+        </a>
+        <nav aria-label="Notes">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={current(item.href) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <p class="offline-note" hidden>You're offline. This is the copy saved on this device.</p>
+      </header>
+
+      <main id="main">
+        <slot />
+      </main>
+
+      <footer class="colophon">
+        <div class="fleuron" aria-hidden="true">
+          <span></span><svg class="ic" width="20" height="20" viewBox="0 0 100 100" set:html={leaf} /><span></span>
+        </div>
+        <p>Questions or ideas? Write to <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+        <p>Saved on your device after your first visit, so these pages open offline too.</p>
+        <p>&copy; 2026 MTWABP In</p>
+      </footer>
+    </div>
+
+    <script>
+      import { setUpCodeBlocks } from '../scripts/code-blocks';
+      import { setUpOffline } from '../scripts/offline';
+
+      setUpCodeBlocks();
+      setUpOffline();
+    </script>
+  </body>
+</html>

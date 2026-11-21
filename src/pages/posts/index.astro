@@ -1,0 +1,15 @@
+---
+import EntryList from '../../components/EntryList.astro';
+import Base from '../../layouts/Base.astro';
+import { getPosts } from '../../lib/content';
+
+const posts = await getPosts();
+---
+
+<Base title="Notes" description="Everything MTWABP In has written, newest first.">
+  <div>
+    <h1 class="page-title">Notes</h1>
+    {posts.length === 0 && <p class="empty">Nothing written yet. New notes will appear here.</p>}
+  </div>
+  <EntryList entries={posts} base="/posts/" byYear />
+</Base>

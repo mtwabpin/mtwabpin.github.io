@@ -8,7 +8,7 @@ set -euo pipefail
 
 cd "$(dirname "${BASH_SOURCE[0]}")"
 node make.mjs
-img=../images
+img=../public/images
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
@@ -33,4 +33,4 @@ magick "$tmp/icon.png" -resize 180x180 "$img/mtwabp-180.png"
 magick "$tmp/leaf.png" -resize 32x32 "$img/favicon-32.png"
 shoot share.html 1200,630 "$tmp/share.png"
 magick "$tmp/share.png" -strip -quality 88 "$img/mtwabp-share.jpg"
-echo "make.sh: wrote the icons, the favicon and images/mtwabp-share.jpg"
+echo "make.sh: wrote the icons, the favicon and public/images/mtwabp-share.jpg"

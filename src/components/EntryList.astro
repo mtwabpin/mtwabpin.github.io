@@ -1,0 +1,46 @@
+---
+// An index of notes, like the contents page of an old book: title, a dotted leader, the date.
+// `byYear` sets them under a year.
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, isoDate } from '../lib/content';
+
+type Entry = CollectionEntry<'posts'>;
+
+interface Props {
+  entries: Entry[];
+  /** URL prefix, e.g. "/posts/". */
+  base: string;
+  byYear?: boolean;
+}
+
+const { entries, base, byYear = false } = Astro.props;
+
+const years = new Map<number, Entry[]>();
+for (const entry of entries) {
+  const year = entry.data.date.getUTCFullYear();
+  years.set(year, [...(years.get(year) ?? []), entry]);
+}
+const groups = byYear ? [...years] : [[0, entries] as const];
+---
+
+{
+  groups.map(([year, group]) => (
+    <section class="contents">
+      {byYear && <h2 class="contents__year">{year}</h2>}
+      <ol>
+        {group.map((entry) => (
+          <li>
+            <p class="contents__line">
+              <a href={`${base}${entry.id}/`}>{entry.data.title}</a>
+              {entry.data.draft && <span class="draft-badge">draft</span>}
+              <time datetime={isoDate(entry.data.date)}>
+                {byYear ? formatDate(entry.data.date).replace(` ${year}`, '') : formatDate(entry.data.date)}
+              </time>
+            </p>
+            {entry.data.description && <p class="contents__desc">{entry.data.description}</p>}
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))
+}
