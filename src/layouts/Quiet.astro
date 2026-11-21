@@ -17,6 +17,12 @@ const moments = (await getCollection('pause')).map(({ id, data }) => ({ id, ...d
 const fallback = moments.find((m) => m.kind === 'reminder');
 // Embedded as JSON; escaping "<" keeps any text from closing the script tag early.
 const json = JSON.stringify(moments).replace(/</g, '\\u003c');
+
+const shareTitle = mode === 'pause' ? 'A moment to pause' : 'A moment first';
+const shareDescription =
+  mode === 'pause'
+    ? 'A quiet page to land on instead of a blocked site: a calm scene for the time of day, one reminder, a minute of breathing and the sound of rain.'
+    : 'A quiet page that slows down a site before it opens: a calm scene, one reminder, a minute of breathing and the sound of rain.';
 ---
 
 <!doctype html>
@@ -29,6 +35,20 @@ const json = JSON.stringify(moments).replace(/</g, '\\u003c');
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#eef0e6" />
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+    {/* What a shared link shows: the evening mountains with one of the page's reminders. */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MTWABP In" />
+    <meta property="og:title" content={shareTitle} />
+    <meta property="og:description" content={shareDescription} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:image" content={new URL('/images/pause-share.jpg', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Misty mountains at sunset, with the words: This pause is the practice. You're doing it right now."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       document.documentElement.classList.add('js');
       // Choose light or dark before anything is painted, as main.ts will, so a dark visit never
