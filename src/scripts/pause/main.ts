@@ -122,13 +122,50 @@ const savedLook = (): Look | null => {
   }
 };
 
-const saveLook = (look: Look) => {
+/** Remembers the look; false when it can't be remembered (private browsing). */
+const saveLook = (look: Look): boolean => {
   try {
     localStorage.setItem('pause:look', look);
+    return localStorage.getItem('pause:look') === look;
   } catch {
     // Not remembered in private browsing; it still applies to this visit.
+    return false;
   }
 };
+
+/**
+ * What a reload for the other look keeps: the same scene, drawn from the same seed, the same moment,
+ * and the line about where you were heading (by then gone from the address bar).
+ */
+interface Carry {
+  scene: SceneName;
+  seed: string;
+  moment: string;
+  note?: string;
+  at: number;
+}
+
+const CARRY = 'pause:carry';
+
+/** Read once: a carry only counts for the load that follows it, within a few seconds. */
+function takeCarry(): Carry | undefined {
+  try {
+    const carry = JSON.parse(sessionStorage.getItem(CARRY) ?? 'null') as Carry | null;
+    sessionStorage.removeItem(CARRY);
+    return carry && Date.now() - carry.at < 10000 ? carry : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function leaveCarry(carry: Carry): boolean {
+  try {
+    sessionStorage.setItem(CARRY, JSON.stringify(carry));
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 /** Dark is always the night garden. Light follows the clock, and stays at dusk late at night. */
 const paletteFor = (look: Look, period: Period): Palette =>
@@ -184,7 +221,10 @@ function start() {
   let palette = paletteFor(look, period);
 
   const forTime = moments.filter((m) => !m.time || m.time === period);
-  const moment = moments.find((m) => m.id === params.get('moment')) ?? pick(forTime, (m) => m.id, 'recent', 12);
+  // Back from switching the look: show the same moment again, without counting it as a new visit.
+  const carry = takeCarry();
+  const moment =
+    moments.find((m) => m.id === (params.get('moment') ?? carry?.moment)) ?? pick(forTime, (m) => m.id, 'recent', 12);
   showMoment(moment);
 
   // Tidy the address bar so the blocked address isn't kept in history or bookmarks. Pages LeechBlock
@@ -292,13 +332,21 @@ function start() {
     }
   }
 
+  // The line about where you were heading, if the address it came from is gone after the reload.
+  if (carry?.note && note.hidden) say(carry.note);
+
   // The backdrop: the visitor's own photo, or a freshly drawn scene.
   const canvas = $<HTMLCanvasElement>('.pause__scene');
   const birdCanvas = $<HTMLCanvasElement>('.pause__birds');
   const photographed = moment.kind === 'image' && moment.src;
   const requested = params.get('scene') as SceneName | null;
-  const scene = requested && SCENES.includes(requested) ? requested : pick(SCENES, (s) => s, 'scenes', 1);
-  const seed = String(Math.random());
+  const scene =
+    requested && SCENES.includes(requested)
+      ? requested
+      : carry && SCENES.includes(carry.scene)
+        ? carry.scene
+        : pick(SCENES, (s) => s, 'scenes', 1);
+  const seed = carry?.seed ?? String(Math.random());
   // The scene breathes slowly on its own, and with you while the breathing guide runs.
   const air = sceneBreath();
   let stopScene = () => {};
@@ -331,7 +379,18 @@ function start() {
 
   toggle.addEventListener('click', () => {
     look = look === 'dark' ? 'light' : 'dark';
-    saveLook(look);
+    const saved = saveLook(look);
+    // Start the page again in the new look, with the same scene, seed and words: redrawing in place
+    // changes the colours, the scene and the veil at different speeds. A reload can't help when the
+    // look can't be remembered, or when ?look= in the address would choose it again.
+    const reloads =
+      saved &&
+      !params.has('look') &&
+      leaveCarry({ scene, seed, moment: moment.id, note: note.hidden ? undefined : note.textContent ?? undefined, at: Date.now() });
+    if (reloads) {
+      location.reload();
+      return;
+    }
     applyLook();
     // The new scene surfaces gently from the ground colour.
     if (!still && !photographed) canvas.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, easing: 'ease-out' });
