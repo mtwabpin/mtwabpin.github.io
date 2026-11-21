@@ -272,6 +272,11 @@
   transform: translate(-50%, -50%);
   opacity: 0;
   visibility: hidden;
+}
+
+/* The fade only once the page is ready: on a first visit the stylesheet can arrive after the
+   browser has already styled the page once, and the ring would fade out in plain view. */
+.is-ready .pause__breath {
   transition: opacity 1s, visibility 1s;
 }
 
