@@ -307,7 +307,7 @@
 <main id="text" class="column">
   <h1>Weather and seasons</h1>
   <p class="lead">Your place and your climate, the seasons, rain and rainbows, the real sun and moon, and shooting stars.</p>
-  <p class="updated">Updated <time datetime="2026-11-20">20 November 2026</time></p>
+  <p class="updated">Updated <time datetime="2026-11-21">21 November 2026</time></p>
   <div class="intro">
 <p>The valley has real time of day, real seasons and its own weather. This page explains how they work.</p>
 <ul>
@@ -377,6 +377,7 @@
 <li>It uses latitude 25° north and a longitude from the time zone (the offset in minutes ÷ 4).</li>
 <li>For India (UTC+5:30) this lands in the monsoon climate.</li>
 <li>The guess is always north of the equator. If you live in the south, choose your city, or your seasons will be six months off.</li>
+<li>A guess keeps the snowy winter. In a warm place, choose your city for its mild winter (see <a href="#three-climates">Three climates</a>). <span class="since">Coming in 1.11.1</span></li>
 </ul></li>
 </ul>
 </section>
@@ -410,6 +411,12 @@
 </div></li>
 <li><p>The monsoon area covers India, Pakistan, Bangladesh, Nepal, Sri Lanka, Myanmar and nearby places. North of latitude 29.5° it stops at longitude 79°, so most of Tibet is not in it.</p></li>
 <li><p>The northern and southern climates have four seasons. The monsoon climate has its own four.</p></li>
+<li><p>In a warm place, the four seasons end in a mild winter, with no snow in the valley, as in the monsoon climate. <span class="since">Coming in 1.11.1</span></p>
+<ul>
+<li>A warm place is within 35° of the equator, north or south, outside the monsoon area: such as Sydney, Singapore, Cairo or Los Angeles. London, New York, Tokyo and Melbourne keep their snowy winter.</li>
+<li>It needs your city, or coordinates. With a guess from your time zone, the valley keeps its snowy winter, as the guess puts every place at 25° north.</li>
+<li>A year you choose under <a href="#choose-your-seasons">Choose your seasons</a> keeps its own winter, so a warm place can still have snow.</li>
+</ul></li>
 </ul>
 <section id="choose-your-seasons" class="level3">
 <h3>Choose your seasons <span class="since">Added in 1.3</span></h3>
@@ -422,6 +429,7 @@
 <li><strong>Monsoon</strong>: a hot summer, the monsoon rains, the green weeks after them and a mild winter.</li>
 </ul></li>
 <li>It suits places the map gets wrong. Kashmir and Himachal are in the monsoon area above, but their winters bring snow: choose <strong>Four seasons</strong> for it.</li>
+<li>In a warm place, <strong>As where you live</strong> names its mild winter, such as "Four seasons, southern, mild winter, for Sydney, Australia", and says "Spring, summer, autumn and a mild winter with no snow". For a snowy winter, choose <strong>Four seasons</strong>, or <strong>Four seasons, southern</strong>. <span class="since">Coming in 1.11.1</span></li>
 <li>It also lets you see a year you have never lived, with its own weather and its own things to find on the Unlocked page.</li>
 <li>Only the seasons change. The sun and the moon still rise and set where you live.</li>
 <li>The choice goes into your backups, like your other settings.</li>
@@ -460,6 +468,9 @@
 </tbody>
 </table>
 </div>
+<ul>
+<li>In a warm place, north or south, winter is a mild winter, with no snow (see <a href="#three-climates">Three climates</a>). <span class="since">Coming in 1.11.1</span></li>
+</ul>
 </section>
 <section id="southern-climate" class="level3">
 <h3>Southern climate</h3>
@@ -553,16 +564,20 @@
 <ul>
 <li><strong>Spring</strong>: fresh green grass, drifts of wildflowers and pink petals falling. Oaks flower pink.</li>
 <li><strong>Summer</strong>: deep green grass and summer flowers. Oaks flower cream, and seed heads nod on the tall grass.</li>
-<li><strong>Autumn</strong>: orange, gold and red trees on the hills, and falling leaves. Leaves lie on the meadow and under the oaks. Ferns and sunflowers turn autumn colours; pines stay green.</li>
-<li><strong>Winter</strong> (northern and southern): snow covers the meadow and the hills, with grass tips poking through. Snow lies on the mountains, the bridge and the plants, the river's edges freeze, and snowflakes fall.
+<li><strong>Autumn</strong>: orange, gold and red trees on the hills, and falling leaves. Leaves lie on the meadow and under the oaks. Ferns turn autumn colours, and sunflowers keep their golden petals over olive leaves; pines stay green.</li>
+<li><strong>Winter</strong> (northern and southern, outside warm places): snow covers the meadow and the hills, with grass tips poking through. Snow lies on the mountains, the bridge and the plants, the river's edges freeze, and snowflakes fall.
 <ul>
+<li>The snow falls with the clouds: thickest while today's habits are left, and lighter once they are done. On Christmas's festival days, under their clear sky, it falls in full. At night the flakes are a moonlit blue-grey, as the rain is. <span class="since">Coming in 1.11.1</span></li>
 <li>There are no butterflies, no fireflies and no jumping trout in this winter.</li>
 </ul></li>
 <li>After 100 days of keeping your habits, small warm lights hang along the bridge's rail each winter, the mild winter too, and glow after dark (see <a href="achievements.html#rewards-for-steady-care">Rewards for steady care</a>). <span class="since">Added in 1.7</span></li>
 <li><strong>Hot summer</strong> (monsoon climate): dry, sun-bleached grass the colour of straw.</li>
 <li><strong>Monsoon</strong>: the greenest grass of the year, and rain on most days. Wildflowers bloom in the grass. <span class="since">Added in 1.8</span></li>
 <li><strong>After the rains</strong>: green grass, wildflowers and some rain. <span class="since">Added in 1.8</span></li>
-<li><strong>Mild winter</strong> (monsoon climate): cool green ground. No snow falls in the valley.</li>
+<li><strong>Mild winter</strong> (monsoon climate): cool green ground. No snow falls in the valley.
+<ul>
+<li>A warm place's winter is a mild winter too (see <a href="#three-climates">Three climates</a>). <span class="since">Coming in 1.11.1</span></li>
+</ul></li>
 <li>The mountains with your trails keep some snow on top all year. They have the most in winter.
 <ul>
 <li>With <a href="how-it-works.html#ridge-mountains">Ridge mountains</a> on, the mountains are misty ridges with pines, and have no snow in any season. <span class="since">Added in 1.7</span></li>
@@ -651,7 +666,7 @@
 <td>light to medium</td>
 </tr>
 <tr>
-<td>Winter</td>
+<td>Snowy winter</td>
 <td>never</td>
 <td>-</td>
 <td>-</td>
@@ -677,6 +692,7 @@
 <li>Only habits you build count, and today's tasks <span class="since">Added in 1.3</span>: tasks due today, or moved on from a day that has passed. On a day when nothing is due, the rain falls as planned.</li>
 <li>On a festival's days, no rain falls at all, and so no rainbow comes either (see <a href="#festivals">Festivals</a>). <span class="since">Coming in 1.11</span></li>
 <li>Rain always brings heavy, grey clouds, and the sun shows only as a pale disc.</li>
+<li>The rain greys the sky too. At night it hides the stars, and the moon shows only as a pale disc, as the sun does. Birds all but fade into it. <span class="since">Coming in 1.11.1</span></li>
 <li>Puddles form on the meadow and rings spread on the river.</li>
 <li>In a heavy shower, the rain hides the falling leaves, petals and snow.</li>
 <li>Rain falls at night too.</li>
@@ -717,12 +733,14 @@
 </ul></li>
 <li>Rain adds heavy clouds on top of this.</li>
 <li>Clouds turn warm at sunrise and sunset, and dark blue-grey at night.</li>
+<li>A cloud passing in front of a bright moon shines silver near it. <span class="since">Coming in 1.11.1</span></li>
 </ul>
 </section>
 <section id="the-sun-the-moon-and-the-time-of-day" class="level2">
 <h2>The sun, the moon and the time of day</h2>
 <ul>
 <li>The valley follows the real clock. Morning, day, evening and night have their own light.</li>
+<li>The light comes from the sun's side. In the morning the mountains are lit from the left, and shadows fall to the right. In the afternoon they are lit from the right, and shadows fall to the left. <span class="since">Coming in 1.11.1</span></li>
 <li>The sun and the moon are where they really are in your sky.
 <ul>
 <li>You look toward the south (toward the north if you live south of the equator). The sun rises on the left and sets on the right.</li>
@@ -738,7 +756,10 @@
 <ul>
 <li>The sun rises at your real sunrise and sets at your real sunset. The colours of dawn and dusk follow the real sun, not fixed hours. In summer the evening light comes later; in winter it comes earlier.</li>
 <li>At sunrise and sunset the snow and high rock of the trail mountains glow rose, as real peaks do, most on the side toward the sun. A cloudy sky hides most of it. <span class="since">Added in 1.3</span></li>
-<li>The moon is big, and it shows its real phase: new moon, crescent, half, and full moon. By day it is pale.</li>
+<li>The moon is big, and it shows its real phase: new moon, crescent, half, and full moon. By day it is pale.
+<ul>
+<li>By day, as in the real sky, a half moon shows only faintly, and a thin crescent is lost in the daylight. <span class="since">Coming in 1.11.1</span></li>
+</ul></li>
 </ul>
 <div class="shots" style="--n: 4">
 <figure class="shot">
@@ -759,9 +780,12 @@
 </figure>
 </div>
 <ul>
-<li>At night there are stars, and, except in winter or rain, fireflies.</li>
+<li>At night there are stars, and, except in winter, fireflies. In the rain there are neither.</li>
 <li>After dark, a lantern glows on each of the four posts at the ends of the bridge. <span class="since">Added in 1.4</span></li>
-<li>Zen mode has a taller sky. On a clear night it shows the Milky Way. By day a hawk circles there. A wide window, with the valley beside your habits, shows them too.</li>
+<li>Zen mode has a taller sky. On a clear night it shows the Milky Way. By day a hawk circles there. A wide window, with the valley beside your habits, shows them too.
+<ul>
+<li>A bright moon high in the sky washes out the Milky Way, as in a real sky, so it shines best on a dark night. <span class="since">Coming in 1.11.1</span></li>
+</ul></li>
 <li>The "Your valley" home-screen widget shows a day picture of your valley from 7 am to 7 pm, and a night picture with the real moon the rest of the time.</li>
 </ul>
 </section>
@@ -900,6 +924,7 @@
 <li><strong>A snowman</strong>, in a snowy winter: one piece for each day you keep a habit from 1 December. First the base, then the body, the head with its face, the scarf and arms, and last the hat, so five days kept finish him. He stays until winter ends, at the end of February.
 <ul>
 <li>Only the four seasons of the north have a snowy winter in December. In the southern climate's summer and the monsoon climate's mild winter, there is no snowman.</li>
+<li>A warm place in the north has a mild winter, so it has no snowman either, and no snow on the tree. <span class="since">Coming in 1.11.1</span></li>
 </ul></li>
 <li><strong>Lanterns on the trails</strong>: on each habit you are letting go of, a small lantern stands beside its trail for each urge you resist from 1 December, never higher than the climber has ever reached and never by a milestone's flag. They stay dark until Christmas Eve. A slip adds none and takes none away.
 <ul>
@@ -925,7 +950,7 @@
 <ul>
 <li>a wreath hangs on the cottage door;</li>
 <li>coloured lights hang along the edge of the cottage's roof, and twinkle at night;</li>
-<li>fir garlands with red berries hang along the bridge's rail, where your valley shows its bridge. The bridge's own warm lights still come only with 100 days of care (see <a href="achievements.html#rewards-for-steady-care">Rewards for steady care</a>).</li>
+<li>fir garlands with red berries hang along the bridge's rail. The bridge's own warm lights still come only with 100 days of care (see <a href="achievements.html#rewards-for-steady-care">Rewards for steady care</a>).</li>
 </ul></li>
 <li>On Christmas Eve night, in a snowy winter, a little more snow falls, and smoke rises from the cottage chimney, however far the cottage has grown.</li>
 <li>In zen mode, with its valley sounds on, you hear one soft bell, far off, at dusk on Christmas Eve, as the star lights. It is the only sound Christmas makes, and every sound still starts off.</li>
