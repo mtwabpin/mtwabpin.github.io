@@ -35,7 +35,7 @@ The quiet pages LeechBlock NG can send you to instead of a blocked site, with a 
 - Delayed sites (LeechBlock 1.7+): `https://mtwabpin.github.io/delayed/lb-custom/?$S&$U`
 - Broad block patterns: add `+mtwabpin.github.io` so these pages aren't blocked too.
 - Code: `src/layouts/Quiet.astro`, `src/scripts/pause/`, `src/styles/pause.css`. Quotes, reminders and photos: `src/content/pause.yaml` (photos in `public/pause/`).
-- Preview with `/pause/?scene=pond&at=night&look=light&moment=urge-wave` (`scene`: `mountains`, `pond` or `garden`; `at`: `morning`, `day`, `evening` or `night`; `look`: `light` or `dark`; `later=5` shows the three-minute line after 5 seconds).
+- Preview with `/pause/?scene=pond&at=night&look=light&moment=urge-wave` (`scene`: `mountains`, `pond`, `dunes` or `garden`; `at`: `morning`, `day`, `evening` or `night`; `look`: `light` or `dark`; `later=5` shows the three-minute line after 5 seconds).
 
 ## Offline
 

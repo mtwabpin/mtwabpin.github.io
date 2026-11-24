@@ -5,10 +5,11 @@
 // each shaded with one soft gradation, the colours changing with distance and the time of day.
 import { makeGarden } from '../../lib/garden';
 import { flyBirds } from './birds';
+import { drawDunes } from './dunes';
 
 export type Period = 'morning' | 'day' | 'evening' | 'night';
-export type SceneName = 'mountains' | 'pond' | 'garden';
-export const SCENES: SceneName[] = ['mountains', 'pond', 'garden'];
+export type SceneName = 'mountains' | 'pond' | 'dunes' | 'garden';
+export const SCENES: SceneName[] = ['mountains', 'pond', 'dunes', 'garden'];
 
 export interface Palette {
   dark: boolean;
@@ -27,6 +28,16 @@ export interface Palette {
   /** The pond from the far shore to close by, and the rings rain leaves on it. */
   water: [string, string, string];
   ripple: string;
+  /** The dunes, which have a deeper sky of their own. */
+  dunes: {
+    sky: [string, string, string];
+    haze: string;
+    /** Sand in the light and in the shade, each far off and nearby. */
+    lit: [string, string];
+    shade: [string, string];
+    /** Where the sun or moon stands on its way from the left horizon (0) to the right one (1): between these. */
+    arc: [number, number];
+  };
   /** The raked garden: gravel, the shaded and lit sides of its grooves, stones, and their shadows. */
   sand: string;
   rake: string;
@@ -53,6 +64,13 @@ export const PALETTES: Record<Period, Palette> = {
     mist: 0.45,
     water: ['#f0dcd0', '#cfdbe3', '#b7cad8'],
     ripple: 'rgba(60, 84, 104, 0.32)',
+    dunes: {
+      sky: ['#b8cade', '#e7d7db', '#fad9bc'],
+      haze: '#fae4d3',
+      lit: ['#f7d8bc', '#f4c798'],
+      shade: ['#cebdc5', '#9c8ea7'],
+      arc: [0.06, 0.2],
+    },
     sand: '#ece4d6',
     rake: '#cfc4b0',
     rakeLight: '#f8f3e8',
@@ -75,6 +93,13 @@ export const PALETTES: Record<Period, Palette> = {
     mist: 0.4,
     water: ['#dfe9df', '#b9d3d8', '#a3c3cc'],
     ripple: 'rgba(48, 84, 84, 0.3)',
+    dunes: {
+      sky: ['#98c2d8', '#c5dde1', '#f1ecd5'],
+      haze: '#f6eed9',
+      lit: ['#f3e2c1', '#eed19a'],
+      shade: ['#dac4a8', '#c19c7a'],
+      arc: [0.3, 0.44],
+    },
     sand: '#ebe6d8',
     rake: '#cdc6b2',
     rakeLight: '#f7f4ea',
@@ -97,6 +122,13 @@ export const PALETTES: Record<Period, Palette> = {
     mist: 0.4,
     water: ['#f0cdb0', '#c9b4bd', '#a9a3bd'],
     ripple: 'rgba(70, 60, 90, 0.3)',
+    dunes: {
+      sky: ['#8e8bb7', '#dc9ea0', '#fbc185'],
+      haze: '#f6caac',
+      lit: ['#f4ba8e', '#eb9a65'],
+      shade: ['#be929c', '#92799c'],
+      arc: [0.8, 0.94],
+    },
     sand: '#f0dfcc',
     rake: '#d3bca8',
     rakeLight: '#fbeedd',
@@ -119,6 +151,13 @@ export const PALETTES: Record<Period, Palette> = {
     mist: 0.35,
     water: ['#22304f', '#101a30', '#0c1428'],
     ripple: 'rgba(190, 208, 236, 0.2)',
+    dunes: {
+      sky: ['#0a1023', '#161f3a', '#2e3b5f'],
+      haze: '#384567',
+      lit: ['#425179', '#3c4c74'],
+      shade: ['#1a2440', '#0c1224'],
+      arc: [0.68, 0.84],
+    },
     sand: '#1a2238',
     rake: '#121930',
     rakeLight: '#2c3856',
@@ -707,6 +746,133 @@ function pond(s: Stage): Scene {
   };
 }
 
+/** The way up a dune's long side, from its foot (0) to its top (1): long and round, as in dunes.frag. */
+const climb = (a: number) => 0.75 * a * a * (3 - 2 * a) + 0.25 * a;
+
+/**
+ * One long dune, with ranges of dunes and far mesas behind it. Every dune has a side in the light and a
+ * side in the shade, and a caravan climbs the long one once an hour. Nothing rises or sways here: the
+ * light swells with the breath. Returns nothing where the browser can't draw it (see dunes.ts).
+ */
+function dunes(s: Stage): Scene | undefined {
+  const { ctx, w, h, p, rand } = s;
+  const d = p.dunes;
+  const rgb = (hex: string) => channels(hex).map((v) => v / 255);
+  // The page's veil is solid from 84% of the way down, so the picture stops there.
+  const foot = Math.ceil(h * 0.84);
+  const view = {
+    dark: p.dark ? 1 : 0,
+    arc: d.arc[0] + rand() * (d.arc[1] - d.arc[0]),
+    // Each visit looks at another stretch of each of the three rows of dunes.
+    shift: [rand() * 40, rand() * 40, rand() * 40],
+    sky: rgb(d.sky[0]),
+    mid: rgb(d.sky[1]),
+    horizonSky: rgb(d.sky[2]),
+    haze: rgb(d.haze),
+    litFar: rgb(d.lit[0]),
+    litNear: rgb(d.lit[1]),
+    shadeFar: rgb(d.shade[0]),
+    shadeNear: rgb(d.shade[1]),
+    glow: rgb(p.glow),
+    disc: rgb(p.sun),
+  };
+  // The scene is painted twice, on an empty breath and on a full one. Its shapes are the same in both and
+  // only the light differs, so each frame shows the second through the first, as far as the breath is in.
+  const picture = (breath: number) => {
+    const made = drawDunes(ctx.canvas.width, ctx.canvas.height, Math.min(ctx.canvas.height, Math.ceil(foot * s.dpr)), { ...view, breath });
+    return (
+      made &&
+      bake(s, (c) => {
+        c.fillStyle = d.haze;
+        c.fillRect(0, 0, w, h);
+        c.setTransform(1, 0, 0, 1, 0, 0);
+        c.drawImage(made, 0, 0);
+      })
+    );
+  };
+  const empty = picture(0);
+  const full = empty && picture(1);
+  if (!empty || !full) return undefined;
+
+  // The caravan walks the long dune's outline against the wind, the same curve dunes.frag draws, from
+  // its foot to near its top in an hour: where it is tells the minute.
+  const peak = { x: w / 2 + 0.075 * h, y: 0.318 * h };
+  const outline = (x: number) => peak.y + 0.15 * h * (1 - climb(1 + Math.max((x - peak.x) / (0.62 * h), -1)));
+  const camel = 0.0062 * h;
+  const sizes = Array.from({ length: 3 + Math.floor(rand() * 4) }, () => 0.9 + 0.2 * rand());
+  const ink = mix(d.shade[1], d.sky[2], 0.08);
+  // The dune hides whatever is below its outline.
+  const above = new Path2D();
+  const from = peak.x - 0.5 * h;
+  above.moveTo(from, 0);
+  for (let x = from; x < peak.x; x += 2) above.lineTo(x, outline(x));
+  above.lineTo(peak.x, peak.y);
+  above.lineTo(peak.x, 0);
+  above.closePath();
+  const smooth = (x: number) => {
+    const t = Math.min(1, Math.max(0, x));
+    return t * t * (3 - 2 * t);
+  };
+
+  const caravan = () => {
+    const date = new Date();
+    const hour = (date.getMinutes() * 60 + date.getSeconds() + date.getMilliseconds() / 1000) / 3600;
+    // The first camel, in screen heights from the peak.
+    const lead = -0.275 + hour * 0.255;
+    ctx.save();
+    ctx.clip(above);
+    ctx.fillStyle = ink;
+    sizes.forEach((size, n) => {
+      const x = peak.x + lead * h - n * 5.2 * camel;
+      // The caravan comes out of the haze at the dune's foot, and as the hour turns it fades from the top
+      // and sets out again.
+      const alpha = smooth((x - peak.x + 0.43 * h) / (0.03 * h)) * smooth(Math.min(hour, 1 - hour) * 120);
+      if (alpha <= 0) return;
+      const y = outline(x);
+      const u = camel * size;
+      // Each camel is in mid step; its legs swing as the caravan moves on.
+      const gait = 0.22 * Math.sin(lead * 900 + n * 2);
+      // One shape, so that a fading camel shows no seams: all its parts are drawn the same way round.
+      ctx.beginPath();
+      const oval = (cx: number, cy: number, rx: number, ry: number) => {
+        ctx.moveTo(x + (cx + rx) * u, y - cy * u);
+        ctx.ellipse(x + cx * u, y - cy * u, rx * u, ry * u, 0, 0, Math.PI * 2);
+      };
+      const limb = (ax: number, ay: number, bx: number, by: number, r: number) => {
+        const turn = Math.atan2(ay - by, bx - ax);
+        const back = turn + Math.PI / 2;
+        ctx.moveTo(x + ax * u + Math.cos(back) * r * u, y - ay * u + Math.sin(back) * r * u);
+        ctx.arc(x + ax * u, y - ay * u, r * u, back, back + Math.PI);
+        ctx.arc(x + bx * u, y - by * u, r * u, back + Math.PI, back + Math.PI * 2);
+        ctx.closePath();
+      };
+      // Body and hump, neck and head, then the four legs.
+      oval(0, 1.08, 0.68, 0.36);
+      oval(-0.04, 1.42, 0.32, 0.28);
+      limb(0.5, 1.08, 0.88, 1.14, 0.13);
+      limb(0.88, 1.14, 1.02, 1.7, 0.09);
+      limb(1.02, 1.7, 1.28, 1.64, 0.09);
+      limb(0.44, 0.95, 0.42 + gait, 0, 0.07);
+      limb(0.36, 0.95, 0.34 - gait, 0, 0.07);
+      limb(-0.46, 0.95, -0.46 + gait, 0, 0.07);
+      limb(-0.54, 0.95, -0.54 - gait, 0, 0.07);
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+    });
+    ctx.restore();
+  };
+
+  const band = { x: 0, y: 0, w, h: foot };
+  const frame = within(s, 0, foot, (now, first) => {
+    copy(s, empty, first ? undefined : band);
+    ctx.globalAlpha = s.breath(now);
+    copy(s, full, band);
+    ctx.globalAlpha = 1;
+    caravan();
+  });
+  return { frame, interval: 100 };
+}
+
 /** A raked dry garden, the same generator the rest of the site uses; the rings breathe. */
 function garden(s: Stage, seed: string): Scene {
   const { ctx, w, h, p, rand } = s;
@@ -870,7 +1036,9 @@ export function paint(
   };
 
   const stage: Stage = { ctx, w, h, dpr, p, rand, breath, still };
-  const scene = name === 'mountains' ? mountains(stage) : name === 'pond' ? pond(stage) : garden(stage, seed);
+  // Where the dunes can't be drawn, the mountains are.
+  const scene =
+    name === 'pond' ? pond(stage) : name === 'garden' ? garden(stage, seed) : ((name === 'dunes' && dunes(stage)) || mountains(stage));
   const birds = scene.sky && flyBirds(birdCanvas, dpr, { width: w, ...scene.sky, colour: birdColour(p), still });
   birdCanvas.hidden = !birds;
   if (still) {
