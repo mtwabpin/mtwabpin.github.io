@@ -9,10 +9,9 @@
 
 precision highp float;
 
-// The whole scene's size in pixels, and how many of its rows of pixels this picture has, from the top: the
-// scene's foot lies under the page's veil and isn't drawn.
+// The whole scene's size in pixels. The picture has only its upper rows: the scene's foot lies under the
+// page's veil and isn't drawn.
 uniform vec2 resolution;
-uniform float drawn;
 // 1 in the dark look, when the moon and the stars are out.
 uniform float dark;
 // Where the sun or the moon is on its arc, from the left horizon (0) to the right one (1).
@@ -182,8 +181,9 @@ float bar(vec2 q, float at, float thick, float from, float to) {
 
 void main() {
     vec2 res = resolution;
-    // Pixels from the top left, as the scene is measured.
-    vec2 xy = vec2(gl_FragCoord.x, drawn - gl_FragCoord.y);
+    // Pixels from the top left, as the scene is measured. That draws the picture upside down: dunes.ts reads
+    // it back from its bottom row up, which sets it upright again.
+    vec2 xy = gl_FragCoord.xy;
     float y = xy.y / res.y;
 
     // The scene is measured in heights from the middle of the screen, so a wider screen shows more of it.

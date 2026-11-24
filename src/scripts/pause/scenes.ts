@@ -778,15 +778,24 @@ function dunes(s: Stage): Scene | undefined {
   };
   // The scene is painted twice, on an empty breath and on a full one. Its shapes are the same in both and
   // only the light differs, so each frame shows the second through the first, as far as the breath is in.
+  const rows = Math.min(ctx.canvas.height, Math.ceil(foot * s.dpr));
   const picture = (breath: number) => {
-    const made = drawDunes(ctx.canvas.width, ctx.canvas.height, Math.min(ctx.canvas.height, Math.ceil(foot * s.dpr)), { ...view, breath });
+    const made = drawDunes(ctx.canvas.width, ctx.canvas.height, rows, { ...view, breath });
     return (
       made &&
       bake(s, (c) => {
         c.fillStyle = d.haze;
         c.fillRect(0, 0, w, h);
-        c.setTransform(1, 0, 0, 1, 0, 0);
-        c.drawImage(made, 0, 0);
+        if (made.width === ctx.canvas.width) c.putImageData(made, 0, 0);
+        else {
+          // A picture the graphics card could only make smaller is stretched to fit.
+          const small = document.createElement('canvas');
+          small.width = made.width;
+          small.height = made.height;
+          small.getContext('2d')!.putImageData(made, 0, 0);
+          c.setTransform(1, 0, 0, 1, 0, 0);
+          c.drawImage(small, 0, 0, ctx.canvas.width, rows);
+        }
       })
     );
   };

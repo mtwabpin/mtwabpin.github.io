@@ -1,6 +1,6 @@
 // Draws the dunes. Their sand is shaded pixel by pixel, which the 2D canvas the other scenes use can't
 // do fast enough, so a small program on the graphics card (dunes.frag) draws them into a canvas of its
-// own, and scenes.ts copies that picture into the page's.
+// own. The picture is read back from there as plain numbers, and scenes.ts puts it into the page's canvas.
 import fragment from './dunes.frag?raw';
 
 /** What the scene is given: a number, or a list of two or three (a size, a colour's red, green and blue). */
@@ -23,6 +23,13 @@ function start(): Painter | null | undefined {
   if (!gl) return null;
   // The scene's numbers need more digits than some older phones' graphics chips keep.
   if (!gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT)?.precision) return null;
+  // A browser that guards against fingerprinting may hand a page noise in place of the picture it drew.
+  // One known colour, drawn and read back, tells: where it comes back as something else, no dunes.
+  gl.clearColor(0.2, 0.4, 0.6, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  const back = new Uint8Array(4);
+  gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, back);
+  if ([51, 102, 153].some((value, i) => Math.abs(back[i] - value) > 3)) return gl.isContextLost() ? undefined : null;
 
   const program = gl.createProgram();
   const sources: [number, string][] = [
@@ -57,21 +64,21 @@ function start(): Painter | null | undefined {
 }
 
 /**
- * Draws the top `drawn` rows of a scene `width` by `height` pixels, and returns the canvas it is on, or
- * nothing where the browser can't. The canvas is used again for the next picture, so copy it at once.
+ * Draws the top `rows` rows of pixels of a scene `width` by `height`, and returns the picture, or nothing
+ * where the browser can't. A picture larger than the graphics card can make comes back smaller, for the
+ * caller to stretch.
  */
-export function drawDunes(width: number, height: number, drawn: number, values: DuneValues): HTMLCanvasElement | undefined {
+export function drawDunes(width: number, height: number, rows: number, values: DuneValues): ImageData | undefined {
   if (painter?.gl.isContextLost()) painter = undefined;
   if (painter === undefined) painter = start();
   if (!painter) return undefined;
   const { canvas, gl, program } = painter;
   if (canvas.width !== width) canvas.width = width;
-  if (canvas.height !== drawn) canvas.height = drawn;
-  // A picture larger than the graphics card can make comes out smaller, and is stretched when copied.
+  if (canvas.height !== rows) canvas.height = rows;
   const across = gl.drawingBufferWidth;
   const down = gl.drawingBufferHeight;
   gl.viewport(0, 0, across, down);
-  const all: DuneValues = { ...values, resolution: [across, (down * height) / drawn], drawn: down };
+  const all: DuneValues = { ...values, resolution: [across, (down * height) / rows] };
   for (const [name, value] of Object.entries(all)) {
     const at = gl.getUniformLocation(program, name);
     if (typeof value === 'number') gl.uniform1f(at, value);
@@ -79,5 +86,10 @@ export function drawDunes(width: number, height: number, drawn: number, values: 
     else gl.uniform3fv(at, value);
   }
   gl.drawArrays(gl.TRIANGLES, 0, 3);
-  return gl.isContextLost() ? undefined : canvas;
+  // The picture is read back as numbers, from its bottom row up, which dunes.frag has made the scene's top.
+  // Copying the canvas with drawImage would be less work, but Firefox has been seen to swap red and blue
+  // on the way, turning the sand blue (Firefox 159 on Linux, November 2026).
+  const pixels = new Uint8Array(across * down * 4);
+  gl.readPixels(0, 0, across, down, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+  return gl.isContextLost() ? undefined : new ImageData(new Uint8ClampedArray(pixels.buffer), across, down);
 }
