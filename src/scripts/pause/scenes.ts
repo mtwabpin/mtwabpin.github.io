@@ -894,7 +894,8 @@ export function paint(
       birds(now);
     }
   };
+  // The first tick asks for the next one itself. Asking here as well would start a second run of them
+  // that stopping never reaches, and it would go on painting this scene over the one drawn after it.
   tick(performance.now());
-  id = requestAnimationFrame(tick);
   return () => cancelAnimationFrame(id);
 }
